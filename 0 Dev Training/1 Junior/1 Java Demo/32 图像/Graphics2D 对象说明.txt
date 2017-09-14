@@ -1,0 +1,43 @@
+. 参见:  
+
+  .\java\..\x reference\...\docs\index.html 中原版java 文档说明
+
+  对应文档中的位置为:
+
+       awt->Graphics2D
+
+       在AWT Packages 页面中直接打开 java.awt 类的链接, 就能找到awt 包中的所有类列表, 包括Graphics2D 类的说明.
+
+. 参见:
+
+  http://baike.baidu.com/view/3166041.htm
+
+  http://www.cjsdn.net/post/print?bid=1&id=181198  -----> 这个是非常好的对Graphics2D编程的例子
+
+. Graphics2D 类是Graphics 类的扩展.  提供了对几何形状、坐标转换、颜色管理和文本布局更为复杂的控制. 
+
+. 方法说明:
+
+ 1.  addRenderingHints()
+
+ 2.  drawLine()    -------- 画线
+
+ 3.  drawString()  -------- 写字
+
+ 4.  draw3DRect()  -------- 画 3D 效果的 矩形
+
+     实际效果是2个边变粗线.   对应 fill3DRect(), 是填充颜色的. 说实话， 效果很差, 估计要结合其他手段一起使用才会有效果.
+
+ 5.  drawArc()     -------- 画半弧形, 如果画360度的弧线， 实际上就是画圆
+
+     参数说明:
+
+         圆点(x,y),  宽度， 高度, (宽度和高度相同时, 弧度是圆的一部分, 否则是椭圆的一部分) 起始角度, 弧线的角度(如果是360度, 则其实角度本质没有意义)
+
+         
+
+ 6.  setPaint() ----------  设置 刷子, 填充颜色的时候会用到 fill()
+
+     
+
+     

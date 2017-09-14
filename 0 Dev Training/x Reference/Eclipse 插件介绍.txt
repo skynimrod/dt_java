@@ -1,0 +1,209 @@
+参见：
+
+     http://developer.51cto.com/art/201007/214478.htm 
+
+     原文链接：http://www.ajaxline.com/best-eclipse-plugins
+
+
+
+. 1. C4J  -- Contracts for Java 1.0.0.201405201219
+
+     待查
+
+  2. Ceylon IDE 1.0.0
+
+     参见:  http://www.iteye.com/news/24008
+
+     针对 在团队环境中写大型程序的编程语言, 该语言意图消除目前Java 存在的问题.  Gavin 描述了对Ceylon 的目标: 运行在 JVM 之上, 静态类型, 自动内存管理, 内置模块化.
+
+  3. Grep Console 3.6
+
+     可以定义一系列的正则表达式, 来处理console 输出.
+
+  4. eclipse-pmd 1.0
+
+     处理pmd 。
+
+  5. PyDev  -- Eclipse 的 Python 开发环境                                                ************
+
+     工具地址：http://marketplace.eclipse.org/content/pydev-python-ide-eclipse
+
+  6. EasyElcipse for LAMP                                                             **************
+ 
+     工具地址：http://marketplace.eclipse.org/content/easyeclipse-lamp
+
+     支持使用动态语言 来开发网络应用程序, 并对 PHP, Python, Perl 以及 Ruby 和 Ruby on Rail 开发提供了一个网络服务和数据库、CVS和 Subversion.
+
+  7. CFEclipse
+
+     工具地址：http://marketplace.eclipse.org/content/umlet-uml-tool-fast-uml-diagrams
+
+     Eclipse 的ColdFusion 插件 具有DreamWeaver 和 homesite 中经常使用的大多数功能, 而且还具有很多它们不具备的功能. 这个插件的目的是为 CFML 建立一个IDE
+
+  8. Spket IDE
+
+     工具地址：http://www.spket.com/
+
+     Spket IDE 是功能强大的JavaScript 和XML 开发工具包.  这个强大的编辑器可以进行 JavaScript、XUL/XBL以及 Yahoo! Widget 开发. 其中 JavaScript 编辑器 具有代码完成(code completion)、语法标记 以及 内容概览等功能, 协助开发人员创建高效的JavaScript 代码.
+
+  9. ATL
+
+     工具地址：http://marketplace.eclipse.org/content/atl
+
+     ATL (Atlas 转换语言) 是一种模型转换语言以及工具套件. 在模型驱动工程(MDE)领域, ATL 可以从一套源模型中产生一套目标模型.  ATL 语言开发环境处在 Eclipse 平台顶部, 提供了一系列的标准开发工具(语法标记、调试器等), 旨在 让 ATL 转变 开发 变得更加简单.
+
+  10. PTI - PHP 工具集成
+
+      工具地址：http://marketplace.eclipse.org/content/pti-php-tool-integration
+
+      一方面, 我们有许多支持PHP脚本开发的优秀工具, 比如 PHPUnit 或者 PHP CodeSniffer。 而另一方面, 强大的IDE(比如 PHP 开发工具工程, PDT), 却不能使用这些工具.  Eclpise PHP Tool Integration 工具集成(PTI) 则是 Eclipse 插件的集合, 旨在 消除这方面的空白.
+
+  11.  Skyway Builder Community Edition
+ 
+       工具地址：http://marketplace.eclipse.org/content/skyway-builder-community-edition
+
+      Skyway Builder Community Edition 是一个 基于 Eclipse 的代码生成工具, 用于提高Spring 应用程序的开发效率. 它既能生成完整的Spring 应用程序代码, 也能单独生成Spring 框架各个模块的代码( DAO, ORM, MVC, Services, and Core)     
+
+  12.  Bravo JSP 编辑器
+
+       工具地址：http://marketplace.eclipse.org/content/bravo-jsp-editor
+
+       Bravo JSP 编辑器 是一款 所见即所得的JSP/html 编辑器
+
+  13.  Eclipse 的 Koders IDE 插件
+
+       工具地址：http://marketplace.eclipse.org/content/koders-ide-plugin-eclipse
+
+       Koders Desktop IDE Plugins 可以让开发人员直接在Eclipse 开发环境中进行源代码搜索.
+
+  14. Google Eclipse Search (GES )
+
+      工具地址：http://marketplace.eclipse.org/content/google-eclipse-search-ges
+
+      Google Eclipse Search (GES) 工具是在IBM的Eclipse 开发环境中继承了Google Desktop Search 谷歌桌面搜索(GES)引擎的结果. 旨在改进软件工程中的搜索功能, 这与 因特网中搜索或者在你自己的台式机中搜索功能类似.
+
+  15. Regex Util
+
+      工具地址：http://marketplace.eclipse.org/content/regex-util
+
+      这款Eclipse 插件可以帮助开发人员创建正则表达式(Regex). 其目的是让Regex 的创建更加容易, 更加迅速. 它还能够 高亮 显示正则表达式 语法、括号匹配、错误检测, 能够提醒正则表达式的功能详细描述等.
+
+  16. Emac+
+
+      工具地址：http://marketplace.eclipse.org/content/emacs
+
+      这款插件在Eclipse 文本编辑器中提供了增强型的类似于Emacs 的功能.
+
+  17. Eclipse SQL Explorer
+
+      工具地址：http://marketplace.eclipse.org/content/amaterasuml
+
+      Eclipse SQL Explorer 是一个SQL 瘦客户端, 允许你查询和浏览 任何遵循 JDBC 的数据库. 它 支持带有个人数据库(Oracle,  DB2和 MySQL) 专用功能的插件, 并且能够扩展支持其他数据库的专用插件. 
+
+  18. soapui-eclipse 插件
+
+      工具地址：http://marketplace.eclipse.org/content/soapui-eclipse-plugin
+
+      soapUI 是 一款 桌面应用程序, 能够检测、触发、模仿以及测试(功能和负载) 基于 SOAP/WSDL 和 REST/EADL 的HTTP 网络服务. 其主要目的是为 开发人员/测试人员 提供/或者测试网络服务(java, .net 等). 该 soapui-eclipse-plugin 支持 soapUI 中的所有功能, 而且还添加了一些eclipse 专用功能:  比如 soapUI Nature, 它可以在Project Explorer 中显示集成soapUI 工程, 并且简化了代码生成向导;  soapUI Perspective等.
+
+  19. SMODL 开发套件
+
+      工具地址：http://marketplace.eclipse.org/content/smodl-development-suite
+
+      Smodel Development Suite 能够让模型驱动的网络开发(从零开始 模型设计 或者 根据现有的代码进行逆向 工程时) 更快、更简单、更灵活. 该插件能够生成各种代码, 如果模型改变的话, 他们换回保持同步. 其运行引擎可以运行在不同的平台上, 并可以给网络服务提供SOAP, XML-RPC 和 JSON-RPC绑定. 该运行引擎能够动态产生描述网络服务的WSDL, 并实施数据完整性(可以在模型中定义).
+
+  20. Eclipse 记事本插件
+
+      工具地址：http://marketplace.eclipse.org/content/eclipse-notepad-plugin
+
+      这款插件的目的简单明确, 就是让开发人员写一些小的记录. 这些记录存储在工作空间的元素内.
+
+  21. Apache Directory Studio
+
+      工具地址：http://marketplace.eclipse.org/content/apache-directory-studio
+
+      Apache Directory Studio (前身是LDAP Studio) 是一个完整的目录工具平台, 本来适用于LDAP 服务器的, 但是现在被专门用于Apache 目录服务器. 它有以下插件可以选择: LDAP 浏览器插件; LDIF 编辑器插件; Schema 编辑器插件; 在Studio 中开启 Apache Directory Server 的插件以及 一个配置 Apache Directory Server 的插件.
+
+  22. EHEP -- Eclipse 十六进制 编辑器插件
+
+      工具地址：http://marketplace.eclipse.org/content/ehep-eclipse-hex-editor-plugin
+
+      EHEP 这款Eclipse 插件可以让用户查看或者修改任何用十六进制 数表示的文件. 该插件既能用十六进制数 表格查看文件, 也能够一文字形式查看文件.
+
+  23. Vaadin 插件
+
+      工具地址：http://marketplace.eclipse.org/content/vaadin-plugin-eclipse
+
+      Vaadin 是一款开源UI库, 具有丰富的网络用户界面. 它是一个简单的jar 元件库, 可以帮助Java 开发人员更简单的创建有魅力的网络应用程序.
+
+  24. RMI 插件
+
+      工具地址：http://marketplace.eclipse.org/content/genadys-rmi-plugin-eclipse
+
+      Genady 的 RMI Eclipse 插件 是一个全面的RMI 应用开发解决方案. 除了能够自动生成RMI 桩(stub) 之外, 该RMI 插件 还简化了应用程序进行了Java 虚拟机参数( 比如安全政策 和基本代码) 的配置的过程.
+
+  25. Lockness
+     
+      工具地址：http://marketplace.eclipse.org/content/lockness-thread-dump-analyser
+
+      Lockness 是一款 分析Java Thread Dump 的Eclipse 插件. 有了Lockness, 很容易就能找出 瓶颈状态或锁死状态下 含有那些线程. 其最新版本已经做出改进, 能够更好的支持有JDK 6 生成的Thread Dumps
+
+  26. Fast Fox
+
+      工具地址：http://marketplace.eclipse.org/content/fast-fox
+
+      Fast Fox 中简单而功能强大的鼠标功能会让你的Eclipse IDE 更加丰富多彩. 那些经常进行的活动, 比如"前一个编辑器" 和"关闭编辑器", 现在只需要一个简单的鼠标移动就可以完成. 你不必再去描绘复杂的符号, Fast Fox 就有一个好用的环形菜单, 让使用变得真正很简单.
+
+  27. Saros -- 分布式结对变成( Distributed Pair Programming)
+
+      工具地址：工具地址：http://marketplace.eclipse.org/content/saros-distributed-collaborative-editing-and-pair-programming
+
+      Saros 是一款 Eclipse 插件, 其目的是进行协作文本编辑, 特别是针对分布式结对变成, 但是它能够一次支持任意多个 参与者. 任务中的所有成员都有一份相同的Eclipse 工程备份, 而且随着编辑逐步发展, Saros 还回保持这些备份与变成同步.
+
+  28. ExploreFS
+
+      http://marketplace.eclipse.org/content/explorefs
+
+      这个小插件（6K）的为宜目的就是打开本地文件管理器中包含已选资源的文件夹. 它在包 浏览器、资源浏览器的快捷菜单中以及任何其他的显示文件或者 Java 类中添加了"Open In File System" 项. 它还可以找到包含Jar 文件的类.  Windows, Mac OS X, 以及 Linux 系统都可以用.
+
+  29. RSS View
+
+      工具地址：http://marketplace.eclipse.org/content/rss-view
+
+      RSS View 是一款 RSS/Atom 阅读器, 其简洁明快的用户界面嵌入到Eclipse 中, 并且与你的工作台并存. 你在一个地方就能拥有所有的功能. RSS View 可能还能 改善你的开发过程, 因为它可以 把 Bug 跟踪系统、开发论坛或者wiki 直接集成在你的IDE中. 其功能包括: 分组和过滤新闻动态条目, 脱机 新闻推送, 以及几个用户自定义功能等 .
+
+  29. FreeMem
+
+      工具地址：http://marketplace.eclipse.org/content/freemem
+
+      FreeMem 是一款支持Eclipse 的图表式内存监视器.
+
+  30. EclipseColorer
+
+      工具地址：http://marketplace.eclipse.org/content/eclipsecolorer
+
+      EclipseColoreris 是一款 Eclipse 平台上的语法标记插件. 它支持超过150中语言, 有许多强大的功能以及大量的语法. 他可以使用嵌套结构( jsp, asp, php) 进行语言标记, 具有强大的XML 语言支持.
+
+  31. Log4E
+
+      工具地址：http://marketplace.eclipse.org/content/log4e
+
+      Log4E 插件能够帮助你在Java 项目中轻松的创建记录器. 它可以在以下几个任务中提供帮助: 记录器声明, 在某些条目中进行记录器插入, 系统输出替换, 已存在记录器语句的修改等.
+
+  32. AmaterasUML
+
+      工具地址：http://www.eclipseplugincentral.com/Web_Links-index-req-viewlink-cid-630.html
+
+      AmaterasUML 是一款 Eclipse 插件, 它可以描绘支持类图、程序图表以及使用例图的UML。 它还支持JAVA， 比如 它可以从Eclipse工作空间导入类/接口, 以及把类图导出到Java 源代码中等.
+
+  33. UMLet  -- 快速 UML 图形工具
+
+      工具地址：http://www.eclipseplugincentral.com/Web_Links-index-req-viewlink-cid-492.html
+
+      这款免费的UML 工具UMLet 用户界面简单、没有弹出窗口, 可以让你轻松画出UML 图表. 它能够让你快速的画出示意图; 以 pdf、eps、jpg、gif、svg、bmp、png 等格式以及系统 剪切板 模式导出 图形; 使用Eclipse 3+ 分享图表; 还能够创建自己的自定义图形元素灯.
+
+   
+      
+ 
+   
+     

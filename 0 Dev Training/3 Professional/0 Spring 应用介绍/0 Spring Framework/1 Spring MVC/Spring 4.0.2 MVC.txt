@@ -1,0 +1,114 @@
+. 参见:
+
+     .\docs\spring-framework-reference\... 16章  MVC部分
+
+. Spring Web MVC (model-view-controller) 框架是围绕 DispatcherServlet 设计的。
+
+  model (The M in MVC) 是一个 Map 接口, 允许对视图技术的完全抽象. 可以采用 JSP, Velocity 和 Freemarker， 或者直接生成XML, JSON, Atom， 以及更多类型的内容.
+
+. 下面的例子演示了 DispatcherServlet 定义和映射
+
+<web-app>
+    <servlet>
+        <servlet-name>example</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>example</servlet-name>
+        <url-pattern>/example/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+  所有的来自/example 的请求, 都被 DispatcherServlet 实例对象 example 处理. 
+
+  以下是对应上面 web.xml 的处理代码
+
+public class MyWebApplicationInitializer implements WebApplicationInitializer {
+
+    @Override
+    public void onStartup(ServletContext container) {
+        ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet());
+        registration.setLoadOnStartup(1);
+        registration.addMapping("/example/*");
+    }
+
+}
+
+WebApplicationInitializer 是 Spring MVC 提供的接口， 确保 基于代码的配置能被检测到， 并自动初始化所有Servlet3 容器. 
+
+   在 Web MVC 框架, 没一个DispatcherServlet 都有自己的 WebApplicationContext， 所有继承的beans 都定义于 rootWebApplicationContext。 
+
+ 例子2:
+
+  web.xml 包含如下内容
+
+<web-app>
+    <servlet>
+        <servlet-name>golfing</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>golfing</servlet-name>
+        <url-pattern>/golfing/*</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+  对于上面的Servlet 配置. 你的应用需要有一个文件  /WEB-INF/golfing-servlet.xml.  这个文件包含所有 你的 Spring Web MVC 指定的组件(beans).  可以通过Servlet 初始化才疏 改变配置文件的定位.
+
+  WebApplicationContext 是 ApplicationContext 的扩展. 主要是包含了一些适于Web 应用的特点.  WebApplicationContext 绑定在ServletContext 中， 通过使用 RequestContextUtils 类中的静态方法, 可以方便的访问 WebApplicationContext 。
+
+. WebApplicationContext 中的特殊 Bean 类型
+
+  Bean Type            说明
+
+  HandlerMapping     映射接入的请求与处理.   通过HandlerMapping 实现.
+
+  HandlerAdapter     帮助 DispatcherServlet 调用 映射到请求处理的句柄
+
+  HandlerExceptionresolver
+
+  ViewResolver
+ 
+  LocaleResolver & LocaleContextResolver
+
+  ThemeResolver
+
+  MultipartResolver
+
+  MultipartResolver
+
+  FlashMapManager
+
+. 缺省的 DispatcherServlet 配置
+
+  这些信息在 DispatcherServlet.properties 中. 所在包为  org.springframework.web.servlet.
+
+. 16.2.3 DispatcherServlet 处理顺序
+
+  搭建起DispatcherServlet后, 当一个对应DispatcherServlet 的请求进来, DispatcherServlet 开始如下的过程来处理请求:
+
+  1. WebApplicationContext 搜索绑定在请求上的属性, 确定对应的controller 和其他能用的元素. 
+
+     DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE.
+
+  2. 本地处理绑定在请求上的元素。  如果不需要本地处理, 可以去掉.
+
+  3. 主题处理. 同上
+
+  4. 如果指定了多个文件处理,  请求就是多文件的....
+
+  5. 搜索一个可用的句柄
+
+  6. 如果 返回一个model， 视图即展现.  如果没有model 返回, 就不展现view.
+
+ 
+
+
+
+
+http://bj.ganji.com/fang1/843438483x.htm#js-map 租房信息
+. 

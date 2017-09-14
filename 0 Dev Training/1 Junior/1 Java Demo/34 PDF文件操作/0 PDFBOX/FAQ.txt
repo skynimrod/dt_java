@@ -1,0 +1,19 @@
+. 关于乱码问题:
+
+  有些PDF文档, 读取出来有可能是乱码。
+
+http://t.hd.xiaomi.com/?_a=20130827&_op=book
+
+  参见:
+
+      http://wenku.baidu.com/view/d648b0196bd97f192279e941.html
+
+      http://wenku.baidu.com/view/c3fdf92d7375a417866f8fce.html
+
+      http://wenku.baidu.com/view/9b2f0b42c850ad02de804193.html
+
+. FlateDecode 的压缩算法规范
+
+  http://tools.ietf.org/html/rfc1951
+
+  http://zlib.net/

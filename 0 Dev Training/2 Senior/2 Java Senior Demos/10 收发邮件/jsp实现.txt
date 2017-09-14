@@ -1,0 +1,11 @@
+参见：
+
+     http://zhidao.baidu.com/link?url=EtPWwzAy1vmOoflnGTyb_5WYiSEi9O0kXPaw7iHj3clGUUkNzH8PHC8AIa5c_j-XeJVZKbXGFWrCVTYVHICB9q
+
+java如何实现自动发邮件功能
+2008-01-03 08:30 提问者悬赏：10分 | ctocio | 分类：JAVA相关 | 浏览2161次
+我需要用struts+ibatis实现一个功能，功能如下：
+   当一个用户登录后可以发起提问，然后如果有人进行了回复，就会给问题发起人和回复的所有人每人发一封邮件来通知他们问题有了新的回复，我已经实现了邮件自动发送功能，请问我怎么用struts+ibatis实现从数据库中查出发起人和所有回复人的email地址呢？？谁有这类的代码发给我一份好吗？？在此我先谢谢大家了！！
+分享到：
+2008-01-03 13:26 网友采纳
+利用SmtpClient 类在jsp中实现邮件发送，提供了很多功能接口，了了数行即可完成，具体知识你查下就行了

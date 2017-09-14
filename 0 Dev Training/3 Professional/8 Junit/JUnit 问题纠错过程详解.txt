@@ -1,0 +1,1507 @@
+. 确认Junit 正常运行的前提下， 出现了下面的问题:
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.clinit(HibernateUtil.java73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java37)
+	at junit.framework.TestCase.runBare(TestCase.java132)
+	at junit.framework.TestResult$1.protect(TestResult.java110)
+	at junit.framework.TestResult.runProtected(TestResult.java128)
+	at junit.framework.TestResult.run(TestResult.java113)
+	at junit.framework.TestCase.run(TestCase.java124)
+	at junit.framework.TestSuite.runTest(TestSuite.java232)
+	at junit.framework.TestSuite.run(TestSuite.java227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java196)
+Caused by java.lang.NoClassDefFoundError orgdom4jDocumentException
+	at cn.hxex.blog.hibernate.HibernateUtil.clinit(HibernateUtil.java47)
+	... 15 more
+
+. 分析:
+
+  缺少Dom4J.  下载URL: http://www.dom4j.org/   首页似乎没有下载的地方, 反而要下载一些其他的.
+
+                       http://www.dom4j.org/dom4j-1.6.1/  这个可以下载dom4j-1.6.1 ， 但是速度非常慢, 也是在sourceforge
+
+                       http://sourceforge.net/projects/dom4j/files/latest/download
+
+     dom4j-1.6.1.jar 在Hibernate 4.3.5 的包里 required 目录下就有.
+
+. 添加完上面的Jar 包后, 初夏下面的问题:
+ 
+  java.lang.NoClassDefFoundError: org/hibernate/annotations/common/reflection/MetadataProvider
+
+  需要Jar 包:   hibernate-commons-annotations.jar
+
+. 添加完上面的Jar 包后, 出现下面的问题:
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: java.lang.NoClassDefFoundError: org/jboss/logging/BasicLogger
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$000(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at org.hibernate.cfg.Configuration.<clinit>(Configuration.java:192)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:47)
+	... 15 more
+
+  需要Jar包: jboss-logging-3.1.3.GA.jar
+
+. 添加上面的Jar包后, 出现下面的问题：
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: java.lang.NoClassDefFoundError: javax/transaction/SystemException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.jboss.logging.Logger$1.run(Logger.java:2252)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.jboss.logging.Logger.getMessageLogger(Logger.java:2227)
+	at org.jboss.logging.Logger.getMessageLogger(Logger.java:2214)
+	at org.hibernate.cfg.Configuration.<clinit>(Configuration.java:192)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:47)
+	... 15 more
+
+  添加Jar 包:  jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+
+. 添加完上面的Jar 包后, 出现下面的问题:
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [com.mysql.jdbc.Driver]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:243)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:200)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator(DriverManagerConnectionProviderImpl.java:156)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:95)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.buildJdbcConnectionAccess(JdbcServicesImpl.java:260)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:94)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.mysql.jdbc.Driver
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl$AggregatedClassLoader.findClass(ClassLoaderServiceImpl.java:228)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:240)
+	... 30 more
+
+需要 mysql-connector-java-5.1.5-bin.jar。
+
+. 添加完上面的jar 包后, 出现了下面的问题:
+
+java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator$1$1.convert(BasicConnectionCreator.java:122)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:140)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:58)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:75)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:106)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.buildJdbcConnectionAccess(JdbcServicesImpl.java:260)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:94)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: java.sql.SQLException: The connection property 'autoReconnectForPools' only accepts values of the form: 'true', 'false!'!, 'yes!'! or 'no'. The value 'ture' is not in this set.
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1056)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$ConnectionProperty.validateStringValues(ConnectionPropertiesImpl.java:312)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$BooleanConnectionProperty.initializeFrom(ConnectionPropertiesImpl.java:103)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$ConnectionProperty.initializeFrom(ConnectionPropertiesImpl.java:211)
+	at com.mysql.jdbc.ConnectionPropertiesImpl.initializeProperties(ConnectionPropertiesImpl.java:2610)
+	at com.mysql.jdbc.ConnectionImpl.initializeDriverProperties(ConnectionImpl.java:3249)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:726)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:46)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:302)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:283)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:55)
+	... 29 more
+
+上面的问题是不能打开数据库链接: 查看下 hibernate.cfg.xml 里面的配置有没有问题, 还有就是数据库连接有没有打开.
+
+  修改 hibernate.cfg.xml 中 MySQL 的JDBC URl :
+
+       jdbc:mysql://127.0.0.1:3307/smms_db?useUnicode=true&amp;characterEncoding=utf-8
+     
+  出现下面的问题:
+
+java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [com.mysql.jdbc.Driver]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:243)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:200)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator(DriverManagerConnectionProviderImpl.java:156)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:95)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.buildJdbcConnectionAccess(JdbcServicesImpl.java:260)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:94)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.mysql.jdbc.Driver
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl$AggregatedClassLoader.findClass(ClassLoaderServiceImpl.java:228)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:240)
+	... 30 more
+
+
+实际原因是:  Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.mysql.jdbc.Driver
+
+  忘了加 mysql-connector-java-5.1.5-bin.jar. 
+
+. 添加后出现下面的问题：
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator$1$1.convert(BasicConnectionCreator.java:122)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:140)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:58)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:75)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:106)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.buildJdbcConnectionAccess(JdbcServicesImpl.java:260)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:94)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206)
+	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: java.sql.SQLException: The connection property 'autoReconnectForPools' only accepts values of the form: 'true', 'false!'!, 'yes!'! or 'no'. The value 'ture' is not in this set.
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1056)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$ConnectionProperty.validateStringValues(ConnectionPropertiesImpl.java:312)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$BooleanConnectionProperty.initializeFrom(ConnectionPropertiesImpl.java:103)
+	at com.mysql.jdbc.ConnectionPropertiesImpl$ConnectionProperty.initializeFrom(ConnectionPropertiesImpl.java:211)
+	at com.mysql.jdbc.ConnectionPropertiesImpl.initializeProperties(ConnectionPropertiesImpl.java:2610)
+	at com.mysql.jdbc.ConnectionImpl.initializeDriverProperties(ConnectionImpl.java:3249)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:726)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:46)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:302)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:283)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:55)
+	... 29 more
+
+
+错误原因:
+
+    Hibernate.cfg.xml 中的 autoReconnectForPools 属性的值 拼写错了, "ture" , 应该是"true"
+
+. 修改后出现下面的错误:
+
+java.lang.NoClassDefFoundError: javax/persistence/EntityListeners
+
+   原因: 
+
+       Hibernate 需要jps 支持, 导入jpa 的jar包即可。 hibernate-jpa-2.1-api-1.0.0.Final.jar
+
+       该jar包在 Hibernate 4.3.5 的Required 目录中.
+
+. 添加上面的Jar 包后, 出现下面的错误:
+
+载入BlogConfig.xml 成功
+2014-5-15 14:12:39 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+2014-5-15 14:12:39 org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-5-15 14:12:39 org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.3.5.Final}
+2014-5-15 14:12:40 org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+2014-5-15 14:12:40 org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/Message.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/ReplyMessage.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/User.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3307/blog_db?useUnicode=true&characterEncoding=utf8&
+			autoReconnect=true&autoReconnectForPools=true]
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000046: Connection properties: {user=root, password=****}
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000006: Autocommit mode: false
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2014-5-15 14:12:41 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2014-5-15 14:12:41 org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2014-5-15 14:12:41 cn.hxex.blog.hibernate.HibernateUtil <clinit>
+严重: Building SessionFactory failed.
+载入BlogConfig.xml 成功
+2014-5-15 14:12:39 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+2014-5-15 14:12:39 org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-5-15 14:12:39 org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.3.5.Final}
+2014-5-15 14:12:40 org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+2014-5-15 14:12:40 org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/Message.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/ReplyMessage.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: cn/hxex/blog/model/User.hbm.xml
+2014-5-15 14:12:40 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-5-15 14:12:40 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3307/blog_db?useUnicode=true&characterEncoding=utf8&
+			autoReconnect=true&autoReconnectForPools=true]
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000046: Connection properties: {user=root, password=****}
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000006: Autocommit mode: false
+2014-5-15 14:12:40 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2014-5-15 14:12:41 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2014-5-15 14:12:41 org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2014-5-15 14:12:41 cn.hxex.blog.hibernate.HibernateUtil <clinit>
+严重: Building SessionFactory failed.
+org.hibernate.InvalidMappingException: Could not parse mapping document from resource cn/hxex/blog/model/User.hbm.xml
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3762)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXmlQueue(Configuration.java:3751)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3739)
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1410)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1844)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.PropertyNotFoundException: field [username] not found on cn.hxex.blog.model.User
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:166)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:173)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:158)
+	at org.hibernate.property.DirectPropertyAccessor.getGetter(DirectPropertyAccessor.java:181)
+	at org.hibernate.internal.util.ReflectHelper.getter(ReflectHelper.java:254)
+	at org.hibernate.internal.util.ReflectHelper.reflectedPropertyClass(ReflectHelper.java:230)
+	at org.hibernate.mapping.SimpleValue.setTypeUsingReflection(SimpleValue.java:362)
+	at org.hibernate.cfg.HbmBinder.createProperty(HbmBinder.java:2350)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2315)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2204)
+	at org.hibernate.cfg.HbmBinder.bindRootPersistentClassCommonValues(HbmBinder.java:411)
+	at org.hibernate.cfg.HbmBinder.bindRootClass(HbmBinder.java:326)
+	at org.hibernate.cfg.HbmBinder.bindRoot(HbmBinder.java:177)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3759)
+	... 21 more
+org.hibernate.InvalidMappingException: Could not parse mapping document from resource cn/hxex/blog/model/User.hbm.xml
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3762)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXmlQueue(Configuration.java:3751)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3739)
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1410)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1844)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.PropertyNotFoundException: field [username] not found on cn.hxex.blog.model.User
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:166)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:173)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:158)
+	at org.hibernate.property.DirectPropertyAccessor.getGetter(DirectPropertyAccessor.java:181)
+	at org.hibernate.internal.util.ReflectHelper.getter(ReflectHelper.java:254)
+	at org.hibernate.internal.util.ReflectHelper.reflectedPropertyClass(ReflectHelper.java:230)
+	at org.hibernate.mapping.SimpleValue.setTypeUsingReflection(SimpleValue.java:362)
+	at org.hibernate.cfg.HbmBinder.createProperty(HbmBinder.java:2350)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2315)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2204)
+	at org.hibernate.cfg.HbmBinder.bindRootPersistentClassCommonValues(HbmBinder.java:411)
+	at org.hibernate.cfg.HbmBinder.bindRootClass(HbmBinder.java:326)
+	at org.hibernate.cfg.HbmBinder.bindRoot(HbmBinder.java:177)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3759)
+	... 21 more
+2014-5-15 14:12:41 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+2014-5-15 14:12:41 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3762)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXmlQueue(Configuration.java:3751)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3739)
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1410)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1844)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.PropertyNotFoundException: field [username] not found on cn.hxex.blog.model.User
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:166)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:173)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:158)
+	at org.hibernate.property.DirectPropertyAccessor.getGetter(DirectPropertyAccessor.java:181)
+	at org.hibernate.internal.util.ReflectHelper.getter(ReflectHelper.java:254)
+	at org.hibernate.internal.util.ReflectHelper.reflectedPropertyClass(ReflectHelper.java:230)
+	at org.hibernate.mapping.SimpleValue.setTypeUsingReflection(SimpleValue.java:362)
+	at org.hibernate.cfg.HbmBinder.createProperty(HbmBinder.java:2350)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2315)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2204)
+	at org.hibernate.cfg.HbmBinder.bindRootPersistentClassCommonValues(HbmBinder.java:411)
+	at org.hibernate.cfg.HbmBinder.bindRootClass(HbmBinder.java:326)
+	at org.hibernate.cfg.HbmBinder.bindRoot(HbmBinder.java:177)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3759)
+	... 21 more
+org.hibernate.InvalidMappingException: Could not parse mapping document from resource cn/hxex/blog/model/User.hbm.xml
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3762)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXmlQueue(Configuration.java:3751)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3739)
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1410)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1844)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.PropertyNotFoundException: field [username] not found on cn.hxex.blog.model.User
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:166)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:173)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:158)
+	at org.hibernate.property.DirectPropertyAccessor.getGetter(DirectPropertyAccessor.java:181)
+	at org.hibernate.internal.util.ReflectHelper.getter(ReflectHelper.java:254)
+	at org.hibernate.internal.util.ReflectHelper.reflectedPropertyClass(ReflectHelper.java:230)
+	at org.hibernate.mapping.SimpleValue.setTypeUsingReflection(SimpleValue.java:362)
+	at org.hibernate.cfg.HbmBinder.createProperty(HbmBinder.java:2350)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2315)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2204)
+	at org.hibernate.cfg.HbmBinder.bindRootPersistentClassCommonValues(HbmBinder.java:411)
+	at org.hibernate.cfg.HbmBinder.bindRootClass(HbmBinder.java:326)
+	at org.hibernate.cfg.HbmBinder.bindRoot(HbmBinder.java:177)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3759)
+	... 21 more
+2014-5-15 14:12:41 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+2014-5-15 14:12:41 cn.hxex.blog.dao.DaoFactory getDao
+信息: Getting the Dao : userDao
+
+分析:
+
+   org.hibernate.InvalidMappingException: Could not parse mapping document from resource cn/hxex/blog/model/User.hbm.xml
+
+   Caused by: org.hibernate.PropertyNotFoundException: field [username] not found on cn.hxex.blog.model.User
+
+   主要原因是: User.hbm.xml 文件中, 属性"username" 写错了, 应该是"name"， 对应 User.java 与UserInfotbl 中的"name"
+
+. 修正上面的错误后, 出现下面的错误:
+
+ java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.InvalidMappingException: Could not parse mapping document from resource cn/hxex/blog/model/User.hbm.xml
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3762)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXmlQueue(Configuration.java:3751)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processMetadata(Configuration.java:3739)
+	at org.hibernate.cfg.Configuration.secondPassCompile(Configuration.java:1410)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1844)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: org.hibernate.PropertyNotFoundException: field [title] not found on cn.hxex.blog.model.User
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:166)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:173)
+	at org.hibernate.property.DirectPropertyAccessor.getField(DirectPropertyAccessor.java:158)
+	at org.hibernate.property.DirectPropertyAccessor.getGetter(DirectPropertyAccessor.java:181)
+	at org.hibernate.internal.util.ReflectHelper.getter(ReflectHelper.java:254)
+	at org.hibernate.internal.util.ReflectHelper.reflectedPropertyClass(ReflectHelper.java:230)
+	at org.hibernate.mapping.SimpleValue.setTypeUsingReflection(SimpleValue.java:362)
+	at org.hibernate.cfg.HbmBinder.createProperty(HbmBinder.java:2350)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2315)
+	at org.hibernate.cfg.HbmBinder.createClassProperties(HbmBinder.java:2204)
+	at org.hibernate.cfg.HbmBinder.bindRootPersistentClassCommonValues(HbmBinder.java:411)
+	at org.hibernate.cfg.HbmBinder.bindRootClass(HbmBinder.java:326)
+	at org.hibernate.cfg.HbmBinder.bindRoot(HbmBinder.java:177)
+	at org.hibernate.cfg.Configuration$MetadataSourceQueue.processHbmXml(Configuration.java:3759)
+	... 21 more
+
+分析:
+
+    上面的错误仍然发生在解析 Hibernate.cfg.xml的过程中, 到了解析HBM 文件的时候, 解析User.hbm.xml 出错了.
+
+    Caused by: org.hibernate.PropertyNotFoundException: field [title] not found on cn.hxex.blog.model.User
+
+    原因是User.hbm.xml 中的内容错误, 是从Message.hbm.xml 拷贝过来的, 有些内容没有修正, 应该删除title，content, pubdate 等, 最终和User对象一致后即可
+
+. 修正上面的错误后， 出现下面的错误:
+
+  java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:401)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1857)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:138)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:188)
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:403)
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:520)
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:148)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 20 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:135)
+	... 29 more
+Caused by: org.hibernate.PropertyNotFoundException: Could not find a setter for property username in class cn.hxex.blog.model.ReplyMessage
+	at org.hibernate.property.BasicPropertyAccessor.createSetter(BasicPropertyAccessor.java:246)
+	at org.hibernate.property.BasicPropertyAccessor.getSetter(BasicPropertyAccessor.java:240)
+	at org.hibernate.mapping.Property.getSetter(Property.java:328)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildPropertySetter(PojoEntityTuplizer.java:416)
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:201)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:80)
+	... 34 more
+
+分析:
+
+     Caused by: org.hibernate.PropertyNotFoundException: Could not find a setter for property username in class cn.hxex.blog.model.ReplyMessage
+
+     在ReplyMessage 类中没有username 属性？？？？ 实际上是有的。。。
+
+     检查 replymessage.hbm.xml与 ReplyMessage.java。
+
+     错误提示是在ReplyMessage 类定义中, 找不到username 的setter 方法.  检查 ReplyMessage 类发现:
+
+     	public void setUername( String username )
+
+     拼写错误. 少了一个s, 应该是：
+
+ 	public void setUsername( String username )
+
+. 修正上面的错误后， 出现下面的错误:
+
+ java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:401)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1857)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:138)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:188)
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:403)
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:520)
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:148)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 20 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:135)
+	... 29 more
+Caused by: org.hibernate.PropertyNotFoundException: Could not find a getter for pubdate in class cn.hxex.blog.model.ReplyMessage
+	at org.hibernate.property.BasicPropertyAccessor.createGetter(BasicPropertyAccessor.java:310)
+	at org.hibernate.property.BasicPropertyAccessor.getGetter(BasicPropertyAccessor.java:304)
+	at org.hibernate.mapping.Property.getGetter(Property.java:323)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildPropertyGetter(PojoEntityTuplizer.java:411)
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:200)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:80)
+	... 34 more
+
+分析:
+
+Caused by: org.hibernate.PropertyNotFoundException: Could not find a getter for pubdate in class cn.hxex.blog.model.ReplyMessage
+
+    应该是pubdate 的getter 方法有问题.
+
+    果然是拼写错误:
+
+       	public Timestamp getPubdata() {
+
+    应该是
+
+	public Timestamp getPubdate() {
+
+. 修正后， 出现下面的错误:
+
+java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:401)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1857)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:138)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:188)
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:403)
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:520)
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:148)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 20 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:135)
+	... 29 more
+Caused by: java.lang.NoClassDefFoundError: javassist/util/proxy/MethodFilter
+	at org.hibernate.bytecode.internal.javassist.BytecodeProviderImpl.getProxyFactoryFactory(BytecodeProviderImpl.java:58)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactoryInternal(PojoEntityTuplizer.java:244)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactory(PojoEntityTuplizer.java:222)
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:212)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:80)
+	... 34 more
+
+分析:
+
+    Caused by: java.lang.NoClassDefFoundError: javassist/util/proxy/MethodFilter
+
+    缺少Jar包: javassist-3.18.1-GA.jar
+
+     该Jar 包就在Hibernate 包里的 Required 子目录中
+
+. 添加上面的Jar 包后, 出现下面的错误:
+
+ java.lang.ExceptionInInitializerError
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:73)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:401)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1857)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1928)
+	at cn.hxex.blog.hibernate.HibernateUtil.<clinit>(HibernateUtil.java:66)
+	... 15 more
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:138)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:188)
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:403)
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:520)
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:148)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 20 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:135)
+	... 29 more
+Caused by: org.hibernate.PropertyNotFoundException: Could not find a getter for user in class cn.hxex.blog.model.Message
+	at org.hibernate.property.BasicPropertyAccessor.createGetter(BasicPropertyAccessor.java:310)
+	at org.hibernate.property.BasicPropertyAccessor.getGetter(BasicPropertyAccessor.java:304)
+	at org.hibernate.mapping.Property.getGetter(Property.java:323)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildPropertyGetter(PojoEntityTuplizer.java:411)
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:200)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:80)
+	... 34 more
+
+分析:
+ 
+Caused by: org.hibernate.PropertyNotFoundException: Could not find a getter for user in class cn.hxex.blog.model.Message
+
+     应该是Message类中的user 属性的getter 有错误, 估计是拼写错误. 
+
+     	public User getUer() {
+
+     修正:
+
+	public User getUser() {
+
+. 修正上面的错误后, 出现下面的错误:
+
+java.lang.reflect.UndeclaredThrowableException
+	at $Proxy0.createQuery(Unknown Source)
+	at cn.hxex.blog.hibernate.HibernateDAO.getObject(HibernateDAO.java:52)
+	at cn.hxex.blog.dao.hibernate.UserDAO.getUser(UserDAO.java:19)
+	at cn.hxex.blog.dao.hibernate.UserDAO.saveUser(UserDAO.java:46)
+	at cn.hxex.blog.test.TestUserDAO.testSaveUser(TestUserDAO.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.hibernate.context.internal.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:356)
+	... 24 more
+Caused by: java.lang.NoClassDefFoundError: antlr/RecognitionException
+	at org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory.createQueryTranslator(ASTQueryTranslatorFactory.java:57)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:124)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:88)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:190)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:301)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1800)
+	... 29 more
+
+分析:
+
+ Caused by: java.lang.NoClassDefFoundError: antlr/RecognitionException
+
+  缺少Jar包: antlr-2.7.7.jar
+
+      该Jar 包 在Hibernate 4.3.5 发行包的required 子目录中就有. 
+
+. 添加上面的Jar包后, 出现下面的错误：
+
+ org.hibernate.TransactionException: nested transactions not supported
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.begin(AbstractTransactionImpl.java:154)
+	at org.hibernate.internal.SessionImpl.beginTransaction(SessionImpl.java:1435)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.hibernate.context.internal.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:356)
+	at $Proxy0.beginTransaction(Unknown Source)
+	at cn.hxex.blog.test.TestUserDAO.setUp(TestUserDAO.java:37)
+	at junit.framework.TestCase.runBare(TestCase.java:132)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+分析:
+
+    查看Eclipse 中 Junit 运行结果发现：
+
+     testSaveUser() 已经通过了
+
+     testGetUser() 没有通过
+
+     testGetUserById() 没有通过.
+
+     没有通过的错误提示一样, 都是上面的提示。
+  
+     org.hibernate.TransactionException: nested transactions not supported
+
+     这个错误提示的原因是 事务没有提交, 检查代码, 一般是实现DAO 接口的java 文件. Transaction 的对象没有提交事务, 也就是commit() 这个方法。  例如以下代码
+
+	public void addPerson(Person person) 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		try 
+		{
+			session.persist(person);
+			tx.commit();             //必须加上这句
+		} catch (Exception e) 
+		{		
+			if (null != tx)
+				tx.rollback();
+			e.printStackTrace();
+		}
+	}
+
+   检查 UserDAO类的源码发现, SQL 语句里面的表名写错了， 应该是UserInfoTbl， 写成了User
+
+. 修正上面的错误后, 出现下面的错误:
+
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserInfoTbl is not mapped [from UserInfoTbl u where u.name='test23548']
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:96)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:120)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:234)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:158)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:126)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:88)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:190)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:301)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1800)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.hibernate.context.internal.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:356)
+	at $Proxy0.createQuery(Unknown Source)
+	at cn.hxex.blog.hibernate.HibernateDAO.getObject(HibernateDAO.java:52)
+	at cn.hxex.blog.dao.hibernate.UserDAO.getUser(UserDAO.java:19)
+	at cn.hxex.blog.dao.hibernate.UserDAO.saveUser(UserDAO.java:46)
+	at cn.hxex.blog.test.TestUserDAO.testSaveUser(TestUserDAO.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: UserInfoTbl is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:189)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:109)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:95)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:331)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3633)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3522)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:562)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:299)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:247)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:278)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:206)
+	... 36 more
+
+分析：
+
+    现在是Junit 的3个方法都出现了错误.  testSaveUser() 出现了上面的错误. testGetUser()和testGetUserById() 错误还是之前的， 没有变.
+
+    Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: UserInfoTbl is not mapped
+
+    应该是表与配置文件的映射出现了错误. 
+
+    查看User.hbm.xml
+
+    现在问题有点奇怪, 在 UserDAO类中修正了表名后, 反而 testSaveUser() 单元测试又出现问题了. 
+
+     HQl是hibernate 查询语言，是真正面向对象的，所以当做查询的时候，就不能再出现相应的表名，而是相对的域模型
+
+    http://i.4cdn.org/gif/1400133637465.gif   生孩子的过程
+
+    tearDown() 名称写错了, 写成了tearDwon() ...........................##########
+
+. 测试TestMessageDAO.java
+
+  testSaveMessage() 出现下面的错误:
+
+  ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=, USER_ID, ID) values ('title', 'content', '2014-05-16 15:52:25', '402846d74603' at line 1
+
+  似乎是SQL 语法问题.
+
+  完整错误提示如下:
+
+  org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:190)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:62)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3124)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3581)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:425)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:177)
+	at cn.hxex.blog.test.TestMessageDAO.tearDown(TestMessageDAO.java:52)
+	at junit.framework.TestCase.runBare(TestCase.java:140)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=, USER_ID, ID) values ('title', 'content', '2014-05-16 15:52:25', '402846d74603' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1031)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3376)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3308)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1837)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1961)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2543)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1737)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2022)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1940)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1925)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:187)
+	... 27 more
+
+原因是: message.hbm.xml 中下面的配置错了
+
+		<property name="pubdate" column="PUBDATE="></property>
+
+  应该是:
+
+		<property name="pubdate" column="PUBDATE"></property>
+
+. 修正后出现下面的错误:
+
+org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:190)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:62)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3124)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3581)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1222)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:425)
+	at org.hibernate.engine.transaction.internal.jdbc.JdbcTransaction.beforeTransactionCommit(JdbcTransaction.java:101)
+	at org.hibernate.engine.transaction.spi.AbstractTransactionImpl.commit(AbstractTransactionImpl.java:177)
+	at cn.hxex.blog.test.TestMessageDAO.tearDown(TestMessageDAO.java:52)
+	at junit.framework.TestCase.runBare(TestCase.java:140)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'PUBDATE' in 'field list'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+	at com.mysql.jdbc.Util.getInstance(Util.java:381)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1031)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3376)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3308)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1837)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1961)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2543)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1737)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2022)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1940)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1925)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:187)
+	... 27 more
+
+分析:
+
+  Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'PUBDATE' in 'field list'
+
+  提示是没有"PUBDATE"这个字段, 查看 数据库表结构, 确实是没有这个字段.  案例有错误, 建库表的时候就没有这个字段, 需要添加。
+
+. 测试 testGetMessages() 方法的时候出现下面的错误:
+
+  org.hibernate.hql.internal.ast.QuerySyntaxException: MessageTbl is not mapped [ from MessageTbl]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:96)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:120)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:234)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:158)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:126)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:88)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:190)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:301)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1800)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.hibernate.context.internal.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:356)
+	at $Proxy0.createQuery(Unknown Source)
+	at cn.hxex.blog.hibernate.HibernateDAO.getObject(HibernateDAO.java:52)
+	at cn.hxex.blog.dao.hibernate.MessageDAO.getMessages(MessageDAO.java:82)
+	at cn.hxex.blog.test.TestMessageDAO.testGetMessages(TestMessageDAO.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: MessageTbl is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:189)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:109)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:95)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:331)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3633)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3522)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:706)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:562)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:299)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:247)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:278)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:206)
+	... 35 more
+
+ 
+分析:
+
+    Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: MessageTbl is not mapped
+
+   错误提示是MessageTbl 没有映射, 但是之前testSaveMessage() 方法测试已经通过，并且存储了数据到messageTbl 中, 应该是已经映射了, 那为什么这儿要提示没有映射？
+
+   另外, testGetMessage() 和testUpdateMessage(） 方法的单元测试也是通过的.
+
+   查看 MessageDAO.java ， 发现 getMessages() 中 hsql 语句有问题, 不应该是 具体的表名， 而是表映射的对象名称
+
+		String hsql = " from MessageTbl";
+
+   修改为:
+'		String hsql = " from Message";
+
+. 修正上面的错误后, 出现下面的错误:
+
+  org.hibernate.NonUniqueResultException: query did not return a unique result: 3
+	at org.hibernate.internal.AbstractQueryImpl.uniqueElement(AbstractQueryImpl.java:975)
+	at org.hibernate.internal.AbstractQueryImpl.uniqueResult(AbstractQueryImpl.java:966)
+	at cn.hxex.blog.hibernate.HibernateDAO.getObject(HibernateDAO.java:52)
+	at cn.hxex.blog.dao.hibernate.MessageDAO.getMessages(MessageDAO.java:82)
+	at cn.hxex.blog.test.TestMessageDAO.testGetMessages(TestMessageDAO.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+  主要原因是 返回的查询结果集有3条相同键值的记录,  删除所有messageTbl 中的记录, 重新测试（testSaveMessage()）则上面的错误没有了
+
+解决方法：1、可以将数据库中相同的键值删除。
+                  2、让其返回listquery.List（）；
+
+. 出现新的错误:
+
+java.lang.ClassCastException: cn.hxex.blog.model.Message cannot be cast to java.util.List
+	at cn.hxex.blog.dao.hibernate.MessageDAO.getMessages(MessageDAO.java:82)
+	at cn.hxex.blog.test.TestMessageDAO.testGetMessages(TestMessageDAO.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+    ClassCastException是JVM在检测到两个类型间转换不兼容时引发的运行时异常。
+
+    此类错误通常会终止用户请求。在执行任何子系统的应用程序代码时都有可能发生ClassCastException异常。通过转换，可以指示Java编译器将给定类型的变量作为另一种变量来处理。对基础类型和用户定义类型都可以转换。
+
+    Java语言规范定义了允许的转换，其中大多数可在编译时进行验证。不过，某些转换还需要运行时验证。如果在此运行时验证过程中检测到不兼容，JVM就会引发ClassCastException异常。
+
+
+. testMessageDAO() 修正如下:
+
+	// 测试 getMessage() 方法
+	public void testGetMessages() {
+		
+		List<Message> list = new ArrayList<Message>();
+		list.addAll( messageDAO.getMessages() );
+//		List<Message> list = messageDAO.getMessages();
+		assertTrue( "Get Message Success!", list.size() > 0 );
+	}
+
+   测试仍然出现下面的问题:
+
+  java.lang.ClassCastException: cn.hxex.blog.model.Message cannot be cast to java.util.List
+	at cn.hxex.blog.dao.hibernate.MessageDAO.getMessages(MessageDAO.java:82)
+	at cn.hxex.blog.test.TestMessageDAO.testGetMessages(TestMessageDAO.java:78)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+ 应该仍然是 List 类型的操作问题. 
+
+ 原因是 MessageDAO.java 中的下面的代码错了
+
+	@SuppressWarnings( { "unchecked", "unchecked" })
+	@Override
+	public List<Message> getMessages() {
+		String hsql = "from Message";
+		return (List<Message>) super.getObject( hsql );    // 错误的地方
+	}
+
+  应该是
+
+	@SuppressWarnings( { "unchecked", "unchecked" })
+	@Override
+	public List<Message> getMessages() {
+		String hsql = "from Message";
+		return (List<Message>) super.getObjects( hsql );	// 修正的地方, 应该是super.getObjects(), 主要要加's'
+	}
+
+  修改上面的内容后, 就只剩下 testDeleteMessage() 的错误了。
+
+. 新错误如下:
+
+  junit.framework.AssertionFailedError: User previlege is not Right!
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at cn.hxex.blog.test.TestMessageDAO.testDeleteMessage(TestMessageDAO.java:126)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+ 分析:
+
+  junit.framework.AssertionFailedError: User previlege is not Right!
+
+  主要原因是 "test"用户是存在的, 所以assertTrue( "User previlege is not Right!", result); 中的result 是false， 说明不正常.
+
+  原代码中是"test34411". 问题是"test34411" 确实是不存在, 但是下面的语句会发生空指针的问题, 异常没有捕获到。
+		try {
+			User user = userDAO.getUser( "test34411" );
+			messageDAO.deleteMessage( m.getId(), user.getId() );
+			System.out.printf( "msgId:%s, useId=%s\n", m.getId(), user.getId() );
+		} catch( BlogDAOException ex ) {
+			log.info("====testDeleteMessage() 异常1===");
+			result = true;
+		}
+
+  
+   上面的语句, "test34411"实际没有存在, 那么userDAO.getUser() 应该是返回的null， 那么下面的user.getId() 实际上就会触发异常. 但是这个异常不是BlogDAOException ( 在User.java, BaseModel.java 中没有定义抛出BlogDAOException )， 所以没有捕获到.
+  
+
+  
+

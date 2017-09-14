@@ -1,0 +1,7 @@
+. 创建 Web 应用
+
+  1. 符合 Sun 的Java Servlet 2.3 规范和 Sun 的 JSP 1.2 规范. 
+
+     Servlet 2.3 规范 定义了Web  应用目录结构， 包括Web 内容文件的位置， Class 文件, Class  路径, 部署说明, 支持的Metadata。 
+
+  2. 当你准备发布Web 应用到 Web 上时， 以 WAR  文件格式 部署Web  工程 到服务器。

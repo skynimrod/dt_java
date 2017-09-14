@@ -1,0 +1,17 @@
+. 百度搜索 "Java" "注册服务"
+  
+1. 准备工具
+
+    下载 Java Service Wrapper 的 Windows 版本
+
+    http://wrapper.tanukisoftware.org
+
+    在这个地址中要下载社区版, 标准版和专业版必须购买, 否则无法应用.
+
+    社区版的最新版本是3.5.6
+
+. 2. 准备代码
+
+    要使用Java Service Wrapper, 自己原有的程序必须进行一次改造或者添加一个包装类. 这里使用一个最简单的HelloWorld 类作为示例.
+
+    

@@ -1,0 +1,624 @@
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.expression\src\test\java\org\springframework\expression\spel\ExpressionTestsUsingCoreConversionService.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.instrument.tomcat\src\main\java\org\springframework\instrument\classloading\tomcat\TomcatInstrumentableClassLoader.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\aop\config\AopNamespaceHandlerScopeIntegrationTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\aop\config\AopNamespaceHandlerScopeIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\aop\framework\autoproxy\AdvisorAutoProxyCreatorIntegrationTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\aop\framework\autoproxy\AdvisorAutoProxyCreatorIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\context\annotation\jsr330\ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\context\annotation\ltw\ComponentScanningWithLTWTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\context\annotation\ltw\ComponentScanningWithLTWTests.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\context\annotation\scope\ClassPathBeanDefinitionScannerScopeIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.integration-tests\src\test\java\org\springframework\expression\spel\support\BeanFactoryTypeConverter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jdbc\src\main\java\org\springframework\jdbc\core\support\AbstractInterruptibleBatchPreparedStatementSetter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jdbc\src\main\java\org\springframework\jdbc\core\support\AbstractLobCreatingPreparedStatementCallback.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jdbc\src\main\java\org\springframework\jdbc\support\incrementer\AbstractDataFieldMaxValueIncrementer.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jdbc\src\main\java\org\springframework\jdbc\support\incrementer\DB2MainframeSequenceMaxValueIncrementer.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jdbc\src\main\java\org\springframework\jdbc\support\incrementer\PostgreSQLSequenceMaxValueIncrementer.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.jms\src\test\java\org\springframework\jms\listener\adapter\ResponsiveJmsTextMessageReturningMessageDelegate.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.orm\src\test\java\org\springframework\orm\jpa\eclipselink\EclipseLinkEntityManagerFactoryIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.orm\src\test\java\org\springframework\orm\jpa\hibernate\HibernateEntityManagerFactoryIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.orm\src\test\java\org\springframework\orm\jpa\hibernate\HibernateMultiEntityManagerFactoryIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.orm\src\test\java\org\springframework\orm\jpa\openjpa\OpenJpaEntityManagerFactoryWithAspectJWeavingIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.orm\src\test\java\org\springframework\orm\jpa\toplink\TopLinkMultiEntityManagerFactoryIntegrationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\main\java\org\springframework\test\context\junit38\AbstractTransactionalJUnit38SpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\main\java\org\springframework\test\context\junit4\AbstractTransactionalJUnit4SpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\main\java\org\springframework\test\context\support\DependencyInjectionTestExecutionListener.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\main\java\org\springframework\test\context\testng\AbstractTransactionalTestNGSpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\PropertiesBasedSpr3350SingleSpringContextTests-context.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\annotation\ProfileValueAnnotationAwareTransactionalTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\annotation\ProfileValueAnnotationAwareTransactionalTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\configuration\ContextConfigurationWithPropertiesExtendingPropertiesAndInheritedLoaderTests-context.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\configuration\ContextConfigurationWithPropertiesExtendingPropertiesAndInheritedLoaderTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\configuration\ContextConfigurationWithPropertiesExtendingPropertiesTests-context.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\configuration\ContextConfigurationWithPropertiesExtendingPropertiesTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit38\ConcreteTransactionalJUnit38SpringContextTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit38\ConcreteTransactionalJUnit38SpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit38\FailingBeforeAndAfterMethodsTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\AbsolutePathSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\BeforeAndAfterTransactionAnnotationTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\ClassLevelTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\ClassPathResourceSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\ConcreteTransactionalJUnit4SpringContextTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\ConcreteTransactionalJUnit4SpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\CustomDefaultContextLoaderClassSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\DefaultRollbackFalseTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\DefaultRollbackFalseTransactionalSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\DefaultRollbackTrueTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\DefaultRollbackTrueTransactionalSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\HardCodedProfileValueSourceSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\InheritedConfigSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MethodLevelTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MethodLevelTransactionalSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MultipleResourcesSpringJUnit4ClassRunnerAppCtxTests-context1.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MultipleResourcesSpringJUnit4ClassRunnerAppCtxTests-context2.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MultipleResourcesSpringJUnit4ClassRunnerAppCtxTests-context3.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\MultipleResourcesSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\ParameterizedDependencyInjectionTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\PropertiesBasedSpringJUnit4ClassRunnerAppCtxTests-context.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\PropertiesBasedSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\RelativePathSpringJUnit4ClassRunnerAppCtxTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\RollbackOverrideDefaultRollbackFalseTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\RollbackOverrideDefaultRollbackFalseTransactionalSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\RollbackOverrideDefaultRollbackTrueTransactionalSpringRunnerTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\RollbackOverrideDefaultRollbackTrueTransactionalSpringRunnerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\SpringJUnit4ClassRunnerAppCtxTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\orm\repository\hibernate\HibernatePersonRepository.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\spr3896\BeanOverridingDefaultLocationsInheritedTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\spr3896\BeanOverridingDefaultLocationsInheritedTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\spr3896\BeanOverridingExplicitLocationsInheritedTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\junit4\spr3896\DefaultLocationsInheritedTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\support\CustomizedGenericXmlContextLoaderTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\support\GenericXmlContextLoaderResourceLocationsTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\ConcreteTransactionalTestNGSpringContextTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\ConcreteTransactionalTestNGSpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\DirtiesContextTransactionalTestNGSpringContextTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\DirtiesContextTransactionalTestNGSpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\TimedTransactionalTestNGSpringContextTests-context.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.test\src\test\java\org\springframework\test\context\testng\TimedTransactionalTestNGSpringContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\dao\annotation\PersistenceExceptionTranslationPostProcessor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\dao\support\PersistenceExceptionTranslationInterceptor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\jca\cci\connection\ConnectionSpecConnectionFactoryAdapter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\jca\cci\connection\TransactionAwareConnectionFactoryProxy.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\TransactionSuspensionNotSupportedException.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\annotation\AnnotationTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\annotation\Ejb3TransactionAnnotationParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\annotation\SpringTransactionAnnotationParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\config\AnnotationDrivenBeanDefinitionParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\config\JtaTransactionManagerBeanDefinitionParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\AbstractFallbackTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\BeanFactoryTransactionAttributeSourceAdvisor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\CompositeTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\DelegatingTransactionAttribute.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\MatchAlwaysTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\MethodMapTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\NameMatchTransactionAttributeSource.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\TransactionAttributeSourceAdvisor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\TransactionAttributeSourceEditor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\interceptor\TransactionAttributeSourcePointcut.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\support\AbstractPlatformTransactionManager.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\main\java\org\springframework\transaction\support\CallbackPreferringPlatformTransactionManager.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\dao\annotation\PersistenceExceptionTranslationAdvisorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\dao\annotation\PersistenceExceptionTranslationInterceptorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\dao\annotation\PersistenceExceptionTranslationPostProcessorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\dao\support\ChainedPersistenceExceptionTranslatorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\annotation\AnnotationTransactionAttributeSourceTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\annotation\AnnotationTransactionInterceptorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\annotation\AnnotationTransactionNamespaceHandlerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\annotation\annotationTransactionNamespaceHandlerTests.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\config\annotationDrivenConfigurationClassTests.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\config\annotationDrivenProxyTargetClassTests.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\AbstractTransactionAspectTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\PlatformTransactionManagerFacade.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\RuleBasedTransactionAttributeTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\TransactionAttributeEditorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\TransactionAttributeSourceAdvisorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\TransactionAttributeSourceEditorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\interceptor\TransactionAttributeSourceTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.transaction\src\test\java\org\springframework\transaction\support\JtaTransactionManagerSerializationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\bind\MissingPortletRequestParameterException.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\bind\PortletRequestParameterPropertyValues.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\context\AbstractRefreshablePortletApplicationContext.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\context\ConfigurablePortletApplicationContext.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\context\PortletContextResourcePatternResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\handler\PortletModeParameterHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\handler\PortletRequestMethodNotSupportedException.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\handler\WebRequestHandlerInterceptorAdapter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\mvc\annotation\AnnotationMethodHandlerAdapter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\mvc\annotation\AnnotationMethodHandlerExceptionResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\mvc\annotation\DefaultAnnotationHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\main\java\org\springframework\web\portlet\mvc\annotation\PortletAnnotationMappingUtils.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\bind\PortletRequestParameterPropertyValuesTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\context\AbstractXmlWebApplicationContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\context\PortletApplicationContextScopeTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\context\WEB-INF\context-messages_en_GB.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\context\WEB-INF\context-messages_en_US.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\context\WEB-INF\more-context-messages.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\handler\PortletModeParameterHandlerMappingTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\handler\SimpleMappingExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\handler\UserRoleAuthorizationInterceptorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\mvc\annotation\AnnotationMethodHandlerExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\mvc\annotation\Portlet20AnnotationControllerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.portlet\src\test\java\org\springframework\web\portlet\mvc\annotation\PortletAnnotationControllerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\config\AbstractHttpRequestHandlerBeanDefinitionParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\config\AnnotationDrivenBeanDefinitionParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\config\DefaultServletHandlerBeanDefinitionParser.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\handler\AbstractDetectingUrlHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\handler\ConversionServiceExposingInterceptor.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\handler\WebRequestHandlerInterceptorAdapter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\annotation\AnnotationMethodHandlerAdapter.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\annotation\AnnotationMethodHandlerExceptionResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\annotation\DefaultAnnotationHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\annotation\ResponseStatusExceptionResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\annotation\ServletAnnotationMappingUtils.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\multiaction\AbstractUrlMethodNameResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\multiaction\InternalPathMethodNameResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\multiaction\NoSuchRequestHandlingMethodException.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\multiaction\ParameterMethodNameResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\multiaction\PropertiesMethodNameResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\support\AbstractControllerUrlHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\support\AnnotationControllerTypePredicate.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\support\ControllerBeanNameHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\support\ControllerClassNameHandlerMapping.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\mvc\support\DefaultHandlerExceptionResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\jasperreports\AbstractJasperReportsSingleFormatView.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\jasperreports\AbstractJasperReportsView.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\jasperreports\ConfigurableJasperReportsView.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\jasperreports\JasperReportsMultiFormatView.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\jasperreports\JasperReportsViewResolver.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\main\java\org\springframework\web\servlet\view\tiles2\SpringTilesApplicationContextFactory.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\handler\PathMatchingUrlHandlerMappingTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\handler\SimpleMappingExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\AnnotationMethodHandlerExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\CgLibProxyServletAnnotationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\ControllerClassNameController.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\ControllerClassNameHandlerMappingTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\JdkProxyServletAnnotationTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\MethodNameDispatchingController.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\RequestSpecificMappingInfoComparatorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\ResponseStatusExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\ServletAnnotationControllerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\ServletAnnotationMappingUtilsTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\annotation\UriTemplateServletAnnotationControllerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\mapping\ControllerBeanNameHandlerMappingTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\mapping\ControllerClassNameHandlerMappingTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\multiaction\MultiActionControllerTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\mvc\support\DefaultHandlerExceptionResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\tags\HtmlEscapeTagOutsideDispatcherServletTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\tags\MessageTagOutsideDispatcherServletTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\DefaultRequestToViewNameTranslatorTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\ResourceBundleViewResolverNoCacheTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\AbstractConfigurableJasperReportsViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\AbstractJasperReportsTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\AbstractJasperReportsViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\ConfigurableJasperReportsViewWithStreamTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\ConfigurableJasperReportsViewWithWriterTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportViewResolverTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsCsvViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsHtmlViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsMultiFormatViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsMultiFormatViewWithCustomMappingsTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsPdfViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\java\org\springframework\web\servlet\view\jasperreports\JasperReportsXlsViewTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\resources\org\springframework\web\servlet\config\mvc-config-custom-conversion-service.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\resources\org\springframework\web\servlet\config\mvc-config-default-servlet-optional-attrs.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.servlet\src\test\resources\org\springframework\web\servlet\config\mvc-config-resources-optional-attrs.xml
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.struts\src\test\resources\org\springframework\web\servlet\view\tiles\context-messages_en_GB.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web.struts\src\test\resources\org\springframework\web\servlet\view\tiles\context-messages_en_US.properties
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web\src\main\java\org\springframework\web\context\support\ServletContextPropertyPlaceholderConfigurer.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。
+!   D:\0 Java\0 Dev Training\3 Professional\0 Spring 应用介绍\spring-framework-3.0.5.RELEASE-with-docs.zip: 无法创建 spring-framework-3.0.5.RELEASE\projects\org.springframework.web\src\test\java\org\springframework\web\context\support\AnnotationConfigWebApplicationContextTests.java
+    完整路径和文件名的总长度不能超过 260 个字符
+    系统找不到指定的路径。

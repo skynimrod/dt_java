@@ -1,0 +1,178 @@
+参见:
+
+   http://lavasoft.blog.51cto.com/62575/15599
+
+深入研究java.lang.Process类
+2007-01-17 11:55:12
+　标签：java　　　[推送到技术圈]
+
+作者：熔岩
+日期：2007-01-17
+MSN ：leizhimin@126.com
+声明：原创作品，未经授权，谢绝转载!
+
+ 
+
+前言：Java 的类库日益庞大，所包含的类和接口也不计其数。但其中有一些非常重要的类和接口，是Java类库中的核心部分。常见的有String、Object、 Class、Collection、ClassLoader、Runtime、Process...，熟悉这些类是学好Java的基础。而这些类一般不容易理解，需要做深入的研究和实践才能掌握。下面是我对这些类理解和使用的一些总结。欢迎你在阅读后将你宝贵的意见和读后感留下！
+
+ 
+
+一、概述
+      Process类是一个抽象类（所有的方法均是抽象的），封装了一个进程（即一个执行程序）。
+      Process 类提供了执行从进程输入、执行输出到进程、等待进程完成、检查进程的退出状态以及销毁（杀掉）进程的方法。
+      ProcessBuilder.start() 和 Runtime.exec 方法创建一个本机进程，并返回 Process 子类的一个实例，该实例可用来控制进程并获取相关信息。
+
+      创建进程的方法可能无法针对某些本机平台上的特定进程很好地工作，比如，本机窗口进程，守护进程，Microsoft Windows 上的 Win16/DOS 进程，或者 shell 脚本。创建的子进程没有自己的终端或控制台。它的所有标准 io（即 stdin，stdout，stderr）操作都将通过三个流 (getOutputStream()，getInputStream()，getErrorStream()) 重定向到父进程。父进程使用这些流来提供到子进程的输入和获得从子进程的输出。因为有些本机平台仅针对标准输入和输出流提供有限的缓冲区大小，如果读写子进程的输出流或输入流迅速出现失败，则可能导致子进程阻塞，甚至产生死锁。
+
+      当没有 Process 对象的更多引用时，不是删掉子进程，而是继续异步执行子进程。
+
+ 
+
+二、API预览
+ destroy()
+   杀掉子进程。
+ exitValue()
+   返回子进程的出口值。
+ InputStream getErrorStream()
+   获得子进程的错误流。
+ InputStream getInputStream()
+   获得子进程的输入流。
+ OutputStream getOutputStream()
+   获得子进程的输出流。
+ waitFor()
+   导致当前线程等待，如果必要，一直要等到由该 Process 对象表示的进程已经终止。
+
+ 
+
+三、如何创建Process对象，一般有一下两种方法：
+
+ 
+
+1、每个 ProcessBuilder 实例管理一个进程属性集。start() 方法利用这些属性创建一个新的 Process 实例。start() 方法可以从同一实例重复调用，以利用相同的或相关的属性创建新的子进程。（ProcessBuilder这个是JDK5中新添加的final类，详细请参看“深入研究java.lang.ProcessBuilder类”一文。
+
+ 
+
+2、Runtime.exec() 方法创建一个本机进程，并返回 Process 子类的一个实例。详细请参看“深入研究java.lang.Runtime类”一文。
+
+ 
+
+四、官方API文档。
+
+ 
+java.lang
+类 Process
+
+java.lang.Object
+  继承者java.lang.Process
+
+public abstract class Process
+extends Object
+
+ProcessBuilder.start() 和 Runtime.exec 方法创建一个本机进程，并返回 Process 子类的一个实例，该实例可用来控制进程并获取相关信息。Process 类提供了执行从进程输入、执行输出到进程、等待进程完成、检查进程的退出状态以及销毁（杀掉）进程的方法。
+
+创建进程的方法可能无法针对某些本机平台上的特定进程很好地工作，比如，本机窗口进程，守护进程，Microsoft Windows 上的 Win16/DOS 进程，或者 shell 脚本。创建的子进程没有自己的终端或控制台。它的所有标准 io（即 stdin，stdout，stderr）操作都将通过三个流 (getOutputStream()，getInputStream()，getErrorStream()) 重定向到父进程。父进程使用这些流来提供到子进程的输入和获得从子进程的输出。因为有些本机平台仅针对标准输入和输出流提供有限的缓冲区大小，如果读写子进程的输出流或输入流迅速出现失败，则可能导致子进程阻塞，甚至产生死锁。
+
+当没有 Process 对象的更多引用时，不是删掉子进程，而是继续异步执行子进程。
+
+对于带有 Process 对象的 Java 进程，没有必要异步或并发执行由 Process 对象表示的进程。
+
+从以下版本开始：
+    JDK1.0 
+另请参见：
+    ProcessBuilder, Runtime.exec(String[], String[], File)
+
+构造方法摘要
+Process()
+           
+ 
+方法摘要
+abstract  void 	destroy()
+          杀掉子进程。
+abstract  int 	exitValue()
+          返回子进程的出口值。
+abstract  InputStream 	getErrorStream()
+          获得子进程的错误流。
+abstract  InputStream 	getInputStream()
+          获得子进程的输入流。
+abstract  OutputStream 	getOutputStream()
+          获得子进程的输出流。
+abstract  int 	waitFor()
+          导致当前线程等待，如果必要，一直要等到由该 Process 对象表示的进程已经终止。
+ 
+从类 java.lang.Object 继承的方法
+clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait
+ 
+
+构造方法详细信息
+Process
+
+public Process()
+
+方法详细信息
+getOutputStream
+
+public abstract OutputStream getOutputStream()
+
+    获得子进程的输出流。输出流被传送给由该 Process 对象表示的进程的标准输入流。
+
+    实现注意事项：对输出流进行缓冲是一个好主意。
+
+    返回：
+        连接到子进程正常输入的输出流。
+
+getInputStream
+
+public abstract InputStream getInputStream()
+
+    获得子进程的输入流。输入流获得由该 Process 对象表示的进程的标准输出流。
+
+    实现注意事项：对输入流进行缓冲是一个好主意。
+
+    返回：
+        连接到子进程正常输出的输入流。 
+    另请参见：
+        ProcessBuilder.redirectErrorStream()
+
+getErrorStream
+
+public abstract InputStream getErrorStream()
+
+    获得子进程的错误流。错误流获得由该 Process 对象表示的进程的错误输出流传送的数据。
+
+    实现注意事项：对输入流进行缓冲是一个好主意。
+
+    返回：
+        连接到子进程错误流的输入流。 
+    另请参见：
+        ProcessBuilder.redirectErrorStream()
+
+waitFor
+
+public abstract int waitFor()
+                     throws InterruptedException
+
+    导致当前线程等待，如果必要，一直要等到由该 Process 对象表示的进程已经终止。如果已终止该子进程，此方法立即返回。如果没有终止该子进程，调用的线程将被阻塞，直到退出子进程。
+
+    返回：
+        进程的出口值。根据惯例，0 表示正常终止。 
+    抛出：
+        InterruptedException - 如果当前线程在等待时被另一线程 中断，则停止等待，抛出 InterruptedException。
+
+exitValue
+
+public abstract int exitValue()
+
+    返回子进程的出口值。
+
+    返回：
+        此 Process 对象表示的子进程的出口值。根据惯例，值 0 表示正常终止。 
+    抛出：
+        IllegalThreadStateException - 如果此 Process 对象表示的子进程尚未终止。
+
+destroy
+
+public abstract void destroy()
+
+    杀掉子进程。强制终止此 Process 对象表示的子进程。
+
+  

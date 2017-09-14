@@ -1,0 +1,89 @@
+
+JDBC数据库访问例子
+来源：天新网 编辑：若水 时间：2008-04-25 62
+
+　哎呀，说了这么多的废话，还是让我们来看看到底JDBC的调用吧！既然我们是通过odbc访问数据库，所以这个odbc是跑不了的，我们先来设置你的odbc：打开你的odbc数据源->选择系统dsn(Click加新的dsn-)->接下来输入选择数据库类型、输入dsn名:、选择服务器、连接数据库的方式、输入数据库的登陆用户和密码->测试连接，如果测试成功的话，那么你的dsn就建立好了，我的dsn名为Sqlserver.使用的是sqlserver7.0,以 “sa”登陆，密码为空。这些东西都是后面要用道的！
+
+　　好了下面让我们来看程序代码：
+//###########################################################
+//代码开始
+//###########################################################
+
+import Java.sql.*;
+//加载java数据连接包，java基本所有的数据库的调用的都在这个东西里面
+
+public class InsertCoffees {
+
+public static void main(String args[]) {
+
+String url = "jdbc:odbc:sqlserver";
+//取得连接的url名，注意sqlserver是dsn名
+Connection con;
+//实例化一个Connection对象
+Statement stmt;
+String query = "select * from col_link";
+//选择所有的Col_link表中的数据输出
+
+try {
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+//加载jdbc-odbc桥驱动
+
+} catch(java.lang.ClassNotFoundException e) {
+System.err.print("ClassNotFoundException: ");
+//加载jdbc-odbc桥错误
+System.err.println(e.getMessage());
+//其他错误
+}
+
+try {
+
+con = DriverManager.getConnection(url, "sa", "");
+//数据库连接
+
+
+stmt = con.createStatement();
+//Create 一个声明
+stmt.executeUpdate("CREATE TABLE col_link (sitename varchar (20) NULL ,siteurl varchar (50) NULL) ");
+//执行了一个sql语句生成了一个表col_link的表
+stmt.executeUpdate("insert into col_link values('ASP中华网','http://www.aspcn.com')");
+stmt.executeUpdate("insert into col_link values('永远到底有多远','http://xuankong.com')");
+//执行一个insert into语句
+stmt.executeUpdate("update col_link set siteurl='http://www.aspcn.com/xuankong/xuankongt.jpg' where siteurl='http://xuankong.com'");
+//执行一个update语句，更新数据库
+ResultSet rs = stmt.executeQuery(query);
+//返回一个结果集
+System.out.println("Col_link表中的数据如下(原始数据)");
+//下面的语句使用了一个while循环打印出了col_link表中的所有的数据
+System.out.println("站点名 "+" "+"站点地址");
+System.out.println("---------------"+" "+"----------------");
+while (rs.next()) {
+String s = rs.getString("sitename");
+String f = rs.getString("siteurl");
+//取得数据库中的数据
+System.out.println(s + " " + f);
+/*String t = rs.getString(1);
+String l = rs.getString(2);
+System.out.println(t + " " + l);*/
+/*jdbc提供了两种方法识别字段，一种是使用getXXX(注意这里的getXXX表示取不同类型字段的不同的方法)获得字段名，
+第二种*是通过字段索引，在这里我把第二种方法注释了*/
+/*你可以访问这个连接获得getxxx的用法：http://java.sun.com/docs/books/tutorial/jdbc/basics/_retrievingTable.html*/
+}
+stmt.close();
+con.close();
+//上面的语句关闭声明和连接
+} catch(SQLException ex) {
+System.err.println("SQLException: " + ex.getMessage());
+//显示数据库连接错误或者查询错误
+}
+}
+}
+//###########################################################
+//代码结束
+//###########################################################
+
+
+　　在上面这个程序中我想你展示了如何使用JDBC-ODBC连接数据库，使用SQL语句生成一个表，使用SELECT、INSERT 、UPDATE语句取的、插入和更新一个表中的数据，如何通过字段名和字段索引访问数据库中的东东！我希望你能从上面的代码真正的学习到一些东西！
+
+　　发挥你的想象力，设想一下JAVA到底，比如说可以通过数据库做一个不需要GUI（图形用户界面）的聊天室，呵呵，感觉起来就像在DOS环境下打字的聊天室！哈哈！
+
+　　最后需要说的是笔者的调试上面程序的环境：WIN2000 , JDK1.3,MS SQLSERVER编辑软件:EDITPLUS 2.01a（这最后的东西可不是废话，虽然早就了一些专业的JAVA开发工具，但是笔者建议JAVA初学者使用文本软件开发JAVA程序） 

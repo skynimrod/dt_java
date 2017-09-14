@@ -1,0 +1,32 @@
+. 
+Exception in thread "main" java.lang.SecurityException: class "org.bouncycastle.asn1.ASN1Primitive"'s signer information does not match signer information of other classes in the same package
+	at java.lang.ClassLoader.checkCerts(Unknown Source)
+	at java.lang.ClassLoader.preDefineClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$000(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at com.itextpdf.text.pdf.PdfEncryption.<init>(PdfEncryption.java:148)
+	at com.itextpdf.text.pdf.PdfWriter.setEncryption(PdfWriter.java:2086)
+	at com.itextpdf.text.pdf.PdfStamper.setEncryption(PdfStamper.java:288)
+	at chapter03.HelloWorldEncryptDecrypt.main(HelloWorldEncryptDecrypt.java:53)
+
+原因:
+
+   PDFBOX 中本身包含了org.bouncycastle 包, 但是版本与iText 5.4.3 中使用的不匹配, 然后下载  bcprov-jdk15on-149.jar 后, 2个类包就发生冲突了.  现将pdfbox 包 删除后, 该错误就没有了.  
+
+   主要原因是pdfbox 中使用的bc 是老版本的, 而且pdfbox 的jar 包中又将bc 打包了进去, 造成如此错误.
+
+上面解决后出现的新错误:
+
+Exception in thread "main" java.lang.NoClassDefFoundError: org/bouncycastle/cms/Recipient
+	at chapter03.HelloWorldEncryptDecrypt.main(HelloWorldEncryptDecrypt.java:65)
+
+需要BC  的CMS包 : bcpkix-jdk15on-149.jar (参见:http://www.bouncycastle.org/latest_releases.html)

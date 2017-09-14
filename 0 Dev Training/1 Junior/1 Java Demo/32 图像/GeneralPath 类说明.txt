@@ -1,0 +1,17 @@
+. 参见:
+
+  http://doc.java.sun.com/DocWeb/api/all/java.awt.geom.GeneralPath
+
+. Extends: Path2D > Path2D.Float
+
+zh_cn
+GeneralPath 类表示根据直线、二次曲线和三次 (Bézier) 曲线构造的几何路径。它可以包含多个子路径。
+GeneralPath 是一个遗留的 final 类，它精确地实现了其超类 Path2D.Float 的行为。与 Path2D.Double 一起，Path2D 类提供了通用几何路径的完整实现，支持 Shape 和 PathIterator 接口的所有功能，能够显式地选择不同级别的内部坐标精度。
+
+在处理能够表示且能使用浮点精度的数据时，可以使用 Path2D.Float（或此遗留 GeneralPath 子类）。对于要求双精度的准确性或范围的数据，可以使用 Path2D.Double。
+version	1.64, 03/13/06
+since	1.2
+
+. 所在包 :
+
+  import java.awt.geom.*;

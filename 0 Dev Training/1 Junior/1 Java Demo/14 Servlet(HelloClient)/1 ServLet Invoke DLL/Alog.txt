@@ -1,0 +1,30 @@
+' ------------------------------------------------------------------------
+'
+'    Alog.TXT -- AXCEL Alog.dll API Declarations for Visual Basic
+' 
+'              Copyright (C) 2001-2002 AquGen Corporation
+'
+'  This file is required for the Visual Basic 6.0 version of the APILoader.
+'  Older versions of this file will not work correctly with the version
+'  6.0 APILoader.  This file is backwards compatible with previous releases
+'  of the APILoader with the exception that Constants are no longer declared
+'  as Global or Public in this file.
+'
+'  This file contains only the Const, Type,
+'  and Declare statements for  Win32 APIs.
+'
+'  You have a royalty-free right to use, modify, reproduce and distribute
+'  this file (and/or any modified version) in any way you find useful,
+'  provided that you agree that AquGen has no warranty, obligation or
+'  liability for its contents.  Refer to the AquGen Useful Lib Windows 
+'  Programmer's Reference for further information.
+'
+' ------------------------------------------------------------------------
+
+' Type definitions for Windows' basic types.
+' Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long
+' Declare Function LoadLibraryEx Lib "kernel32" Alias "LoadLibraryExA" (ByVal lpLibFileName As String, ByVal hFile As Long, ' ByVal dwFlags As Long) As Long
+
+' ------ The Declare for the Alog.dll -----------------------
+
+Declare Function wlog Lib "alog.dll" (ByVal logname As String, ByVal logmsg As String, ByVal flag As Long) As Long

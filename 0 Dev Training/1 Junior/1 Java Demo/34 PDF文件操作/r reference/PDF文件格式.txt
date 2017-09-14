@@ -1,0 +1,143 @@
+参见:
+
+     http://wenku.baidu.com/link?url=buXFWNPXv01GcE_0YVlqgI7UWaISya-SGExf8zyBwaTVq-G6JhcGtFOBgvLQAD0vo5O_uIaZtq-ipYOE_SQG4wC0gaKLMwpZH1EZAePv8Lm
+
+
+. PDF文件结构(即物理结构) 包括 四个部分:
+
+  1. 文件头(Header)
+ 
+     指明了文件所遵从PDF规范的版本号, 它出现在PDF文件的第一行, 如 %PDF-1.6 表示该文件格式符合 PDF1.6规范。
+
+  2. 文件体(Body)
+
+     由一系列的PDF间接对象组成.  这些间接对象构成了PDF文件的具体内容， 如字体、页面、图像等等
+
+  3. 交叉引用表(Cross-reference)  xref table
+
+     是为了对 间接对象进行随机存取而设立的一个间接对象 地址索引表。
+
+  4. 文件尾 (Trailer)
+
+     声明了交叉引用表的地址, 指明文件体的跟对象(Catalog), 还保存了 加密等安全信息.  根据文件尾提供的信息, PDF的应用可以找到交叉引用表和整个PDF文件的根对象, 从而控制整个PDF文件.
+
+. PDF 文档结构
+
+  PDF 文档结构反映了文件体中 间接对象间 的等级层次关系。 PDF 的文档结构是一种 树型结构如下:
+
+                                      Trailer
+                                        / \
+                                /Root  /   \  /Info
+                                      /     \
+                                     /       \
+                                 Catalog
+                                   / \
+                          /Pages  /   \  /Outlines
+                                 /     \
+                                /       \
+                          Pages Root    Outline Root
+                              / \           /  \
+                             /   \         /    \
+                            /     \       /      \
+                            Page Tree      Outline Tree
+                          /         \   /          \
+                        Page      Page  Outline    Outline 
+                                        Entry      Entry
+                                       (Bookmark)  (Bookmark)
+
+     
+    树的根节点 就是 PDF文件的目录对象(Catalog)。  这个目录对象是PDF文档的根对象， 包含PDF文档的大纲(Outlines) 和页面组对象(Pages).  根节点有四个子树:
+
+        页面树(Pages Tree)、书签树(Outline Tree)、线索树(Article Threads)、名字树(Named Destination)
+
+. PDF 中的资源
+
+      PDF 文件中 的内容(如文字、图形、图像) 都保存在页面对象的Contents 关键字 对应 的流对象(Stream)中。  内容流(Content Stream) 中用到了很多基本对象 如 数字、字符串, 这些都是用直接对象(Direct Object) 表示的. 但还有 其他一些对象 如字体(Font),  本身就是用字典对象(Dictionary) 或 流对象(Stream) 来表示的, 无法用直接对象表示, 而内容流中又不能出现任何间接对象, 于是就将这些对象命名, 并在 内容流 中 用 相应的名字来表示它们. 这些用名字来表示的对象就称作命名资源(Named Resources)
+
+      在页面对象中 有一个资源项( Resources Key ),  该项列出了内容流中 用到的所有资源, 并建立了一个资源名字 与 资源对象本身的映射表.
+
+      PDF中的命名资源有: 指令集(ProcSet)、字体(Font)、色彩空间(Color space)、外部对象(XObject)、扩展的图形形状(Extended graphics state)、底纹(Pattern)、用户扩展标记列表(Property List).
+
+           非命名资源有: Encoding、Font descriptor、Halftone、Function、CMap. 由于非命名资源都是被隐含引用的，因此没有命名的需要.
+
+. PDF 页面描述命令
+
+      PDF 共有60个页面描述指令。 这60个页面描述指令 描述了页面上的一系列图形对象。  这些图形对象 可分为四类:  路径对象(Path Object)， 文本对象(Text Object), 图像对象(Image Object), 外部对象(XObject)
+
+. PDF 文件分析:
+
+      PDF 文件是一种文本和二进制混排的格式, 但是 Adobe 更愿意 让人 把它当成 二进制的文件, 所以建议当文件里面的文本太多的时候, 可以加一些二进制的注释, 好让现有的一些编译器把它当成二进制文件。  里面的文本 主要是 对文件结构的一种描述, 二进制的内容 来自于 三个方向：
+
+      1. 图片;  2. 字体;  3. 压缩后的Post Script.
+
+      下面对 只有一句话的一个PDF文件进行分析, 使用UltraEdit 打开 PDF文件, 然后选择以 十六进制编辑 就能看到类似下面的信息,  下面将 着重 挑选部分信息 进行分析, 并使用#进行注释并在后面做相关解释.
+
+      %PDF-1.6          #文件头，说明符合 PDF1.6 规范
+
+      %忏嫌             #下面就是很多的Object对象
+
+      2 0 obj           #Object 对象，其中 2 是 Obj 顺序号，0 是 Obj 的版本号
+
+      <<                # <<>> 之间为 Object 对象的内容
+
+      [/ICCBased 3 0 R]
+
+      >>
+
+      Endobj            #Object 结束关键字
+
+      7 0 obj
+
+      <<
+
+      /Filter
+
+      /FlateDecode      # 流对象的压缩方式为zip的压缩算法
+
+      /Length 148       # 流对象的长度
+
+      >>
+
+      Stream            # 流对象
+
+      PDF  文件格式分析 Author：Cryin'    # 文件内容信息，注：此处为直观从而手动填写的
+
+      Endstream         # 流对象结束标志
+
+      Endobj
+
+      8 0 obj
+
+      <<
+
+      /Contents 7 0 R   # 页面内容对象的对象号为 7
+
+      /MediaBox [0 0 595.2 841.68]    # 页面显示大小，以像素为单位
+
+      /PageIndex  1
+
+      /Parent  1 0 R    # 其父对象号为 1 以及 Pages 对象
+
+      /Resources        # 该页包含的资源
+
+      <</Font <</F4 4 0 R >>          # 字体的类型
+
+        /Shading   <<>>
+
+        /XObject   <<>>               # 外部对象
+
+      /ColorSpace <</CS1 2 0 R>> >>   # 色彩空间
+
+      /Type  /Page
+
+      >>
+
+      Endobj
+
+      1 0 obj
+
+      <<
+
+      /Count 1          # 页码数量为  1 
+
+     

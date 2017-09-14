@@ -1,0 +1,5 @@
+参见:
+
+    http://blog.csdn.net/csh624366188/article/details/7578939
+
+. 包括数据连接URL, 缓冲池， 驱动程序，用户名，密码， 是否在Eclipse 控制台显示 Hibernate 执行SQL语句。 每次放在JDBC statement 中的记录个数,  批量操作数据库的记录数,  是否允许Hibernate 用JDBC的可滚动的结果集(分页)， 是否使用Unicode, 连接数据库的字符接(最好用GBK, GB2312不全)

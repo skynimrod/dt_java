@@ -1,0 +1,611 @@
+. 使用Tomcat 6.0, Struts 2.3.16
+
+. 1. 在Web.xml 不增加 filter 部分, 则应用启动正常. 但是增加 filter 的描述(也就是Struts2 框架)后， 应用就启动不起来.
+
+
+  Web.xml
+
+  <?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>StrutsTutorial</display-name>
+  
+	<filter>
+	  <filter-name>struts2</filter-name>
+	  <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	 
+	<filter-mapping>
+	  <filter-name>struts2</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>  
+	
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+=============== Struts.xml ===  该文件在src 目录中, 输出后在 class 目录中 ========
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="helloworld" namespace="/helloworld" extends="struts-default">
+		<action name="HelloWorld" class="cn.hxex.strtus.helloworld.action.HelloWorldAction">
+			<result>/pages/HelloWorld.jsp</result>
+		</action>
+	</package>
+</struts>
+
+
+==== Action 的实现 HelloWorldAction.java =========
+
+package cn.hxex.strtus.helloworld.action;
+
+import java.util.Date;
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+public class HelloWorldAction extends ActionSupport  {
+	public static final String MESSAGE = "Struts 2 Hello World Tutorial!";
+	
+	public String execute() throws Exception {
+		// 设置显示到页面的信息
+		setMessage(MESSAGE);
+		return SUCCESS;
+	}
+
+	private String message;
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getMessgae() {
+		return message;
+	}
+	
+	public String getCurrentTime() {
+		return new Date().toString();
+	}
+}
+
+
+===== HelloWorld.jsp 的实现 在pages 目录中========
+
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<html>
+	<head>
+		<title>Struts 2 Hello World Application!</title>
+	</head>
+	<body>
+		<h2><s:property value="message"/></h2>
+		<p>Current date and time is : <b><s:property value="currentTime"/></b>
+	</body>
+</html>
+
+#####################################
+
+分析:
+
+    问题应该就是filter 设置后, 加载 struts2 对应的类失败或者加载过程中寻找struts.xml(Struts2 的配置文件) 失败
+
+解决:
+
+    1. 先判断struts.xml 是否能找到
+
+       现在是在class 目录中的文件应该在应用启动的时候自动能寻找到。
+
+    2. tomcat 6.0 是否支持 filter 设置
+
+       看网上介绍, 好像也是支持的。那么是不是因为找不到filter 对应的类？？？
+  
+       参见: 
+
+            http://blog.sina.com.cn/s/blog_4e82fae20100fdqr.html
+
+            从J2EE1.3开始，Servlet2.3规范中加入了对过滤器的支持。
+
+    3. 查看 tomcat 6.0 日志 manager...log
+
+       ...
+
+2014-4-14 18:03:45 org.apache.catalina.core.ApplicationContext log
+信息: HTMLManager: restart: Reloading web application at '/StrutsTutorial'
+2014-4-14 18:03:45 org.apache.catalina.core.ApplicationContext log
+严重: HTMLManager: ManagerServlet.reload[/StrutsTutorial]
+java.lang.IllegalStateException: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/StrutsTutorial] has not been started
+	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3066)
+	at org.apache.catalina.manager.ManagerServlet.reload(ManagerServlet.java:912)
+	at org.apache.catalina.manager.HTMLManagerServlet.reload(HTMLManagerServlet.java:523)
+	at org.apache.catalina.manager.HTMLManagerServlet.doGet(HTMLManagerServlet.java:113)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:525)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Unknown Source)
+2014-4-14 18:03:45 org.apache.catalina.core.ApplicationContext log
+信息: HTMLManager: list: Listing contexts for virtual host 'localhost'
+
+
+   对于上面的问题， 参见: 《Web开发中常见的java.lang.IllegalStateException错误》
+
+        http://blog.sina.com.cn/s/blog_6151984a0100owod.html
+
+   原因:
+
+       JSP 文件或 struts action (纯servlet 应用中没有发现此问题)中采用了, 如下代码:
+
+     public void print2Screen(HttpServletResponse resp,String encodeString,String[] htmlCommands) throws IOException{
+        resp.setCharacterEncoding(encodeString);
+        ServletOutputStream httpOutput= resp.getOutputStream();
+        for(String temp:htmlCommands)
+            httpOutput.write(temp.getBytes());
+    }
+
+深层原理:
+1.Servlet规范说明，不能既调用 response.getOutputStream()，又调用response.getWriter()，无论先调用哪一个，在调用第二个时候应会抛出 IllegalStateException.
+2.servlet代码中有out.write(””)，这个和JSP中缺省调用的response.getOutputStream()产生冲突.
+因为在jsp中，out变量是通过response.getWriter得到的，在程序中既用了 response.getOutputStream，又用了out变量，故出现以上错误。
+
+解决:
+法一:在JSP文件中,加入下面两句
+<%
+out.clear();
+out = pageContext.pushBody();
+%>
+此法的缺陷:
+很多开发项目并不是JSP前端,如freemarker,velocity等
+造成问题的"response.getOutputStream()"并未被写在JSP里,而是写在servlet/action里
+
+法二: 在action中,不要return 回具体的result文件,而是return null
+ //return SUCCESS;
+ return null;
+
+
+##### 用方法二 解决。。  不行， 没有解决， 原来没有deploy 干净 原应用, 启动成功的删除剩余的空应用， 不是包含struts 的应用。
+
+查看tomcat 日志:
+ 
+    启动tomcat 的时候, 
+
+         只有 stdout.log, localhost.log 有日志信息, 
+
+         manager.log,  host-manager.log, catalina.log, admin.log, stderr.log, jakarta_service.log 等都没有日志产生。
+
+    =============================
+
+    stdout.log 中包含启动过程中启动应用产生的调试日志(debug,info 等)
+
+    localhost.log 中包含启动应用过程中调用类库的顺序, 包括调用中出现的异常错误:
+
+    ####### localhost.log BEGIN ####
+
+2014-4-15 9:56:18 org.apache.catalina.core.ApplicationContext log
+信息: Initializing Spring root WebApplicationContext
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] VelocityViewServlet: Looking for custom properties at '/WEB-INF/velocity.properties'
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] VelocityViewServlet: No custom properties found. Using default Velocity configuration.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : *******************************************************************
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Starting Apache Velocity v1.6.4 (compiled: 2010-04-27 15:31:23)
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : RuntimeInstance initializing.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] LogSystem has been deprecated. Please use a LogChute implementation.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] WebappLoader : initialization starting.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] WebappLoader : initialization complete.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : Default ResourceManager initialization complete.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Created '20' parsers.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : Velocimacro : initialization starting.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocity was not initialized! Calling init()...
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.tools.view.servlet.WebappLoader: 
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] org.apache.velocity.exception.ResourceNotFoundException: WebappLoader : Resource 'VM_global_library.vm' not found.
+	at org.apache.velocity.tools.view.servlet.WebappLoader.getResourceStream(WebappLoader.java:179)
+	at org.apache.velocity.runtime.resource.loader.ResourceLoader.resourceExists(ResourceLoader.java:224)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getLoaderForResource(ResourceManagerImpl.java:641)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getLoaderNameForResource(ResourceManagerImpl.java:624)
+	at org.apache.velocity.runtime.RuntimeInstance.getLoaderNameForResource(RuntimeInstance.java:1464)
+	at org.apache.velocity.runtime.VelocimacroFactory.initVelocimacro(VelocimacroFactory.java:159)
+	at org.apache.velocity.runtime.RuntimeInstance.init(RuntimeInstance.java:261)
+	at org.apache.velocity.app.VelocityEngine.init(VelocityEngine.java:107)
+	at org.apache.velocity.tools.view.servlet.VelocityViewServlet.initVelocity(VelocityViewServlet.java:378)
+	at org.apache.velocity.tools.view.servlet.VelocityViewServlet.init(VelocityViewServlet.java:207)
+	at org.apache.struts2.sitemesh.VelocityDecoratorServlet.init(VelocityDecoratorServlet.java:72)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1161)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:981)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4045)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4351)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:825)
+	at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:714)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:490)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1138)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:566)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : Default library not found.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : Velocimacro : Velocimacro : initialization complete.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  : RuntimeInstance successfully initialized.
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity  [debug] VelocityViewServlet: No toolbox entry in configuration. Looking for '/WEB-INF/toolbox.xml'
+2014-4-15 9:56:30 org.apache.catalina.core.ApplicationContext log
+信息:  Velocity   [info] VelocityViewServlet: Default content-type is: text/html
+2014-4-15 9:56:33 org.apache.catalina.core.StandardContext filterStart
+严重: Exception starting filter struts2
+java.lang.reflect.InvocationTargetException - Class: com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector
+File: ContainerImpl.java
+Method: inject
+Line: 301 - com/opensymphony/xwork2/inject/ContainerImpl.java:301:-1
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:501)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3696)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4343)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:791)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:771)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:525)
+	at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:825)
+	at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:714)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:490)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1138)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:311)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1053)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:719)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:516)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:566)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:288)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:413)
+Caused by: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector.inject(ContainerImpl.java:301)
+	at com.opensymphony.xwork2.inject.ContainerImpl$ConstructorInjector.construct(ContainerImpl.java:438)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$5.create(ContainerBuilder.java:207)
+	at com.opensymphony.xwork2.inject.Scope$2$1.create(Scope.java:51)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$3.create(ContainerBuilder.java:93)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$7.call(ContainerBuilder.java:487)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$7.call(ContainerBuilder.java:484)
+	at com.opensymphony.xwork2.inject.ContainerImpl.callInContext(ContainerImpl.java:584)
+	at com.opensymphony.xwork2.inject.ContainerBuilder.create(ContainerBuilder.java:484)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.createBootstrapContainer(DefaultConfiguration.java:340)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:229)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	... 29 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector.inject(ContainerImpl.java:299)
+	... 42 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.opensymphony.xwork2.ognl.OgnlValueStackFactory.setContainer(OgnlValueStackFactory.java:84)
+	... 47 more
+Caused by: java.lang.IllegalArgumentException: Javassist library is missing in classpath! Please add missed dependency!
+	at ognl.OgnlRuntime.<clinit>(OgnlRuntime.java:168)
+	... 48 more
+Caused by: java.lang.ClassNotFoundException: javassist.ClassPool
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1358)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1204)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at ognl.OgnlRuntime.<clinit>(OgnlRuntime.java:165)
+	... 48 more
+2014-4-15 9:56:35 org.apache.catalina.core.ApplicationContext log
+信息: ContextListener: contextInitialized()
+2014-4-15 9:56:35 org.apache.catalina.core.ApplicationContext log
+信息: SessionListener: contextInitialized()
+
+    ####### localhost.log END #########
+
+   分析:
+
+      从localhost.log 中分析可以看出, 主要问题是velocity 日志处理出现的问题. 而且是在增加struts 2.3.16 filter后, 那么有可能就是 struts 2.3.16 中的日志模块可能和tomcat 6 自带的velocity 出现了冲突(也有可能是struts 2.3.16 中带的velocity 模块与tomcat 6 中的日志模块出现了冲突)
+
+      参见:
+    
+          http://blog.csdn.net/longronglin/article/details/1353522
+
+      将 struts 2.3.16 lib 目录下的两个jar 包 放在 web-inf/lib 下: 
+
+          velocity-1.6.4.jar
+
+          velocity-tools-1.3.jar 
+
+      应该不会出现上述关于velocity 的问题. (待验证, 删除所有日志, 然后重新启动tomcat )
+
+    通过浏览器进入manager页面后(http://local), 就会产生manager.log 的日志内容.
+
+    显示List Application, 列出所有的应用. 此时, StrutsTutorial 应用没有启动.
+
+======= 通过  List Application 启动 StrutsTutorial 应用, 在localhost.log 中出现如下错误: (是已经将velocity相关jar 增加到lib 目录下后再运行)
+
+2014-4-15 10:43:09 org.apache.catalina.core.StandardContext filterStart
+严重: Exception starting filter struts2
+java.lang.reflect.InvocationTargetException - Class: com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector
+File: ContainerImpl.java
+Method: inject
+Line: 301 - com/opensymphony/xwork2/inject/ContainerImpl.java:301:-1
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:501)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3696)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4343)
+	at org.apache.catalina.manager.ManagerServlet.start(ManagerServlet.java:1237)
+	at org.apache.catalina.manager.HTMLManagerServlet.start(HTMLManagerServlet.java:591)
+	at org.apache.catalina.manager.HTMLManagerServlet.doGet(HTMLManagerServlet.java:128)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:525)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector.inject(ContainerImpl.java:301)
+	at com.opensymphony.xwork2.inject.ContainerImpl$ConstructorInjector.construct(ContainerImpl.java:438)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$5.create(ContainerBuilder.java:207)
+	at com.opensymphony.xwork2.inject.Scope$2$1.create(Scope.java:51)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$3.create(ContainerBuilder.java:93)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$7.call(ContainerBuilder.java:487)
+	at com.opensymphony.xwork2.inject.ContainerBuilder$7.call(ContainerBuilder.java:484)
+	at com.opensymphony.xwork2.inject.ContainerImpl.callInContext(ContainerImpl.java:584)
+	at com.opensymphony.xwork2.inject.ContainerBuilder.create(ContainerBuilder.java:484)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.createBootstrapContainer(DefaultConfiguration.java:340)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:229)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	... 25 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.opensymphony.xwork2.inject.ContainerImpl$MethodInjector.inject(ContainerImpl.java:299)
+	... 38 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.opensymphony.xwork2.ognl.OgnlValueStackFactory.setContainer(OgnlValueStackFactory.java:84)
+	... 43 more
+Caused by: java.lang.IllegalArgumentException: Javassist library is missing in classpath! Please add missed dependency!
+	at ognl.OgnlRuntime.<clinit>(OgnlRuntime.java:168)
+	... 44 more
+Caused by: java.lang.ClassNotFoundException: javassist.ClassPool
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1358)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1204)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at ognl.OgnlRuntime.<clinit>(OgnlRuntime.java:165)
+	... 44 more
+
+  分析日志可得:
+
+      "Exception starting filter struts2" 启动 struts 2 过滤器的时候出现异常: java.lang.reflect.InvocationTargetException
+
+  这个异常， 一般是由于调用Method 的invoke()方法, 该方法所代表的制定方法抛出异常时, 或者调用Construction类的newInstance() 方法.  该方法所代表的底层构造方法抛出异常时, 由 java.lang.reflect.InvocationTargetException 异常 包装后作为新的异常抛出而产生, 默认异常信息是NULL.
+
+   怀疑是使用反射的方式调用头早函数时, 由于数据或者其他问题造成了构造方法抛出异常, 以InvocationTargetException 异常的方式显示出来. 
+
+
+   个人分析:
+
+        上面的异常是一层一层异常引发的, 一般解决最下面的一个异常即可:
+
+        对于 Caused by: java.lang.ClassNotFoundException: javassist.ClassPool  异常, 需要引入 javassist-3.11.0.GA.jar
+
+        参见:
+
+             http://zhidao.baidu.com/link?url=18_yvU3awx5nQuafMdvokfiroha86FYm-VG4ATaZuuJMSLPijpOCJecvejwwCWDKdetC2dlj0AlesZZGJZ31Q_
+
+       将 javassist-3.11.0.GA.jar 引入 web-inf/lib 目录后， 上面的错误不再出现, 出现下面的错误:
+
+2014-4-15 12:00:00 org.apache.catalina.core.StandardContext filterStart
+严重: Exception starting filter struts2
+java.lang.NoClassDefFoundError: org/apache/commons/lang3/StringUtils
+	at com.opensymphony.xwork2.config.providers.XmlConfigurationProvider.register(XmlConfigurationProvider.java:211)
+	at org.apache.struts2.config.StrutsXmlConfigurationProvider.register(StrutsXmlConfigurationProvider.java:102)
+	at com.opensymphony.xwork2.config.impl.DefaultConfiguration.reloadContainer(DefaultConfiguration.java:234)
+	at com.opensymphony.xwork2.config.ConfigurationManager.getConfiguration(ConfigurationManager.java:67)
+	at org.apache.struts2.dispatcher.Dispatcher.init_PreloadConfiguration(Dispatcher.java:445)
+	at org.apache.struts2.dispatcher.Dispatcher.init(Dispatcher.java:489)
+	at org.apache.struts2.dispatcher.ng.InitOperations.initDispatcher(InitOperations.java:74)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.init(StrutsPrepareAndExecuteFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterConfig.getFilter(ApplicationFilterConfig.java:275)
+	at org.apache.catalina.core.ApplicationFilterConfig.setFilterDef(ApplicationFilterConfig.java:397)
+	at org.apache.catalina.core.ApplicationFilterConfig.<init>(ApplicationFilterConfig.java:108)
+	at org.apache.catalina.core.StandardContext.filterStart(StandardContext.java:3696)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4343)
+	at org.apache.catalina.manager.ManagerServlet.start(ManagerServlet.java:1237)
+	at org.apache.catalina.manager.HTMLManagerServlet.start(HTMLManagerServlet.java:591)
+	at org.apache.catalina.manager.HTMLManagerServlet.doGet(HTMLManagerServlet.java:128)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:525)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Unknown Source)
+
+分析:
+
+    这个错误与 commons-lang.jar 有关,  增加 commons-lang-2.4.jar 不行, 出现同样的错误。添加 commons-lang3-3.1.jar， 启动成功了.
+
+==================== 下面测试调用 action ====
+
+http://localhost:80/StrutsTutorial/helloworld/HelloWorld.action
+
+页面没有错误提示, 但是 也没有显示出内容.
+
+继续测试：
+
+http://localhost/StrutsTutorial/index.jsp 能成功运行.
+
+那么就说明 struts 2.3.16 框架已经成功引入了. 下面的问题就是action 的正常运行的问题了。
+
+可以正常运行了。  将return null 改回 return SUCCESS. 即可。
+
+==================
+
+访问 Login.action 的url : 
+http://localhost:80//StrutsTutorial/login/toLogin.action
+
+需要注意的是, 如果对应Action的实现类的位置(package) 名字与 struts.xml 中配置的不一致, 也会造成对应的应用程序启动失败。 只要检查完修正即可正常启动。
+
+===========
+
+
+
+    

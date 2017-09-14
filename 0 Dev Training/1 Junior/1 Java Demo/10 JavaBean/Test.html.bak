@@ -1,0 +1,7 @@
+<html><head><title>ShowApplet</title></head>
+<body>
+<APPLET height=10 width=10 code=HeartBeat>   
+    <PARAM name="myPort" value="1234">  
+</APPLET>
+</body>
+</html>

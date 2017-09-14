@@ -1,0 +1,53 @@
+参见:
+
+     5014.CIDFont_Spec.pdf     --> 该文件中的 P10 有CID例子，不过与PDF中的CMAP 似乎有不同
+                                   P42  5.2 First Example: Stand-Alone CMap File    这部分是CMAP 文件的例子
+				   P70  7.2 Operator Summary      CMAP描述中涉及到的操作符
+                                   P71  7.3 CMap File Overview    这部分对CMAP 文件进行了描述
+
+.  PDF 每页内容解压后，仍然不是最终内容， 需要通过CMAP (Tpye0字体)对格式内的编码进行转码。
+
+. Type0 字体 在每页的对象描述中的Font 字体对象部分， 可以查看对应的字体对象是否是Type0 就可以判断是否是CMAP。
+
+. 获得Type0 对象的 字节流(实际上是对应Type0 字体对象描述中的 Unicode 对象的字节流 )
+
+
+. 解析上面的字节流:  
+
+  按行循环获取内容，
+
+  1. 有beginbfchar /endbfchar   
+
+     beginbfchar  前面的数字是表示里面有几个编码， 其中前面的编码是PDF 中使用的， 后面的变化是需要进行转化后才能显示的汉字. 例如:
+
+       	2 beginbfchar
+                            2 表示下面有2行是编码表
+	<0067>	<00B7>
+
+	<00FC> <2014>
+
+	endbfchar
+
+       0067 和00FC 有可能就是PDF 页面内容被解压后的字节流里面的描述部分<>Tj 里的编码， 需要转换为对应的 00B7和2014 才可以显示为对应的汉字。     
+
+  2. 有 beginbfrange/ endbfrange 配对
+
+      表示范围编码， 即连续编码. 
+
+    	1 beginbfrange						1 表示下面只有1条 范围编码
+      	<0100> <0101> <201C>
+
+	endbfrange
+
+     	2 beginbfrange                                          2 表示下面有2条 范围编码                            
+
+	<00B2> <00B2> [<2014>]                  ------  枚举方式罗列对应的编码
+	
+<00B3> <00B4> <201C>
+	
+endbfrange
+
+
+        上面带方括号的格式参见 《PDF Reference, version 1.7.pdf》 P473    Example 5.16   , 带方括号应该是枚举对应的编码
+
+  3. 

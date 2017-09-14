@@ -1,0 +1,22 @@
+. 1. Date 实例的format() 操作
+
+            def  date = new Date()
+            println date
+            String suffix = date.format("YYYYMMdd") + (date.hours  < 17 ? "_1" : "_2")  // 需要添加括号， 不然先计算了date.hours 并赋值， 会提示类型不匹配
+            println suffix
+
+
+     输出为:
+
+           Tue Dec 29 08:12:04 CST 2015
+           20161229_1
+
+     分析：
+
+          date.format("YYYYMMdd") 结果出错了。 变成了20161229， 实际应该是20151229
+
+     解决：
+
+          这个可能是上面功能的容错性不够。 格式字符串中的年份和日期必须要 小写 yyyy,  dd, 月份和小时 要大写 MM, HH
+
+          将上面的年份YYYY 改为yyyy后， 运行结果就正确了。

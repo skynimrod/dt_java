@@ -1,0 +1,19 @@
+. 使用Spring 非常简便, 大大简化了开发过程。
+
+. 1. FirstSpringTest
+
+     创建一个普通的Java Project， 简单定义个一个bean, 并用将该bean 在xml 中进行描述(resource), 然后编写一个测试程序, import Spring 框架后, 载入 resource文件, 然后 实例化bean对象, 并且调用该bean.
+
+     需要注意的是, org.springframework.beans.factory.xml.XmlBeanFactory 已经被废弃了. 3.2.0 就开始废弃了.
+
+     XmlBeanFactory 就不能用了.
+
+     需要加载的jar：
+
+              Spring-core-4.0.0.M2.jar
+
+              Spring-beans-4.0.0.M2.jar          (有这2个虽然不显示错误, 但是运行会显示错误, 因为缺少它们需要的jar)
+
+              commons-loging-1.1.3.jar           (有这个包才会运行通过, 日志方面的, 这个包是从Struts2.3.16的lib 拷来的)
+
+. 2. 

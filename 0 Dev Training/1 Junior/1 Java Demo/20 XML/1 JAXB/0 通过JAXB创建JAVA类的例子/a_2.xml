@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="GB2312" standalone="yes"?><ProtocolOptionsMapping><LogType value="18" name="SYStem"><DestinationType value="17" name="s1"><ProtocolOption value="16" name="s1-1"/><ProtocolOption value="11" name="s1-2"/></DestinationType></LogType><LogType value="31" name="BJ LogType"><DestinationType value="10" name="北京"/></LogType></ProtocolOptionsMapping>

@@ -1,0 +1,9 @@
+. String  filename = "readme.txt";
+
+. String[] test = filename.split(".");     // 这条语句返回的是个空, 而不是["readme","txt"]
+
+  因为split() 的参数有可能是正则表达式, "." 被当作正则表达式处理了, 而不是分隔符.
+
+  正确的做法是:
+
+  test = filename.split("\\.");       // 这样就可以返回正确的结果了, 因为\\. 进行了转移, 表示是个字符".", 而不是正则表达式.

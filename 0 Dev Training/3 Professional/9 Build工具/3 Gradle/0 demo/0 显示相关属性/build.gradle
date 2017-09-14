@@ -1,0 +1,120 @@
+/*
+  参见:
+  
+        gradle 1.11->docs->userguide.pdf ->13.5.2
+        执行顺序:
+            先执行前面的语句，然后再执行task
+        标准的项目属性:  13.2.1
+            
+            名称              类型          缺省值
+            
+            project           Project       The Project instance
+            
+            name              String        项目目录的名称
+            
+            path               String         项目的绝对路径
+            
+            description       String        项目的描述
+            
+            projectDir        File            包含build 脚本的目录
+            
+            buildDir            File            projectDir/build
+            
+            group              Object        unspecified
+            
+            version            Object        unspecified
+            
+            ant                AntBuilder     An AntBuilder instance
+            
+      13.4.2 中描述了 扩展的属性设置
+      
+      13.4.1 定义了本地变量
+      
+      #####
+      关于Project 的属性, 在DSL Reference 中, Project 部分-> properties 中有详细的更加完善的描述。
+      http://www.gradle.org/docs/current/dsl/org.gradle.api.Project.html#N139C2
+*/
+
+apply plugin : 'java'
+
+// Using a getter method
+println "name=" + name
+println "project.buildDir = : "+project.buildDir                        // 默认为当前目录
+println "getProject().getBuildDir() = "+getProject().getBuildDir()          // getProject() 获得项目对象, 然后获得对应的buildDir， 还是当前目录
+println "project.name = : "+project.name
+
+// local variable  13.4.1
+def adams="hello world!"
+println adams
+
+// 扩展属性不仅仅是project, tasks. 参见13.4.2
+ext {
+    sprintVersion="3.1.0.RELEASE"
+    emailNotification = "xinren_2002@yahoo.com"
+}
+
+project.ext.propxxxx= 'hello adams'
+ext.propyyyy='hello LL'                         // 不指定 project , 实际也是操作的project 对象
+
+/*  sourceSets 部分 用gradle 过不去, 总有错误提示, 暂时略过
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  
+  dependencise {
+      classpath 'com.android.tools.build:gradle:1.11'
+  }
+}
+*/
+sourceSets.all { ext.purpose = null }
+
+sourceSets {
+  main {
+      purpose = "production"
+  }
+  
+  test {
+    purpose = "test"
+  }
+  
+  plugin {
+      purpose = "production"
+  }
+}
+//
+
+// 下面是设置任务的属性
+task myTask {
+    ext.myProperty = 'myValue'
+}
+
+task printTaskProperties <<{
+    println myTask.myProperty
+    
+    println sprintVersion
+    println emailNotification
+    println propxxxx                    // 这是扩展属性
+    println propyyyy                    // 这是扩展属性
+    
+    println configurations
+    println project.configurations     // 与上面的语句功能完全一样
+    println description                   // 如果没有赋值, 那么输出就是null
+    
+    description = "property test gradle"
+    println description
+    
+    println gradle
+    
+    println plugins
+    //
+    sourceSets.matching { it.purpose == "production" }.each { println it.name }
+    //
+}
+
+/*
+ *  FAQ 1: Could not find property 'sourceSets' on root project '0 显示相关属性'.
+ *     
+ *            调试 sourceSets 的时候出错.    添加"apply plugin : 'java'", 上述错误就消失了. 正常构建.
+*/
+

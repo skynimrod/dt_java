@@ -1,0 +1,295 @@
+参见:
+
+  http://blog.csdn.net/yczz/archive/2008/05/30/2497083.aspx
+
+简单的webservice开发例子收藏
+Axis支持三种web  service的部署和开发，分别为：  
+ 
+1、Dynamic  Invocation  Interface  (  DII)  
+ 
+2、Stubs方式  
+ 
+3、Dynamic  Proxy方式  
+ 
+二、编写DII(Dynamic  Invocation  Interface  )方式web服务  
+ 
+1.编写服务端程序HelloClient  
+ 
+ 
+public  class  HelloClient  
+{  
+       public  String  getName(String  name)  
+       {  
+               return  "hello  "+name;  
+       }  
+}  
+   
+ 
+ 
+ 
+2、将源码拷贝到Axis_HOME下，重命名为  HelloClient.jws    
+ 
+3、访问连接http://localhost:8080/Axis/HelloClient.jws?wsdl，页面显示Axis自动生成的wsdl    
+ 
+4、编写访问服务的客户端  TestHelloClient.java    
+ 
+ 
+import  org.apache.Axis.client.Call;  
+import  org.apache.Axis.client.Service;  
+import  javax.xml.namespace.QName;  
+import  javax.xml.rpc.ServiceException;  
+import  java.net.MalformedURLException;  
+import  java.rmi.RemoteException;  
+ 
+public  class  SayHelloClient2  
+{  
+       public  static  void  main(String[]  args)  
+           {  
+               try  
+                       {  
+   String  endpoint  =  
+   "http://localhost:8080/Axis/HelloClient.jws";  
+ 
+       Service  service  =  new  Service();  
+                       Call  call  =  null;  
+ 
+                       call  =  (Call)  service.createCall();  
+ 
+                       call.setOperationName(new  QName(  
+                             "http://localhost:8080/Axis/HelloClient.jws",    
+                                         "getName"));  
+                       call.setTargetEndpointAddress  
+                                   (new  java.net.URL(endpoint));  
+ 
+                       String  ret  =  (String)  call.invoke(new  Object[]    
+                                   {"zhangsan"});  
+                       System.out.println("return  value  is  "  +  ret);  
+               }    
+                       catch  (Exception  ex)  
+                       {  
+             ex.printStackTrace();  
+               }  
+       }  
+}  
+   
+ 
+ 
+ 
+三、编写Dynamic  Proxy方式访问服务    
+ 
+1、编写部署服务端程序，同上边DII方式，本次仍使用上边部署的HelloClient    
+ 
+2、编写代理接口    
+ 
+ 
+public  interface  HelloClientInterface  
+extends  java.rmi.Remote  
+{  
+       public  String  getName(String  name)  
+           throws  java.rmi.RemoteException;  
+}  
+   
+ 
+ 
+ 
+3、编写并执行客户端程序TestHelloClient.java    
+ 
+ 
+import  javax.xml.rpc.Service;  
+import  javax.xml.rpc.ServiceFactory;  
+import  java.net.URL;  
+import  javax.xml.namespace.QName;  
+ 
+public  class  TestHelloClient    
+{  
+       public  static  void  main(String[]  args)  
+           {  
+               try  
+               {  
+                       String  wsdlUrl  =    
+                                   "http://localhost:8080/Axis/HelloClient.jws?wsdl";  
+                       String  nameSpaceUri  =    
+                                   "http://localhost:8080/Axis/HelloClient.jws";  
+                       String  serviceName  =  "HelloClientService";  
+                       String  portName  =  "HelloClient";  
+ 
+                       ServiceFactory  serviceFactory  =    
+                                   ServiceFactory.newInstance();  
+                       Service  afService  =  
+                                   serviceFactory.createService(new  URL(wsdlUrl),  
+                 new  QName(nameSpaceUri,  serviceName));  
+                       HelloClientInterface  proxy  =  (HelloClientInterface)  
+               afService.getPort(new  QName(  
+                                       nameSpaceUri,  portName),    
+                                                           HelloClientInterface.class);  
+                       System.out.println  
+                                   ("return  value  is  "+proxy.getName("john")  )  ;  
+               }catch(Exception  ex)  
+               {  
+                       ex.printStackTrace()  ;  
+               }  
+       }  
+}  
+   
+ 
+ 
+ 
+四、编写wsdd发布web服务，编写stub  client访问web服务    
+ 
+1、编写服务端程序server,SayHello.java，编译server.SayHello.java    
+ 
+ 
+package  server;  
+public  class  SayHello  
+{  
+       public  String  getName(String  name)  
+       {  
+               return  "hello  "+name;  
+       }  
+}  
+2.编写LogHandler.java  
+import  org.apache.Axis.AxisFault;  
+import  org.apache.Axis.Handler;  
+import  org.apache.Axis.MessageContext;  
+import  org.apache.Axis.handlers.BasicHandler;  
+ 
+import  java.util.Date;  
+ 
+public  class  LogHandler    
+extends  BasicHandler    
+{  
+ public  void  invoke  
+(MessageContext  msgContext)    
+throws  AxisFault  
+       {  
+               /**  Log  an  access  each  time    
+                       we  get  invoked.  
+                 */  
+               try  {  
+                       Handler  serviceHandler  
+                                   =  msgContext.getService();  
+ 
+                       Integer  numAccesses  =  
+   (Integer)serviceHandler.getOption("accesses");  
+                       if  (numAccesses  ==  null)  
+                               numAccesses  =  new  Integer(0);  
+numAccesses  =  new  Integer  
+(numAccesses.intValue()  +  1);  
+Date  date  =  new  Date();  
+ String  result  =    
+ date  +  ":  service  "  +  
+msgContext.getTargetService()  +  
+"  accessed  "  +  numAccesses  +  "  time(s).";  
+serviceHandler.setOption  
+("accesses",  numAccesses);  
+System.out.println(result);  
+               }  catch  (Exception  e)  
+                       {  
+                       throw  AxisFault.makeFault(e);  
+               }  
+       }  
+}  
+   
+ 
+ 
+ 
+3、编写wsdd文件    
+ 
+ 
+deploy.wsdd  
+<deployment  xmlns=  
+"http://xml.apache.org/Axis/wsdd/"  
+   xmlns:java=  
+                                   "http://xml.apache.org/Axis/wsdd/providers/java">                        
+     <handler  name="print"  type="java:LogHandler"/>    
+ <service  name="sayhello"  
+ provider="java:RPC">  
+     <requestFlow>  
+         <handler  type="print"/>  
+     </requestFlow>  
+   <parameter  name="className"    
+   value="server.SayHello"/>  
+   <parameter  name="allowedMethods"  
+   value="*"/>      
+ </service>  
+</deployment>  
+   
+ 
+ 
+ 
+3、将编译后的文件拷贝到Axis_HOME/WEB-INF/classes下，如：D:\tomcat\webapps\Axis\WEB-INF\classes    
+ 
+4、发布服务：    
+ 
+java  org.apache.Axis.client.AdminClient  deploy.wsdd    
+ 
+5、生成client  stub文件    
+ 
+a:方式1    
+ 
+将SayHello.java拷贝到Axis_HOME/下，重命名为SayHello.jws，    
+ 
+执行下面的命令生存client  stub    
+ 
+ 
+java  org.apache.Axis.wsdl.WSDL2Java    
+-p  client    http://localhost:8080  
+/Axis/services/SayHello.jws?wsdl  
+   
+ 
+ 
+ 
+b:方式2    
+ 
+执行如下命令生成SayHello.wsdl    
+ 
+ 
+java  org.apache.Axis.wsdl.Java2WSDL  
+-oSayHello.wsdl  -lhttp://localhost:8080  
+/Axis/services/SayHello  -nsayhello  server.SayHello  
+   
+ 
+ 
+ 
+执行如下命令生成client  stub    
+ 
+ 
+java  org.apache.Axis.wsdl.WSDL2Java    
+SayHello.wsdl    -p  client  
+   
+ 
+ 
+ 
+生成的stub  client文件列表为：    
+ 
+1.SayHello.java    
+ 
+2.SayHelloService.java。    
+ 
+3.SayHelloServiceLocator.java    
+ 
+4.SayHelloSoapBindingStub.java    
+ 
+6、编写客户端程序，编译并执行    
+ 
+ 
+public  class  SayHelloClient  
+{  
+       public  static  void  main(String[]  args)  
+           {  
+               try  
+                       {  
+       SayHelloService  service  =  new  client.  
+             SayHelloServiceLocator();  
+                   client.SayHello_PortType    
+                           client  =  service.getSayHello();  
+                       String  retValue=client.getName("zhangsan");  
+                       System.out.println(retValue);  
+}    
+catch  (Exception  e)  
+{  
+ System.err.println  
+ ("Execution  failed.  Exception:  "  +  e);  
+               }  
+       }  
+}  

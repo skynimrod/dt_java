@@ -1,0 +1,13 @@
+. 官方下载URL:
+
+  http://www.eclipse.org/
+
+. 一般选择 Eclipse -Jee - Kepler 等版本的IDE . 为了预先包含 Web Application 的开发支持.
+
+. 关于Eclipse 有用的插件, 参见 Eclipse 插件说明文件.
+
+. 当前使用的 Eclipse-jee-kepler-SRS-win32.zip  
+
+  在F:/D downloads/Useful 目录下.    解压后存放在 E:/Application Programs/同名目录下.
+
+  

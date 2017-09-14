@@ -1,0 +1,58 @@
+参见:
+
+    http://blog.csdn.net/xwin1989/article/details/7380258
+
+. 
+public void test() {  
+        Configuration cfg = new Configuration();  
+        cfg.configure();          
+        ServiceRegistry  sr = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();           
+        SessionFactory sf = cfg.buildSessionFactory(sr);  
+                  
+          
+        Session session = sf.openSession();  
+        Transaction tx = session.beginTransaction();  
+        User user = new User();  
+        user.setBirthday(new Date());  
+        user.setName("neal");  
+          
+        session.persist(user);  
+        tx.commit();  
+        session.close();  
+        System.out.println("end");  
+}  
+
+但是提示 ServiceRegistryBuilder()有问题(似乎也是过时了.)
+
+进一步解决办法:
+
+参见：
+
+     http://tieba.baidu.com/p/2833106473
+
+Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+StandardServiceRegistryBuilder standardServiceRegistryBuilder =
+new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+StandardServiceRegistry standardServiceRegistry = standardServiceRegistryBuilder.build();
+SessionFactory sessionFactory = configuration.buildSessionFactory(standardServiceRegistry);
+
+4.1以后又取消了Servier Register 机制
+
+参见:
+
+http://blog.csdn.net/zl3450341/article/details/8640005    ============ 非常好
+
+Configuration configiguration = new Configuration().configure();  
+        ServiceRegistryBuilder builder = new ServiceRegistryBuilder().applySettings(configiguration.getProperties());  
+        ServiceRegistry registry = builder.buildServiceRegistry();   
+        factory = configiguration.buildSessionFactory(registry);  
+
+ServiceRegiestryBuilder() 又过时了...
+
+查看 Hibernate 4.3.5 的随机文档, 1.1.6. 演示了如何创建SessionFactory
+
+new Configuration().configure().buildSessionFactory(
+			    new StandardServiceRegistryBuilder().build() );
+
+但是用了这种方法后, 提示构建sessionFactory 失败.
+

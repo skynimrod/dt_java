@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_02 (Sun Microsystems Inc.)
+
+Name: JDL/
+Specification-Title: Java API for Download
+Specification-Version: 0.9
+Specification-Vendor: AquGen
+Implementation-Title: JDownLoads
+Implementation-Version: 0.9 public_draft
+Implementation-Vendor: AquGen
+

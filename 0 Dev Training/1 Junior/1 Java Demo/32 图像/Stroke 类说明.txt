@@ -1,0 +1,9 @@
+. 参见:
+ 
+   http://doc.java.sun.com/DocWeb/api/all/java.awt.BasicStroke
+
+. 所在包 :
+
+  import java.awt.BasicStroke;
+
+. 

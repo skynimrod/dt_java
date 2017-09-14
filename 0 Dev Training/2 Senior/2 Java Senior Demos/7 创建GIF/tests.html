@@ -1,0 +1,32 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"> 
+<STYLE> 
+v\:* { Behavior: url(#default#VML) } 
+</STYLE> 
+<script>
+    var points = new Array();
+    function drawline(fromX, fromY, toX, toY, lineIndex) {
+        var strElement = "<v:Line from='" + fromX + "," + fromY + "' to='" + toX + "," + toY + "' id='line" + lineIndex + "' strokecolor='red'>";
+        strElement += "</v:Line>";
+
+        var newPoint = document.createElement(strElement);
+
+        document.body.appendChild(newPoint);
+    }
+    function getPoint() {
+        if(points.length>=2) {
+            while (points.length > 0) {
+                points.pop();
+            }
+        }
+        if(points.length==0 || (points.length==1 &&points[0][0]!=event.srcElement.id))
+        points.push([event.srcElement.id,event.clientX, event.clientY]);
+        if (points.length == 2) {
+            drawline(points[0][1], points[0][2], points[1][1], points[1][2]);
+        }
+    }
+</script>
+<body> 
+<img id="img1" onclick="getPoint()" style="position:absolute; top:10; left:10px;" src="http://www.baidu.com/img/baidu_logo.gif" />
+<img id="img2" onclick="getPoint()" style="position:absolute; top:200; left:10px;" src="http://img.baidu.com/img/logo-img.gif" />
+</body> 
+</html>

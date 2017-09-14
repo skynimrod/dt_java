@@ -1,0 +1,11 @@
+PRTokeniser.TokenType.COMMENT:COMMENT
+PRTokeniser.TokenType.END_ARRAY:END_ARRAY
+PRTokeniser.TokenType.END_DIC:END_DIC
+PRTokeniser.TokenType.ENDOFFILE:ENDOFFILE
+PRTokeniser.TokenType.NAME:NAME
+PRTokeniser.TokenType.NUMBER:NUMBER
+PRTokeniser.TokenType.OTHER:OTHER
+PRTokeniser.TokenType.REF:REF
+PRTokeniser.TokenType.START_ARRAY:START_ARRAY
+PRTokeniser.TokenType.START_DIC:START_DIC
+PRTokeniser.TokenType.STRING:STRING

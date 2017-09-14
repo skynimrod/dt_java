@@ -1,0 +1,1 @@
+javac -classpath .;axis.jar;jaxrpc.jar SayHelloClient2.java

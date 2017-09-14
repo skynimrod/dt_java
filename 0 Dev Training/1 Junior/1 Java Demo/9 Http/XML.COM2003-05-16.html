@@ -1,0 +1,801 @@
+<!--web41009-->
+
+
+<html>
+<head><META HTTP-EQUIV="content-type" CONTENT="text/html; charset=gb2312">
+<title>Yahoo! 电邮 - adamswang_2000@yahoo.com.cn</title>
+
+<script>
+<!-- 
+if (typeof top.frames["wmailmain"] != "undefined") {
+    window.open("http://mail.yahoo.com", "_top");
+}
+var ypim_color = "blue";
+// -->
+</script>
+
+
+
+<script src="http://us.js1.yimg.com/us.yimg.com/lib/pim/c3/ylib_dom.js"></script>
+<script language=JavaScript src="http://us.js1.yimg.com/us.yimg.com/lib/pim/j3/pim.js"></script>
+<script language=JavaScript src="http://us.js1.yimg.com/us.yimg.com/lib/pim/css2/pim_css_gb.js"></script>
+
+<noscript>
+<META HTTP-EQUIV=Refresh CONTENT="0; URL=/ym/login?nojs=1">
+</noscript>
+
+
+
+<script>
+
+    function SynchMoves(which) {
+	if(which==1) {
+	    document.showLetter2.destBox.selectedIndex = document.showLetter.destBox.selectedIndex;
+	}
+	else {
+	    document.showLetter.destBox.selectedIndex = document.showLetter2.destBox.selectedIndex;
+	}
+    }
+
+    function SynchFwOpts(which) {
+	if(which==1) {
+	    document.showLetter2.fwopt.selectedIndex = document.showLetter.fwopt.selectedIndex;
+	}
+	else {
+	    document.showLetter.fwopt.selectedIndex = document.showLetter2.fwopt.selectedIndex;
+	}
+    }
+
+    function Move() {
+	var sl = document.showLetter;
+	var dbox = sl.destBox;
+	if(dbox.options[dbox.selectedIndex].value == "@NEW") {
+	    nn = window.prompt("请输入文件夹的名称。","");
+	    if(nn == null || nn == "null" || nn == "") {
+		dbox.selectedIndex = 0;
+		document.showLetter2.destBox.selectedIndex = 0;
+	    }
+	    else {
+		sl.NewFol.value = nn;
+		sl.MOV.value = "1";
+		sl.submit();
+	    }
+	}
+	else {
+	    sl.MOV.value = "1";
+	    sl.submit();
+	}
+    }
+
+    function Reply()
+    {
+	document.compose.REP.value = "1";
+	document.compose.submit();
+    }
+
+    function ReplySMS(from)
+    {
+        from = from.replace(/\+/g, '%2b');
+	var loc_href = '/ym/ComposeSMS?YY=83595&order=down&sort=date&pos=0&To=';
+        loc_href = loc_href + from + "&REP=1";
+
+        window.location.href = loc_href;
+    }
+
+    function ReplyAll()
+    {
+	document.compose.REPA.value = "1";
+	document.compose.submit();
+    }
+
+    function Forward()
+    {
+	document.compose.FWD.value = "1";
+	document.compose.fwopt.value = document.showLetter.fwopt[document.showLetter.fwopt.selectedIndex].value;
+	document.compose.submit();
+    }
+
+</script>
+</head>
+
+
+
+<body marginwidth=4 marginheight=4 topmargin=4 leftmargin=4 bgcolor=white vlink="#0000ff" link="#0000ff">
+<form name=compose method=post action="/ym/Compose?box=Inbox&Mid=9485_288231_11698_1323_2201_0_846_4570_1729673126&inc=&Search=&YY=83595&order=down&sort=date&pos=0">
+<input type=hidden name=REP value="">
+<input type=hidden name=REPA value="">
+<input type=hidden name=FWD value="">
+<input type=hidden name="fwopt" value="attach">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function Help(link)
+    {
+	window.open(link,"help","width=400,height=500,scrollbars=yes,dependent=yes");
+    }
+    if (document.cookie != "" && document.cookie.indexOf("L2jx.A") == -1) {
+	window.open("http://mail.yahoo.com", "_top");
+    }
+</script>
+
+	<!-- begin standard masthead -->
+<!-- begin standard masthead -->
+<table width=100% cellpadding=0 cellspacing=0 border=0 bgcolor="white">
+<tr>
+<td>
+	<a href="http://mail.yahoo.com/"><img border=0 src="http://us.i1.yimg.com/us.yimg.com/i/cn/pim/b/mailma1.gif" width=250 height=34 alt="Yahoo! Mail"></a>
+
+	</td>
+<td align=right width="99%">
+<font Helvetica" size=-1>
+<a href="http://cn.rd.yahoo.com/mail_cn/pimnav/letter/?http://www.yahoo.com.cn">Yahoo!</a> 
+	      - 
+      <a href="http://cn.rd.yahoo.com/mail_cn/pimnav/letter/?http://cn.my.yahoo.com">我的雅虎</a> 
+
+	      - 
+ 
+ 
+<a href="http://cn.rd.yahoo.com/mail_cn/help/?http://help.yahoo.com/help/cn/mail"> 
+ 
+ 帮助</a>
+
+ &nbsp;&nbsp;</font> </td>
+<td align=right>
+<!-- SpaceID=150514004 loc=PB noad -->
+	</td>
+</tr>
+<tr>
+<td height=5></td>
+</tr>
+</table>
+<!-- end standard masthead -->
+
+
+	<!-- end standard masthead -->
+
+
+<center>
+<!-- SpaceID=150514004 loc=N noad -->
+</center><br>
+
+
+
+
+<script>
+    var oKey = new ylib_keyevt();
+    oKey.addKey(67,-1,"location='http://cn.f410.mail.yahoo.com/ym/ShowFolder?rb=Inbox&YY=83595&order=down&sort=date&pos=0&YN=1'","shift+ctrl"); // Check Mail | CTRL-C
+    oKey.addKey(80,-1,"location='http://cn.f410.mail.yahoo.com/ym/Compose?YY=83595&order=down&sort=date&pos=0'","shift+ctrl"); // Compose | CTRL-P
+    oKey.addKey(70,-1,"location='http://cn.f410.mail.yahoo.com/ym/Folders?YY=83595&order=down&sort=date&pos=0'","shift+ctrl"); // Folders | CTRL-F
+    oKey.addKey(83,-1,"location='http://cn.f410.mail.yahoo.com/ym/Search?YY=83595&order=down&sort=date&pos=0'","shift+ctrl"); // Search | CTRL-S
+    oKey.addKey(72,-1,"location='http://help.yahoo.com/help/cn/mail'","shift+ctrl"); // Help | CTRL-H
+</script>
+
+
+
+<script language=javascript>
+<!-- 
+    function init() 
+    { 
+	if (oBw.ie||oBw.dom) {  
+  
+	    ypim_initMenu('mail','addr','cal','note'); // initiates the drop down menus  
+	    document.onkeydown = function(evt) { oKey.keyevent(evt); }
+	}
+	OnLoad(); // do not delete
+    }
+
+    function OnLoad()
+    {
+	// noop by default
+	// redefine as needed
+    }
+
+    onload=init
+    // -->
+</script>
+
+												<table cellpadding=0 cellspacing=0 border=0>
+<tr>
+	<td width=1% class=tabhi>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% id=mailTb>
+		<tr>
+			<td id=mail1 class=tabhia>
+			<table cellpadding=0 cellspacing=0 border=0 width=100%>
+			<tr>
+				<td><a href="http://mail.yahoo.com"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/b/mailbr1.gif" height=24 width=24 border=0 name=iconmail hspace=4 alt="Yahoo! 电邮"></a></td>
+				<td class=tabhit nowrap><a href="http://mail.yahoo.com">电邮</a>&nbsp;</td></tr>
+			</table>
+			</td>
+			<td valign=middle id=mailBtn class=tabhia><a href="http://mail.yahoo.com" onclick="ypim_prepareMail(); return ypim_showMenu('mail')"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/bn/downbr1.gif" name=arr_mail border=0 width=10 height=24></a></td>
+		</tr>
+		</table>
+	</td>
+	<td width=1% class=tablor>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% id=addrTb>
+		<tr>
+			<td id=addr1 class=tabloa>
+			<table cellpadding=0 cellspacing=0 border=0 width=100%>
+			<tr>
+				<td><a href="http://cn.address.yahoo.com/yab/cn"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/b/abbr1.gif" height=24 width=24 border=0 name=iconaddr hspace=4 alt="Yahoo! 地址簿"></a></td>
+				<td class=tablot nowrap><a href="http://cn.address.yahoo.com/yab/cn">地址簿</a>&nbsp;</td></tr>
+			</table>
+			</td>
+			<td valign=middle id=addrBtn class=tabloa><a href="http://cn.address.yahoo.com/yab/cn" onclick="ypim_prepareAddr(); return ypim_showMenu('addr')"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/bn/downbr1.gif" name=arr_addr border=0 width=10 height=24></a></td>
+		</tr>
+		</table>
+	</td>
+	<td width=1% class=tablor>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% id=calTb>
+		<tr>
+			<td id=cal1 class=tabloa>
+			<table cellpadding=0 cellspacing=0 border=0 width=100%>
+			<tr>
+				<td><a href="http://cn.calendar.yahoo.com"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/b/calbr1.gif" height=24 width=24 border=0 name=iconcal hspace=4 alt="Yahoo! 效率手册"></a></td>
+				<td class=tablot nowrap><a href="http://cn.calendar.yahoo.com">效率手册</a>&nbsp;</td></tr>
+			</table>
+			</td>
+			<td valign=middle id=calBtn class=tabloa><a href="http://cn.calendar.yahoo.com" onclick="ypim_prepareCal(); return ypim_showMenu('cal')"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/bn/downbr1.gif" name=arr_cal border=0 width=10 height=24></a></td>
+		</tr>
+		</table>
+	</td>
+	<td width=1% class=tablor>
+		<table cellpadding=0 cellspacing=0 border=0 width=100% id=noteTb>
+		<tr>
+			<td id=note1 class=tabloa>
+			<table cellpadding=0 cellspacing=0 border=0 width=100%>
+			<tr>
+				<td><a href="http://cn.notepad.yahoo.com"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/b/npdbr1.gif" height=24 width=24 border=0 name=iconnote hspace=4 alt="Yahoo! 记事本"></a></td>
+				<td class=tablot nowrap><a href="http://cn.notepad.yahoo.com">记事本</a>&nbsp;</td></tr>
+			</table>
+			</td>
+			<td valign=middle id=noteBtn class=tabloa><a href="http://cn.notepad.yahoo.com" onclick="ypim_prepareNote(); return ypim_showMenu('note')"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/bn/downbr1.gif" name=arr_note border=0 width=10 height=24></a></td>
+		</tr>
+		</table>
+	</td>
+	<td width=95% align=right class=tabnone>
+		<b>adamswang_2000@yahoo.com.cn</b> [<a href="/ym/Logout?YY=83595&order=down&sort=date&pos=0&YY=83595">登出</a>]&nbsp; 
+
+	</td>
+</tr>
+</table>
+
+
+
+<table width="100%" cellpadding=4 cellspacing=0 border=0>
+<tr class="bgd" bgcolor="#e4ecf6">
+<td align=left>
+<table cellpadding=2 cellspacing=0 border=0>
+<tr>
+<td class="tbutton" width=100 onclick="window.open('/ym/ShowFolder?rb=Inbox&YY=83595&order=down&sort=date&pos=0&YN=1', '_top')">
+<a href="/ym/ShowFolder?rb=Inbox&reset=1&YY=83595&order=down&sort=date&pos=0&YN=1">查信</a>
+</td>
+		    <td>&nbsp;</td>
+<td class="tbutton" width=100 onclick="window.open('/ym/Compose?YY=83595&order=down&sort=date&pos=0', '_top')">
+<a href="/ym/Compose?YY=83595&order=down&sort=date&pos=0">写信</a>
+</td>
+		</tr>
+</table>
+</td>
+<td align=right valign=bottom>
+<table cellpadding=4 cellspacing=0 border=0>
+<tr>
+<td class="bge" bgcolor="#e4ecf6">
+                                       <a href="/ym/Search?YY=83595&order=down&sort=date&pos=0">搜索电邮</a> - 
+		   <a href="/ym/Options?YY=83595&order=down&sort=date&pos=0"><b>邮件选项</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+
+<script>
+    function OnLoad()
+    {
+	document.compose.REP.value = "";
+	document.compose.REPA.value = "";
+	document.compose.FWD.value = "";
+    }
+</script>
+
+
+<table width="100%" cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td class=bgd bgcolor="#9bbad6" height=4><img src="http://us.i1.yimg.com/us.yimg.com/i/space.gif" width=2 height=3></td>
+</tr>
+</table>
+<table width="100%" cellpadding=0 cellspacing=0 border=0>
+<tr>
+<td class=bgd bgcolor="#9bbad6" width=150 valign=top>
+
+
+<script>
+    function AddFolder()
+    {
+	var nn = window.prompt("请输入文件夹的名称。","");
+	var nn_len = nn.length;
+	var nn_escaped = "";
+	if (nn != null && nn != "null" && nn != "") {
+	    for (i = 0 ; i < nn_len ; i++) {
+		var nn_asc = nn.charCodeAt(i);
+		if (nn_asc > 128) {
+			nn_escaped += nn.charAt(i);
+		} else {
+			nn_escaped += escape(nn.charAt(i));
+		}
+	    }
+
+            var str = "/ym/Folders?ADD=1&Name=" + nn_escaped + "&.crumb=ZoOil04kRxR&.done=" + escape(document.URL) + "&YY=83595&order=down&sort=date&pos=0";
+            window.open(str, "_top");
+	}
+    }
+
+    function TogglePersonal()
+    {
+	window.open(
+	    "/ym/Welcome?pers=1&.done=" 
+	    + 
+	    escape("/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0") 
+	    + 
+	    "&YY=83595&order=down&sort=date&pos=0", 
+	    "_top"
+	);
+    }
+</script>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr>
+<td height="6">
+</td>
+</tr>
+
+        <tr class="ftitle">
+<td colspan="2"> &nbsp; 	    <a href="/ym/Folders?YY=83595&order=down&sort=date&pos=0"><b>文件夹</b></a>
+	    <small>[<a href="javascript:AddFolder()">添加</a>]</small>
+	</td>
+</tr>
+
+    <tr class="fhi">
+<td width="1%" nowrap> &nbsp;                 <img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/f/inbo1.gif" width="16" height="16">
+        </td>
+<td>
+            <a href="/ym/ShowFolder?rb=Inbox&reset=1&YY=83595&order=down&sort=date&pos=0"><b>收件箱 (14)</b></a>
+        </td>
+</tr>
+    <tr class="flo">
+<td width="1%" nowrap> &nbsp;                 <img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/f/dftc1.gif" width="16" height="16">
+        </td>
+<td>
+            <a href="/ym/ShowFolder?rb=Draft&reset=1&YY=83595&order=down&sort=date&pos=0">草稿</a>
+        </td>
+</tr>
+    <tr class="flo">
+<td width="1%" nowrap> &nbsp;                 <img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/f/sntc1.gif" width="16" height="16">
+        </td>
+<td>
+            <a href="/ym/ShowFolder?rb=Sent&reset=1&YY=83595&order=down&sort=date&pos=0">送件箱</a>
+        </td>
+</tr>
+    <tr class="flo">
+<td width="1%" nowrap> &nbsp;                 <img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/f/blkc1.gif" width="16" height="16">
+        </td>
+<td>
+            <a href="/ym/ShowFolder?rb=%40B%40Bulk&reset=1&YY=83595&order=down&sort=date&pos=0">垃圾邮件</a>
+ &nbsp;<small>[<a href="/ym/ShowFolder?EB=1&.crumb=64pP5v8dXQm&reset=1&YY=83595&order=down&sort=date&pos=0">清空</a>]</small>
+        </td>
+</tr>
+    <tr class="flo">
+<td width="1%" nowrap> &nbsp;                 <img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/f/tshc1.gif" width="16" height="16">
+        </td>
+<td>
+            <a href="/ym/ShowFolder?rb=Trash&reset=1&YY=83595&order=down&sort=date&pos=0">废纸篓</a>
+ &nbsp;<small>[<a href="/ym/ShowFolder?ET=1&.crumb=64pP5v8dXQm&reset=1&YY=83595&order=down&sort=date&pos=0">清空</a>]</small>
+        </td>
+</tr>
+<tr>
+<td colSpan=2 height=5><IMG height=5 alt="" src="http://us.i1.yimg.com/us.yimg.com/i/space.gif" width=5>
+</td>
+</tr>
+</table>
+
+
+</td>
+<td class=bgd bgcolor="#9bbad6" width=8><img src="http://us.i1.yimg.com/us.yimg.com/i/space.gif" width=8 height=2></td>
+<td bgcolor="white" valign=top>
+		
+<table cellpadding=0 cellspacing=0 border=0>
+<td class=bgd bgcolor="#9bbad6"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/el/rdul1.gif" width=5 height=5></td>
+</table>
+<table cellpadding=4 cellspacing=0 border=0 width="100%">
+<tr>
+<td colspan=2>
+</td>
+</tr>
+<tr>
+<td>
+<a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&PREV=1&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0" onmouseover="window.status='发件人: python-list@yahoogroups.com, 主题: Digest Number 3902';return true" onmouseout="window.status=window.defaultStatus;return true">上一封</a>
+ &nbsp;|&nbsp; <a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&NEXT=1&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0" onmouseover="self.status='发件人: python-list@yahoogroups.com, 主题: Digest Number 3901';return true" onmouseout="window.status=window.defaultStatus;return true">下一封</a>
+ &nbsp;|&nbsp; <a href="/ym/ShowFolder?box=Inbox&YY=83595&order=down&sort=date&pos=0" onmouseover="window.status='文件夹: 收件箱';return true" onmouseout="window.status=window.defaultStatus;return true">退回到邮件页面</a>
+</td>
+<td align=right valign=bottom>
+<a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&Search=&PRINT=1&ShowImages=&YY=83595&order=down&sort=date&pos=0" target=_blank>打印画面</a>&nbsp;-&nbsp; <a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&Search=&Nhead=f&YY=83595&order=down&sort=date&pos=0">完整标头</a>
+</td>
+</tr>
+</table>
+<form name=showLetter method=post action="/ym/ShowLetter?YY=83595&order=down&sort=date&pos=0">
+<input type=hidden name=".crumb" value="pFfMhkoBCmX"><input type=hidden name="MsgId" value="9485_288231_11698_1323_2201_0_846_4570_1729673126">
+<input type=hidden name="box" value="Inbox">
+<input type=hidden name=MOV value="">
+<input type=hidden name=NewFol value="">
+
+<table cellpadding=3 cellspacing=0 border=0 width="100%">
+			    
+<tr class=bbar bgcolor="#3f6c96">
+				    
+<td>
+<table border=0 cellpadding=1 cellspacing=0>
+<tr>
+<td><input type=submit name=DEL value="&nbsp;删除&nbsp;" class=fbutton></td>
+<td>&nbsp;</td>
+<td><input type=button value="&nbsp;&nbsp;回复&nbsp;&nbsp;" class=fbutton onclick="Reply()"></td>
+<td><input type=button value="回复所有人" class=fbutton onclick="ReplyAll()"></td>
+<td><input type=button value="转发" class=fbutton onclick="Forward()"></td>
+<td><select name="fwopt" onchange="SynchFwOpts(1)">
+<option value="attach" selected>作为附件 <option value="quoted">内嵌文本 </select></td>
+</tr>
+</table>
+</td>
+<td nowrap align=right>
+<table border=0 cellpadding=1 cellspacing=0>
+<tr>
+<td><select name="destBox" title="Move checked items" onchange="SynchMoves(1)">
+<option>移到文件夹</option>
+<option value="@NEW">[新文件夹]</option>
+</select></td>
+<td><input type=button value="确定" class=fbutton onclick="Move()"></td>
+</tr>
+</table>
+</td>
+</tr>
+		    
+</table>
+</form>
+
+<table cellpadding=0 cellspacing=0 border=0 class="barlink" width="100%">
+<tr>
+<td>
+<table cellpadding=8 width="100%"><tr><td>
+
+<table cellpadding=4 cellspacing=0 border=0 width="100%">
+<tr class=frmb>
+<td> &nbsp;&nbsp;该邮件未标记。 [ <a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&Search=&FLG=1&YY=83595&order=down&sort=date&pos=0">标记邮件</a> - <a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&Search=&UNR=1&.crumb=pFfMhkoBCmX&YY=83595&order=down&sort=date&pos=0">标记为未读</a>
+				]
+</td>
+</tr>
+</table>
+
+<table cellpadding=0 cellspacing=0 width="100%" border=0>
+<tr>
+<td>
+<table cellspacing=0 cellpadding=3 width="100%" border=0>
+<tr valign=top>
+<tr class=bge><td align=right valign=top nowrap><b><small>发件人:</small></b></td><td width="100%"><small>&#34;XML.com Update&#34; &lt;elists-admin@oreillynet.com&gt;&nbsp;|&nbsp;<b><a href="/ym/BlockSender?MessRet=1&.crumb=hJ9X.TtzW5x&SP=Yes&NE=elists-admin@oreillynet.com&box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0"><small>这是垃圾邮件</small></a></b>&nbsp;|&nbsp;<b><a href="javascript:document.frmAddAddrs.submit()"><small>添加到地址簿</small></a></b></small></td></tr>
+<tr class=bge><td align=right valign=top nowrap><b><small>日期:</small></b></td><td width="100%"><small> Fri, 16 May 2003 16:02:25 -0700</small></td></tr>
+<tr class=bge><td align=right valign=top nowrap><b><small>主题:</small></b></td><td width="100%"><small> XQuery, Python, and SALT</small></td></tr>
+<tr class=bge><td align=right valign=top nowrap><b><small>收件人:</small></b></td><td width="100%"><small>xml@paprika.oreillynet.com</small></td></tr>
+</table></td>
+<td valign=top bgcolor="#eeeeee"><form name=frmAddAddrs action="http://address.mail.yahoo.com/yab/cn?v=YM&A=a&.intl=cn" method="post">
+<table cellpadding=0 cellspacing=0 border=0 width="100%">
+<tr valign=top><td bgcolor="#eeeeee" align=left>
+<font face="Arial" size="-1">
+<input type="hidden" name="fn" value="XML.com,,">
+<input type="hidden" name="ln" value="Update,,">
+<input type="hidden" name="e" value="elists-admin@oreillynet.com,xml@paprika.oreillynet.com,">
+<input type="hidden" name="m" value="1">
+<input type="hidden" name=".done" value="http://cn.f410.mail.yahoo.com/ym/ShowLetter?MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&order=down&inc=&sort=date&view=&head=&box=Inbox&YY=83595">
+</font>
+</td></tr>
+</table>
+</form></td>
+</tr>
+</table>
+<br>
+<div id=message>
+<pre><tt>                          XML.com Xtra!
+               ---------------------------------
+               The Email for XML.com Subscribers
+
+=================================================================
+The 5th O'Reilly Open Source Convention July 7-11, 2003
+Portland Marriott Downtown, Portland, OR
+
+OSCON cuts through the hype by covering current essentials, as
+well as what's to come: web services, parsing, SVG, standards,
+XSLT, DocBook, Office 2003 XML, schemas, and more.
+Register early and save up to $400.
+
+<a href="http://conferences.oreilly.com/oscon/" target=_blank>http://conferences.oreilly.com/oscon/</a>
+
+=================================================================
+
+Dear Reader,
+
+This week on XML.com we have the second part in our new "Practical
+XQuery" series.  Ivelin Ivanov demonstrates how XQuery can be used
+to put an HTML front end onto web services. He takes the Amazon
+XML/REST web services API and uses some straightforward XQuery to
+create a custom web site around Amazon's "ListMania" feature.  I
+found this article particularly interesting, as it highlights more
+than the basic document-query-functionality applications of XQuery.
+
+&lt;<a href="http://www.xml.com/pub/a/2003/05/14/xquery.html" target=_blank>http://www.xml.com/pub/a/2003/05/14/xquery.html</a>&gt;
+
+Uche Ogbuji's "Python &amp; XML" column alights this month on the
+Python wrappers for libxml--Daniel Veillard's excellent XML parsing
+library. As Uche writes, "libxml and libxslt are popular because
+of their speed, active development, and coverage of many XML
+specifications, with close attention to conformance."
+
+&lt;<a href="http://www.xml.com/pub/a/2003/05/14/py-xml.html" target=_blank>http://www.xml.com/pub/a/2003/05/14/py-xml.html</a>&gt;
+
+Finally this week, we have an introduction to SALT, the Speech
+Application Language Tags specification. SALT is part of the
+emerging XML infrastructure for multi-modal user interfaces.  In
+"Adding SALT to HTML" Simon Tang explains how to install
+Microsoft's SALT SDK, and how to create simple web pages that
+use speech as well as HTML.
+
+&lt;<a href="http://www.xml.com/pub/a/2003/05/14/salt.html" target=_blank>http://www.xml.com/pub/a/2003/05/14/salt.html</a>&gt;
+
+
+Thanks for reading!
+
+
+Edd Dumbill
+<a href="/ym/Compose?To=edd@XML.com&YY=83595&order=down&sort=date&pos=0">edd@XML.com</a>
+Managing Editor, XML.com
+
+=================================================================
+Walking Through an RSS 1.0 Document
+
+<a href="http://safari.oreilly.com/0596003838/consynrss-CHP-6-SECT-1" target=_blank>http://safari.oreilly.com/0596003838/consynrss-CHP-6-SECT-1</a>
+
+RSS (Rich Site Summary) is a method of describing web content
+that is available for syndication. But what does an actual RSS
+document look like? Take a tour in Chapter 6 of Content
+Syndication with RSS. Requires an O'Reilly Network Safari
+Bookshelf subscription.
+
+<a href="http://www.oreillynet.com/nlr/safaripromo2/" target=_blank>http://www.oreillynet.com/nlr/safaripromo2/</a>
+
+=================================================================
+
+
+*** New on WebServices.XML.com ***
+
+Using Python, Jython, and Lucene to Search Outlook Email
+Ever had trouble finding a particular email? So did Jon Udell, so
+he put together Python, Jython and Lucene in order to create a
+local web service that indexed his Microsoft Outlook mail store.
+
+<a href="http://webservices.xml.com/pub/a/ws/2003/05/13/email.html" target=_blank>http://webservices.xml.com/pub/a/ws/2003/05/13/email.html</a>
+
+***
+
+Web Services Security, Part 3
+This article discusses XML-based authentication and the sharing
+of authentication information across different applications,
+known as Single Sign-on. The Security Assertions Markup Language
+(SAML) from OASIS provides expression in XML of authentication
+information.
+
+<a href="http://webservices.xml.com/pub/a/ws/2003/05/13/security.html" target=_blank>http://webservices.xml.com/pub/a/ws/2003/05/13/security.html</a>
+
+***
+
+
+*** XML News from the XML Cover Pages by Robin Cover ***
+
+OASIS TC Approves Test Framework Documents for ebXML Messaging
+Service (ebMS) Version 2.0
+
+ACM Publishes CACM Special Issue on Digital Rights Management
+and Fair Use
+
+IETF Internet Open Trading Protocol Working Group Publishes
+RFC for Voucher Trading System
+
+OASIS Members Form Web Application Security Technical Committee
+
+W3C Index of Translations Showcases RDF and Internationalization
+Technologies
+
+
+For more information on any of these stories visit:
+<a href="http://www.xml.com/pub/a/coverpage/newspage.html" target=_blank>http://www.xml.com/pub/a/coverpage/newspage.html</a>
+
+=================================================================
+Do some entertaining this spring.
+
+We've got a few things that will help you impress your guests--open
+source beer coasters, tarsier mugs, and classy T-shirts--that will
+show them just how cool you really are. Check it out at ThinkGeek.
+
+<a href="http://www.thinkgeek.com/oreilly" target=_blank>http://www.thinkgeek.com/oreilly</a>
+
+=================================================================
+-----------------------------------------------------------------
+If you want to cancel a subscription to this newsletter,
+go to <a href="http://www.xml.com/cs/user/home" target=_blank>http://www.xml.com/cs/user/home</a>, click on "Update Profile",
+and de-select any newsletters you no longer wish to receive.
+
+For non-automated human help email <a href="/ym/Compose?To=xml-help@xml.com&YY=83595&order=down&sort=date&pos=0">xml-help@xml.com</a>
+
+-----------------------------------------------------------------
+</tt></pre>
+
+</div>
+</td></tr></table>
+
+</td>
+</tr>
+</table>
+
+<form name=showLetter2 method=post action="/ym/ShowLetter?YY=83595&order=down&sort=date&pos=0">
+<input type=hidden name=".crumb" value="pFfMhkoBCmX"><input type=hidden name="MsgId" value="9485_288231_11698_1323_2201_0_846_4570_1729673126">
+<input type=hidden name="box" value="Inbox">
+<input type=hidden name=MOV value="">
+<input type=hidden name=NewFol value="">
+
+<table cellpadding=3 cellspacing=0 border=0 width="100%">
+			    
+<tr class=bbar bgcolor="#3f6c96">
+				    
+<td>
+<table border=0 cellpadding=1 cellspacing=0>
+<tr>
+<td><input type=submit name=DEL value="&nbsp;删除&nbsp;" class=fbutton></td>
+<td>&nbsp;</td>
+<td><input type=button value="&nbsp;&nbsp;回复&nbsp;&nbsp;" class=fbutton onclick="Reply()"></td>
+<td><input type=button value="回复所有人" class=fbutton onclick="ReplyAll()"></td>
+<td><input type=button value="转发" class=fbutton onclick="Forward()"></td>
+<td><select name="fwopt" onchange="SynchFwOpts(2)">
+<option value="attach" selected>作为附件 <option value="quoted">内嵌文本 </select></td>
+</tr>
+</table>
+</td>
+<td nowrap align=right>
+<table border=0 cellpadding=1 cellspacing=0>
+<tr>
+<td><select name="destBox" title="Move checked items" onchange="SynchMoves(2)">
+<option>移到文件夹</option>
+<option value="@NEW">[新文件夹]</option>
+</select></td>
+<td><input type=button value="确定" class=fbutton onclick="Move()"></td>
+</tr>
+</table>
+</td>
+</tr>
+		    
+</table>
+</form>
+<table cellpadding=4 cellspacing=0 border=0 width="100%">
+<tr><td colspan=2></td></tr>
+<tr>
+<td>
+<a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&PREV=1&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0" onmouseover="window.status='发件人: python-list@yahoogroups.com, 主题: Digest Number 3902';return true" onmouseout="window.status=window.defaultStatus;return true">上一封</a>
+ &nbsp;|&nbsp; <a href="/ym/ShowLetter?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&NEXT=1&inc=&num=&Search=&YY=83595&order=down&sort=date&pos=0" onmouseover="self.status='发件人: python-list@yahoogroups.com, 主题: Digest Number 3901';return true" onmouseout="window.status=window.defaultStatus;return true">下一封</a>
+ &nbsp;|&nbsp; <a href="/ym/ShowFolder?box=Inbox&YY=83595&order=down&sort=date&pos=0" onmouseover="window.status='文件夹: 收件箱';return true" onmouseout="window.status=window.defaultStatus;return true">退回到邮件页面</a>
+</td>
+<td align=right>
+<a href="/ym/ShowLetter/file.txt?box=Inbox&MsgId=9485_288231_11698_1323_2201_0_846_4570_1729673126&bodyPart=TEXT&filename=file.txt&download=1&YY=83595&order=down&sort=date&pos=0">保存邮件文本</a>
+</td>
+</tr>
+</table>
+<tr>
+<td class=bgd bgcolor="#9bbad6" colspan=2>
+<img src="http://us.i1.yimg.com/us.yimg.com/i/space.gif" width=40 height=2 alt=""></td>
+<td bgcolor="white" valign=top>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr class=bgd bgcolor="#9bbad6" class=bgd><td width=5 height=5><img src="http://us.i1.yimg.com/us.yimg.com/i/us/pim/el/rddl1.gif" width=5 height=5 alt=""></td></tr>
+</table>
+</td>
+</tr>
+	
+
+</table>
+
+<table width="100%" cellpadding=4 cellspacing=0 border=0>
+<tr class="bgd" bgcolor="#e4ecf6">
+<td align=left>
+<table cellpadding=2 cellspacing=0 border=0>
+<tr>
+<td class="tbutton" width=100 onclick="window.open('/ym/ShowFolder?rb=Inbox&YY=83595&order=down&sort=date&pos=0&YN=1', '_top')">
+<a href="/ym/ShowFolder?rb=Inbox&reset=1&YY=83595&order=down&sort=date&pos=0&YN=1">查信</a>
+</td>
+		    <td>&nbsp;</td>
+<td class="tbutton" width=100 onclick="window.open('/ym/Compose?YY=83595&order=down&sort=date&pos=0', '_top')">
+<a href="/ym/Compose?YY=83595&order=down&sort=date&pos=0">写信</a>
+</td>
+		</tr>
+</table>
+</td>
+<td align=right valign=bottom>
+<table cellpadding=4 cellspacing=0 border=0>
+<tr>
+<td class="bge" bgcolor="#e4ecf6">
+                                       <a href="/ym/Search?YY=83595&order=down&sort=date&pos=0">搜索电邮</a> - 
+		   <a href="/ym/Options?YY=83595&order=down&sort=date&pos=0"><b>邮件选项</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<center>
+<table cellpadding=4 cellspacing=0 border=0>
+<tr><td>
+<a href="/ym/Welcome?YY=83595&order=down&sort=date&pos=0">电邮</a>&nbsp;- &nbsp;<a href="http://cn.rd.yahoo.com/mail_cn/footer/ab/?http://cn.address.yahoo.com/yab/cn">地址簿</a> - <a href="http://cn.rd.yahoo.com/mail_cn/footer/cal/?http://cn.calendar.yahoo.com">效率手册</a> - <a href="http://cn.rd.yahoo.com/mail_cn/footer/note/?http://cn.notepad.yahoo.com">记事本</a></td></tr>
+</table>
+</center>
+
+
+
+<CENTER><HR size=1 width=75% noshade></CENTER>
+<CENTER> <SMALL><BR> 版权所有&copy; 1994-2003 
+
+<A href="http://cn.rd.yahoo.com/mail_cn/tos/?http://www.yahoo.com.cn">Yahoo!</A> Inc. 保留所有权利。 <A href="http://cn.yahoo.com/docs/info/terms/">服务条款</A> 
+ 请注意：我们在此网站收集个人信息。<br>要了解我们如何使用您的信息，请参阅我们的 <A href="http://privacy.yahoo.com/privacy/gb/mail/">隐私权政策</A>
+</SMALL>
+</CENTER>
+
+<script>
+var ypim_MA_Farm_URL = "http://cn.f410.mail.yahoo.com";
+var ypim_AB_URL = "http://cn.address.yahoo.com/yab/cn";
+var ypim_CA_URL = "http://cn.calendar.yahoo.com";
+var ypim_NP_URL = "http://cn.notepad.yahoo.com";
+var ypim_MA_YY = "801620";
+var ypim_IMG = "http://us.i1.yimg.com/us.yimg.com/i/us/pim";
+var ypim_Loc = "cn";
+var ypim_IsCalendarView = false;
+var ypim_IsNotepadView = false;
+var ypim_i18n_CheckMail = "查信"; var ypim_i18n_Compose = "写信"; var ypim_i18n_Folders = "文件夹"; var ypim_i18n_Search = "搜索"; var ypim_i18n_Options = "选项"; var ypim_i18n_Help = "帮助"; var ypim_i18n_AddContact = "添加联系人"; var ypim_i18n_AddCategory = "添加类别"; var ypim_i18n_AddList = "添加通讯组"; var ypim_i18n_ViewContacts = "查看联系人"; var ypim_i18n_ViewLists = "查看通讯组"; var ypim_i18n_Quickbuilder = "快速添加"; var ypim_i18n_ImportContacts = "导入联系人"; var ypim_i18n_Synchronize = "同步"; var ypim_i18n_AddressesOptions = "地址簿选项"; var ypim_i18n_AddressesHelp = "地址簿帮助"; var ypim_i18n_AddEvent = "添加活动"; var ypim_i18n_AddTask = "添加待办事项"; var ypim_i18n_AddBirthday = "添加生日"; var ypim_i18n_Day = "日"; var ypim_i18n_Week = "周"; var ypim_i18n_Month = "月"; var ypim_i18n_Year = "年"; var ypim_i18n_EventList = "活动列表"; var ypim_i18n_Reminders = "提醒"; var ypim_i18n_Tasks = "待办事项"; var ypim_i18n_Sharing = "共享"; var ypim_i18n_Synchronize = "同步"; var ypim_i18n_CalendarOptions = "效率手册选项"; var ypim_i18n_CalendarHelp = "效率手册帮助"; var ypim_i18n_AddNote = "添加便笺"; var ypim_i18n_AddFolder = "添加文件夹"; var ypim_i18n_ViewNotes = "查看便笺"; var ypim_i18n_NotepadOptions = "记事本选项"; var ypim_i18n_NotepadHelp = "记事本帮助";
+
+
+</script>
+<script src="/lib_web/pulldowns.js"></script>
+<div id="mail">
+</div>
+<div id="addr">				
+</div>
+<div id="cal">
+</div>
+<div id="note" class=menubg>
+</div>
+
+
+
+
+</body>
+</html>
+
+
+<!-- v3.3.4 1052206644 -->
+<!-- 0.03345 -->
+<!-- web41009.mail.yahoo.com compressed/chunked Sat May 17 06:48:37 PDT 2003 -->

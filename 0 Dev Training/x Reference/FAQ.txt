@@ -1,0 +1,11 @@
+. 1. java.lang.UnsupportedClassVersionError: Bad version number in .class file
+
+    造成这种错误的原因是 JDK 版本与 Eclipse 中运行的JDK 版本不一致导致。
+
+    把他们的JDK 版本改成一致步骤如下:
+
+       1. Window --> Preferences --> Java --> compiler 中的compiler compliance level 对应的下拉菜单中选择JDK 版本
+
+. 2. No signature of method:
+
+    一般是引用的包与方法弄混了。 仔细检查名称( 包名称和方法名称 )即可发现问题。

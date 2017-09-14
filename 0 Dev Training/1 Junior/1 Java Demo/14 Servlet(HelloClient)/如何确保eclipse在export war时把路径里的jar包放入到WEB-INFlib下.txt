@@ -1,0 +1,2 @@
+如何确保eclipse在export war时把路径里的jar包放入到WEB-INF/lib下？
+查看项目的属性，进入“J2EE Module Dependencies”，勾选应该勾的。注意要一个一个勾，select All的勾法无效（eclipse 的bug）

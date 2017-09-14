@@ -1,0 +1,21 @@
+
+/**
+  ²Î¼û:
+  
+       gradle 1.11 userguide.pdf->6.12
+ */
+
+
+defaultTasks   'clean', 'run'
+
+task clean << {
+    println 'default task clean'
+}
+
+task run << {
+    println 'default task running'
+}
+
+task other << {
+    println "I'm not default task"
+}

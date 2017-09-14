@@ -1,0 +1,45 @@
+.. 《OSGi与 Equinox - 创建高度模块化的Java系统》   Jeff McAffer   Paul Vanderlei    Simon Archer
+
+   ZWTS\2014\Tp312JA\mca
+
+. Toast 是书中一个基于 OSGi 的远程信息管理和车辆管理系统示例 Toast, 为即将使用和已经使用OSGi 的开发人员详细介绍了开发的所有步骤.
+
+  "篱笆筑的牢, 邻居处的好"
+
+. Toast 是 远程信息管理（Telematic） 和 车队管理领域中的示例应用.
+
+  Telematics 是远程通信 的电信学 与 信息科学的合成词. 更具体的说, 它是通过通信设备实现信息发送、接收和存储的学科. 
+
+  在汽车导航 和娱乐设备中, 都能见到它的身影. 典型的远程信息管理系统 会通过 接口 装入车载设备, 并提供与设备交互和管理的用户接口；  更成熟也更复杂的系统则可以通过无线网络, 与车辆管理系统的控制中心连接, 从而可以远程控制设备.
+
+  Toast 的最终版本将涵盖上述所有功能, 它可以连接模拟的GPS 和安全气囊, 也可以集成谷歌地球, 还能与使用了多种协议, 基于OSGi 的车辆管理控制中心通信. 
+
+  参见: http://wiki.eclipse.org/Toast 来获取更多关于Toast 的信息.
+
+. P28 安装示例管理器
+
+  1. 打开Eclipse    
+
+     Help -> Install New Software .. 打开 Software Update 对话框
+
+  2. 在Available Software 页面中 点击 Add ... 按钮 增加一个新的软件站点(注意检查网络是否能联通Internet)
+
+  3. 在对话框中, 输入软件网站的位置 http://equinoxosgi.org， 并点击 OK
+
+  4. 展开 Equinox OSGi Book 站点的树, 并选择 Sample Manager . 选择最新的版本(可能需要取消对 Group Items by Category 选项的勾选才能看到版本号)
+
+  5. 点击Next 并浏览随后的向导页面, 仔细阅读并接受许可和警告. 安装示例管理器后, 会出现重启对话框. 选择Restart. 
+  上面的安装过程失败. 出现下面的错误:
+
+  Cannot complete the install because one or more required items could not be found.
+  Software being installed: OSGi and Equinox Samples Manager 1.0.0.201003071427 (org.equinoxosgi.book.tools.feature.feature.group 1.0.0.201003071427)
+  Missing requirement: org.eclipsercp.samplings 1.0.2.201003071427 (org.eclipsercp.samplings 1.0.2.201003071427) requires 'bundle org.eclipse.update.ui 0.0.0' but it could not be found
+  Cannot satisfy dependency:
+    From: OSGi and Equinox Samples Manager 1.0.0.201003071427 (org.equinoxosgi.book.tools.feature.feature.group 1.0.0.201003071427)
+    To: org.eclipsercp.samplings [1.0.2.201003071427]
+
+
+
+  上面的提示应该是 Eclipse 找不到目标. 
+
+   好像就是 Eclipse 的更新ui插件 版本不对.  

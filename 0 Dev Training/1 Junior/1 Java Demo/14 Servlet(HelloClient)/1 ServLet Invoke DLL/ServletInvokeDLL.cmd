@@ -1,0 +1,1 @@
+javac -classpath .;jna.jar;javax.servlet_2.4.0.v200706111738.jar ServletInvokeDLL.java

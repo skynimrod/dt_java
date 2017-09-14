@@ -1,0 +1,24 @@
+.  严重: Exception sending context initialized event to listener instance of class org.codehaus.groovy.grails.web.context.GrailsContextLoaderListener
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'grailsApplication' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: www/aqugen/com/Util_pdfService$_processTd_closure21
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.lang.NoClassDefFoundError: www/aqugen/com/Util_pdfService$_processTd_closure21
+	at java.lang.Class.forName(Class.java:270)
+	... 5 more
+Caused by: java.lang.ClassNotFoundException: www.aqugen.com.Util_pdfService$_processTd_closure21
+	... 6 more
+
+. 在JAVA开发中，main线程中抛出java.lang.NoClassDefFoundError是一个非常普遍且比较难解决的问题。解决这个问题的复杂性主要取决于你的软件大小和中间件部署情况，尤其要考虑在应用中出现的数量众多的classloader的情况。
+本文将从一个比较高的角度看这个问题，主要是介绍java classloader机制。
+我们先简单的看一下这个问题，这个runtime异常是JVM抛出的，当JVM发现一个classloader试图去Load一个class，而此class在当前的classloader tree中找不到的时候，就会抛出此异常。
+很明显，这个问题是运行期的问题，在编译期一切正常。
+ok，到这里还不行，这个问题解决起来不是那么容易的，在运行期的程序classpath中加入缺少的jar包仅仅是一种解决方法。关键是，我们必须掌握此种异常的根本原因，以后解决此问题就可以以不变应万变。这就是我写这个文章的初衷。
+现在，先记住，此问题不一定是由于在classpath中缺少class的定义。
+
+java classloader概述
+
+在深入分析之前，我们必须掌握java classloader的基本原理。class loader是一个java对象，它负责load所有的class，负责查找、加载、生成一个class的基本定义信息。classloader自身采用了委托代理机制来查询class，每一个classloader的实例都有一个父classloader，所以，当一个应用的classloader去加载class A的时候，首先发生的事情是classloader委托其父classloader去加载class A，经过一串链式查找后，最终任务会落在JVM的系统启动classloader上。
+那哪里会出问题？当你期望你的应用classloader能加载class A，但是当class A被其任意一个父classloader查询到并加载，那么就可能会出现java.lang.NoClassDefFoundError。当所有的父classloader都找不到class A的时候，才会由应用自己的classloader尝试加载。

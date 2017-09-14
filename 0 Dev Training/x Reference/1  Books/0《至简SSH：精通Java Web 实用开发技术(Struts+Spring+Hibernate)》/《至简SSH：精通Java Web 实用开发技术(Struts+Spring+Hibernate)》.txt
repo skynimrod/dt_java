@@ -1,0 +1,210 @@
+. 参见：
+
+  国家图书馆  ZWTS\2011\TP312JA\ghy      作者 : 高洪岩   (飞思科技产品研发中心)
+
+. P2
+
+  什么是框架 FrameWork
+
+  1. 框架是未来应用程序的半成品
+
+  2. 框架的存在, 可以在应用程序之间共享  可复用的公共组件, 这个组件在Java 世界中就是 JavaBean了, 也就是 公共的Java类
+
+  3. 程序员可以把框架加到自己的程序中, 并且可以自由、开放的扩展, 去实现自己特定需要的功能
+
+  4. 其中框架和工具包的功能大体一致, 但框架提供了标准的结构、统一的开发流程，而不仅仅是很多的工具类. 在软件公司中使用框架主要的目的就是同一开发流程, 业务分层, 统一开发的一致性;
+
+  5. 建筑工程中的钢架结构 其实也是一个框架, 提供一个房屋的初始模型, 然后在这个模型的基础上进行个性的装修和设计.
+
+. P7
+
+  Struts 应用程序的简要执行流程
+
+  1. 客户端浏览器发出请求
+
+  2. 服务器端的Struts 中心类 ActionsServlet 找到 struts-config.xml 文件, 并放入到内存, 将文件中的内容作为请求路径映射.
+
+  3. ActionServlet 类在struts-config.xml 文件中找到相关的请求路径映射后填充ActionForm 类, 将前台传进来的表单域 打包成Bean.
+
+  4. 然后转到Action 类进行业务逻辑功能的实现, 比如 增、删、改、查 数据库中的数据
+
+  5. 在通过struts-config.xml 文件的映射, 找到功能逻辑处理结束后 显示给客户端 用户看到的页面, 转发功能通过 ActionForward 对象实现.
+
+. P7
+
+  在MyEclipse 中配置Struts 开发环境
+
+  Java 开发工具 对 版本匹配的要求非常严格, 比如在 Eclipse 3.2 上安装 MyEclipse 5.5 插件, 这个 MyEclipse 5.5 插件的版本必须是针对 Eclipse 3.2 版本的, 否则要么安装不成功, 要么运行时 出现莫名的错误， 请读者注意。
+
+. P24
+
+  添加 Struts 1 框架 必须的文件
+
+  。。。
+
+  需要导入的struts jar:
+
+      struts-core-1.3.8.jar
+ 
+      struts-el-1.3.8.jar
+
+      struts-extras-1.3.8.jar
+
+      struts-faces-1.3.8.jar
+
+      struts-mailreader-dao-1.3.8.jar
+
+      struts-scripting-1.3.8.jar
+
+      struts-taglib-1.3.8.jar
+
+      struts-tiles-1.3.8.jar
+
+. 登录页面的例子:
+
+  new -> other...
+
+  类名: loginForm 
+
+  Superclass : org.apach.struts.action.ActionForm
+
+  Form type : com.yourcompany.struts.form.LoginForm
+
+. P333   Hibernate    JBOSS 公司
+
+  JBOSS 公司的Hibernate 开源项目为企业级开发中的数据持久层技术注入了新鲜的血液, 它不仅对跨数据库、事务封装、ORM 映射、延迟加载等这些细节技术提供了完善的解决方案, 也对一些在程序开发中容易忽略的问题进行了良好的封装和规划, 具体有以下几个方面:
+
+  1. 通过使用ORM-Object-relational mapping 映射, 以Bean 的形式操作数据库中的记录;
+
+  2. 强大的一级、二级缓存机制结合数据库连接池 POOL, 这样是CURD的操作效率大大得到提升;
+
+  3. 在对SQL 的可维护性 Hibernate 也做得非常优秀, 将系统中大量的SQL语句 放入XML 文件中进行统一管理, 有助于项目的总体设计及维护修改;
+
+  4. Spring + Hibernate + 范型 是一个强大的组合, 这样可以免去编写大量的DAO 代码, 减少了工作量, 而且维护性大大增强;
+
+  5. JSR 专家组的大部分成员来自JBoss, 所以 Hibernate 的发展还是具有远瞻性的, 相信 Hibernate 会越来越好;
+
+  6. 减少那些大量重复的JDBC 代码, 使用 Hibernate 后, 重复性的工作量大大减少;
+
+  7. 项目 融入Hibernate 后, 可以更加的面向 OOP 编程, 以面向对象的方式思考程序的结构架构;
+
+  8. 更好的性能和移植性 使 Hibernate 成为现阶段软件项目中最常使用的持久层技术框架.
+
+  如果用最简单的一句话总结Hibernate, 笔者想说: 以一个Bean 来操作ResultSet 并且带有很多附属功能软件框架.
+
+  Hibername 的完美主要体现在ORM上。
+
+. P334 
+
+  持久层 与持久化 和 ORM
+
+  持久化: 只是将 数据保存在可掉电 的存储介质上, 是一个动词.  比如我们可以非常轻松的将数据通过 JDBC 代码存储到数据库, 剩下的什么都不需要处理了, 而这种心态 恰恰是 创建 不可维护或后期 维护不利的软件项目的开始, 简单的"保存" 功能完全满足不了现在软件开发的模块性、可维护性、扩展性、分层性的原则，这就需要一种技术框架, 将业务层 和数据库 至简保存的 操作 做到可维护性、扩展性、分层性。
+
+  持久层的概念 随着Hibernate 的出现越来越受到人们的关注。
+
+  数据持久层的 设计目标是为整个项目提供一个衔接高低层、统一、安全和并发的数据持久机制， 完成对各种数据库进行持久化的编程工作，并为 系统业务逻辑层 提供服务。 数据持久层提供了数据访问方法，能够使程序员避免手动编写程序访问数据持久层（Persistence layer）, 使其专注于业务逻辑的开发, 并且能够在不同项目中重用映射框架, 大大简化了数据 增、删、改、查等功能的开发过程, 同时又不丧失多层结构的天然优势, 继承延续J2EE特有的可伸缩性和可扩展性。
+
+  ORM 的概念是数据持久层的一种子实现, 它 通过将映射的机制, 把一条数据库中的记录处理成一个Java 的class（bean）处理, 这样在CURD的 处理上, 真正实现了以面向对象开发,也将软件的后期维护的周期大大缩短.比如数据库表字段id、name、address、school、email。
+  
+. P358
+
+  Hibernate 框架项目中 文件的 结构介绍:
+
+  1. HibernateSessionFactory.java 文件
+
+     该文件主要是创建Hibernate 中的Session对象的, 但是这个Session 和HttpSession 完全是两个不同的概念, 不是一回事. Hibernate 中的Session 相当于JDBC 中的Connection 对象. 创建Session 的目的就是有保存数据、查询数据的功能
+
+  2. IBaseHibernateDAO.java
+
+     由于 在项目中经常使用Session， 所以定义了一个得到Session的接口
+
+  3. BaseHibernateDAO.java
+
+     实现IbaseHibernateDAO 接口中的方法 getSession(), 主要使用HibernateSessionFactory类中的静态方法getSession() 来实现.
+
+  4. Table1.java   --- 这个是Hibernate 对应数据库表的类
+
+     实现将数据库中的数据表结构用Java 类的形式来表示. 实体类.  Hibernate 通过操作这个类实现间接的操作数据表中的记录集。
+
+  5. Table1DAO.java
+
+     是一个操作数据库的DAO数据访问对象类, 功能即 CURD, 但操作对应的却是Table1.java 实体类. 
+
+     在Hibernate 中, 操作实体类 就相当于 操作数据表记录.
+
+  6. Table1.hbm.xml 文件
+
+     hbm.xml 文件是 Hibernate 中的映射文件, 映射文件的功能就是将 O 对象与 R关系 进行对照的一种技术. 通过这个配置文件, 可以将数据表中的字段与Java 中的属性进行有机结合, 通过这个配置文件, 就可以知道O 对象中的属性对应 R 数据表中的哪个字段了。 
+
+  
+. P393
+
+  Hibernate 备忘知识点
+
+  1. 永远不要手动修改OID, 因为这会造成缓存中的数据不准确。
+
+  2. Session 接口中的update 方法是将一个游离对象转变成持久化对象的方案
+
+  3. Session 接口中的load 和get 方法都有查询数据的功能, 区别是当数据库中不存在指定的OID数据时, load 报出异常, 而get 方法返回为空.  get方法 在主从表关系上, 取得从表的数据永远是立即检索数据库; load 方法在主从表关系上, 取得从表的数据永远返回代理类.
+  
+  4. 在执行完一个save 操作之后, 最好使用 session.flush() 方法进行缓存与数据库的同步. 经常出现的问题呢就是新建一条记录, 然后立即list.do 时却找不到刚才的记录, 很大的原因就是缓存的数据没有和数据库同步. 如果在save 之后根本不需要再访问这个对象, 也就没有必要执行flush() 方法了。
+
+  5. Hibernate 3.1 默认 是延迟加载, 延迟加载的意思是主要体现在主从表上, 比如 主贴与回帖.  如果使用延迟加载情况, 那么在根据一个回帖OID 取得主贴信息时, 并不会自动取得与这个主贴相关联的回帖. 延迟加载的反方向为 立即加载,  如果使用立即加载, 那么根据一个OID 取得主贴的同时会把数据库中回帖的数据记录也一同查询出来, 这样就造成性能上的损失. 要根据情况和数据量的大小来设置lazy 的值 是true 或 false， 可以在 set 一端进行lazy 的设置, 比如配置<set lazy="false">
+
+  6. 如果正在使用延迟加载, 并且在Action 中已经将session.close() 关闭, 那么在JSP 中取得List 中的字表数据会提示出错: Exception initializing proxy - Could not initialize proxy - the owning Session was closed. 解决办法是 在 session.close() 之后, 将 List 中的对象使用方法 Hibernate.initialize(代理对象参数) 进行实例化.
+
+     Hibernate 中代理类的概念即只有一个OID 属性的类, 所以使用延迟加载 时, List 中的子表数据全都是代理类, 在List 中取得当然出错, 所以要使用方法Hibernate.initialize(代理对象参数) 进行代理类的实始化, 最后需要注意的是 导入类 import org.Hibernate.Hibernate.
+
+  7. 延迟加载 只对 load 方法有效， 对 get 方法是无效的, 因此get 方法永远不会生成映射类的代理类.
+
+  8. 对于多对一 或 一对一 关联, 应该优先采用外连接检索策略, 这样比立即检索策略使用的SQL 语句更少.
+
+  9. 使用Hibernate 的ORM 技术需要根据实际情况, 超大数据量的软件项目不要为了Hibernate 而使用 Hibernate.
+
+. P437   Spring
+
+  Spring 是一个开放源代码的轻量级 Java 框架. 主要作用是为了 解决企业应用程序维护的复杂性而创建的. Spring 框架的解决办法就是用分层架构, 分层架构允许程序员选择使用哪一个组件, 同时为J2EE 应用程序开发提供集成的容器。
+
+. P438
+
+  IOC 全称 Inversion Of Control, 有些资料上也使用 DI 全称 Dependency Injection, 中文释为: 依赖注入. 读者暂且可以这么理解, IOC 容器就是去管理Bean, 创建Bean 的一个内存区, 在这个内存区中可以将操作Bean 的代码以面向接口的方式进行开发, 这样基于接口的多态性, 程序结构的分层就更加灵活化, 维护和扩展也更加方便.  IOC 概念从编程技术上来讲 是将 接口和实现 相分离.
+
+  AOP 全称是Aspect Oriented Programming(面向切面编程), 读者暂且可以将AOP 理解成面向一小段代码进行编程, AOP 这种技术可以在不改变原始代码段的基础上进行一些功能性的增强. 比如可以在不改变Servlet 代码的基础上加入日志的功能, 可以在不改变Struts 的Action 代码的基础上加入数据库事务的功能等, 所以AOP 主要面向的是对代码段进行功能性的增强. 
+
+  IOC 容器
+
+  在Spring 中IOC 容器占据了核心的功能, 通过IOC 容器就可以将Java Bean 完全管理, 包括创建、销毁, 还可以对数据库的Java Bean 进行自动化的事务, 包括一些企业级的应用如JNDI、JavaMail 也被支持, 先前的EJB 容器由于侵入式的开发, 如事务、状态类必须在支持EJB 的容器中进行开发, 这对平台的移植性造成了很大的不便, 所以Spring 的IOC 容器完全脱离了平台, 用最简单的Java Bean 技术实现接口与分离, 并且对组件的调配提供很好的支持.
+
+. P485
+
+  如果用最普通的语言来定义AOP 概念, 笔者认为它可以在不改动程序的基础上做更好的增强. 比如 在原来代码的基础上可以加入事务和日志的功能, 当然这并不仅仅是继承自那个类, 然后实现那个类的全部的方法, 再在方法中做增强. 
+
+  AOP 这种增强的方式是通过代理的原理来实现的, “代理”具体是什么概念呢？ 比如你在当当网买书, 当当网只需要将书放在邮递包中, 并且写上你的地址就可以了， 剩下的任务由快递公司来完成。 在这个过程中，这个快递公司就相当于当当网送书服务的代理公司， 送书的任务由快递公司代理，那么可以将AOP 与 快递公司做一个同等的比喻， 如果想对某一个类进行功能性的增强, 那么只需要将这个类让代理类进行处理就可以了。
+
+  代理分为静态代理和动态代理。
+
+  在静态代理中, 代理对象与被代理的对象必须实现同一个接口, 完整保留被代理对象的接口样式, 也将接口不变的原则一直保持.  缺点是 扩展性不好, 如果想代理更多的类, 则需要创建更多的代理类。
+
+  静态代理的缺点是在代理类中绑定了固定的接口, 不利于扩展, 动态代理则不然, 通过动态代理, 可以对任何实现某一接口的类进行功能性的增强。
+
+  MethodBeforeAdvice  方法执行前增强
+
+  AfterReturningAdvice 方法执行后增强
+
+  MethodInterceptor  方法执行前、后 围绕增强
+
+. P499
+
+  在SSH 整合的架构中, Spring 充当了一个人容器的作用, Spring 使用IOC 和AOP 技术接管了Hibernate 的DAO 和 Struts 的Action对象, 因而能充分管理事务和代理request 请求.  经过IOC 容器的处理后, 针对面向接口的编程使软件项目的分层更加明确。
+
+  MVC 分别使用以下几层:
+
+    M (Model) 层: Spring
+
+    V (View) 层 : JSP
+
+    C (Controller) 层: Struts
+
+    持久层 : Hibernate
+
+    Spring 对Hibernate 的DAO 进行了非常好的封装, 使程序开发者完全不用理会事务, 只需要一心一意的开发业务. 

@@ -1,0 +1,5 @@
+. 用百度 或 Google  搜索: httpxml ajax
+  
+  ext=2[1].2  是非常好的 Ajax 的 例子. 
+
+. 

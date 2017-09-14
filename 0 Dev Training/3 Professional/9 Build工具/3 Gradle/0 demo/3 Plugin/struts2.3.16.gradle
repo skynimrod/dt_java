@@ -1,0 +1,14 @@
+// deploy struts2.3.16 framework jars
+
+apply plugin: groovy
+
+description = "从源目录中将struts 2.3.16 的jars 加入到 目标目录下(一般是工程的lib)"
+
+def destDir, sourceDir			// 定义源目录和目标目录
+def file
+
+destDir = 'c:/test'
+sourceDir = 'd:/test'
+
+println desDir
+println sourceDir

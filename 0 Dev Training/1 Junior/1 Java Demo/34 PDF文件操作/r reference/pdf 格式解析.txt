@@ -1,0 +1,1155 @@
+参见:
+
+    pdf references 1.7
+
+         http://www.adobe.com/devnet/pdf/pdf_reference_archive.html
+
+    Adobe CMap and CIDFont Files Specification  (在Adobe 网站搜索这个字符串即可)
+
+         http://www.adobe.com/devnet/font/pdfs/5014.CIDFont_Spec.pdf 
+
+植物大战僵尸online
+http://youxi.baidu.com/login_game_by_post.xhtml?id=251&serverId=s5
+
+. pdf 文件格式如下
+
+  所有的内容都是 对象格式存在(obj).   字体是个对象, 每一页是个对象, 其实描述也是一个对象.  对象中可能会包含其他对象.
+
+. pdf 文件结构主要可以分为四个部分
+
+  1. 首部
+
+     %PDF-1.4
+
+     最后一位就是pdf 文件格式版本号, 软件的版本号总要比文件格式的版本号高1, 比如说Read 5 能打开的内容就是4
+
+  2. 文件体
+
+     里面由若干个 obj 对象类组成, 类似这种形式:
+
+     3  0  obj                                    
+
+     <<
+
+     /Type /Pages
+
+     /Count 1
+
+     /Kids [4 0 R]
+
+     >>
+
+     endobj
+
+     =====================
+
+     3 是对象号, 唯一标识一个对象, 第二个是产生号, 用来表明它被创建后的第几次修改, 所有新创建的pdf文件的产生号应该都是0.
+
+     A. 获取页面对象信息  Page Tree
+
+      下面分析一个根对象 Root object
+
+<</AcroForm 605 0 R/Lang(zh-CN)/MarkInfo<</Marked true>>/Metadata 607 0 R/OCProperties<</D<</AS[<</Category[/View]/Event/View/OCGs[595 0 R]>><</Category[/Print]/Event/Print/OCGs[595 0 R]>><</Category[/Export]/Event/Export/OCGs[595 0 R]>>]/ON[595 0 R]/Order[]/RBGroups[]>>/OCGs[595 0 R]>>/Outlines 38 0 R/Pages 2 0 R/StructTreeRoot 50 0 R/Type/Catalog>>
+
+     这是Root Object 的内容.    关键是要找到 Pages 2 0 R,  这个是找到各个页面的关键 。
+
+     Pages 对象(2) 的内容如下:
+
+     <</Count 4/Kids[3 0 R 25 0 R 32 0 R 34 0 R]/Type/Pages>>
+
+     记录了总共是4页， 分别是3， 25， 32， 34  
+
+     ### 注意： 上面的页 有可能还有子页， 即构成一个pageTree. 所以要继续遍历后面的叶子，确认所有的页都能遍历到。
+
+     ## 关于页面树 Page Tree 参见: 《PDF Reference, version 1.7.pdf》 P1065   G.4 Page Tree Example
+
+     B. 根据 Page Tree 中的对象， 逐一获取 Font 中的字体对象信息， 然后注意分析字体对象， 将字体对象是Type0的对象的内容，解析（要用到后面的解压功能 FlateDecode）为页面对应的CMAP, 由于一个页面可能包含多个Type0 的字体， 可以将多个Type0 对象的CMAP 合并为一个CMAP (这个需要核实是否会有冲突，按理应该不会有冲突)。 CMAP 哈希表对应 Pages 哈希表，key 值是 页面的Content对象编号.
+
+
+      FlateDecode，我们可以使用zlib的inflate来完成解压 (或者LZWDecode？？)
+
+      pdf的FlateDecode算法就是zip的压缩算法，可以用zlib库提供的函数解压缩。
+将stream和endstream之间的内容传给zlib（可能需要处理回车换行符），他就会给你解出原始的内容，不过解出的内容含有pdf的格式你得自己再提取一下。
+http://www.pdfhome.com.cn/Article.aspx?CID=bf51a5b6-78a5-4fa3-9310-16e04aee8c78&AID=45fe599c-a03e-422c-881c-0f0795d58ec1
+这里讲了完整的过程，还有代码，看了你肯定会明白的。
+
+     zlib的 uncompress() 参数为:   (实现部分在 uncompr.c 文件中 )
+
+            uncompress OF((Bytef *dest,   uLongf *destLen,
+ const Bytef *source, uLong sourceLen));
+
+     FlateDecode，我们可以使用zlib的inflate来完成解压
+
+     Java 本身自带 Zlib 压缩接口。 参见:
+
+            http://snowolf.iteye.com/blog/465433
+
+    import java.util.zip.Deflater;  
+import java.util.zip.DeflaterOutputStream;  
+import java.util.zip.Inflater;  
+import java.util.zip.InflaterInputStream;  
+
+    相关文档参见: JDK DOC ->java.util -> Java.util.zip -> Inflater 部分
+
+    解压缩的介绍文档 IBM 有个比较好的: http://www.ibm.com/developerworks/cn/java/l-compress/
+
+    由于解压缩后的数据大小不定， 建议用数据流定向到文件来进行操作。 
+
+         一个解压前后的数据例子:
+
+                      需解压长度:1084解压后返回值:4258            3.928            
+                      
+                      需解压长度:7259解压后返回值:40536           5.584
+
+                      需解压长度:8869解压后返回值:46520           5.245
+
+                      需解压长度:3344解压后返回值:10524           3.147
+
+    http://www.cjsdn.net/Doc/JDK60/java/util/zip/Inflater.html 
+
+    这个是中文版的Java 相关文档
+
+    ###需要注意的是： 解压的时候， 解压结果是不确定的， 但是存放结果的缓冲空间可能是1024类似的固定空间，那么解压后判断
+    getRemaining() 也就是还有多少字节没有解压完成， getBytesWritten() 是本次解压后的结果字节数量
+
+    ===========
+
+    解压缩后的数据， 需要按照CMAP 来进行编码转换
+
+     一个包含CMap文件 的流, CMap 文件映射了字符与Unicode 值.
+
+    PDF 要求 字符编码定义在 CMap 中.  PDF 只支持一种派生, 必须是CIDFont.
+
+    调试过程中，一般每页的对象中的Type0 字体对应的就是CMAP 对象， 将CMAP 对象的Stream 解压后， 就可以获得CMAP 数据，数据中前面的项对应的是 content 对象中的数据(Tj等<>)， 后面的对应的是转换为汉字unicode 的编码。 这个编码可以对照《Unicode汉字编码表.doc》。    
+
+    可以把CMAP 的steam 内容解码后输出到一个文件中， 便于查看。
+
+  3. 交叉引用表
+
+     用来索引各个obj 对象在文档中的位置, 以实现随机访问, 它的形式是:
+
+     xref
+
+     0 8
+
+     0000000000 65535 f                  10个0
+
+     0000000009 00000 n
+ 
+     0000000074 00000 n
+
+     0000000120 00000 n
+
+     0000000179 00000 n
+
+     0000000322 00000 n
+
+     0000000415 00000 n
+
+     0000000445 00000 n
+
+     =============================
+
+     xref 说明一个交叉引用表的开始, 交叉引用表 的第一行0 8 说明下面各行 所描述的对象号是从0 开始, 并且有8个对象.
+
+     0000000000 65535 f， 一般每个pdf 文件都是以这一行开始交叉引用表的, 说明对象0的起始位置为0000000000, 产生号(generation number) 为65535, 也是最大产生号, 不可以再进行更改, 而且最后对象的表示是f, 表明该对象是free, 这里, 大家可以看到, 其实这个对象可以看作是文件头.
+
+     0000000009 00000 n  就是表示对象1, 0000000009 是其 偏移地址, 00000 为5位产生号(最大为65535), 0 表明该对象未被修改过, n 表示该对象在使用, 区别与自由对象(f), 可以更改.
+
+     调试的过程中，可以把xref 对应的对象的描述的内容全部输出到一个txt 文件中, 这样便于查看对象信息，如下:
+
+     .....
+            // 把所有对象的信息打印出来，  rd 是源文件的句柄
+            def fs = new RandomAccessFile("e:/t_tmp/tree.txt","rwd")
+            for ( i =1; i <= ObjSum; i ++ ) {
+                rd.seek( xref[i.toString() ] )
+                fs.writeChars( rd.readLine() + "\n\r")
+                fs.writeChars( rd.readLine() + "\n\r")
+                fs.writeChars( "\n\r")
+                fs.writeChars( "\n\r")
+            }
+            fs.close()
+     ....
+
+      // 使用UltraEdit 查看上面的文件内容
+
+      
+
+
+  4. 尾部   3.4.4  P96
+
+     PDF最后3行 指出了 xref 的位置， 第2行是十进制数字，转换成16进制，即为xref 的起始位置。 查看startxref是否有。可以定位到文件倒数48个字节处。然后逐行读取数据，直到找到startxref. 
+
+     需要注意的是， startxref 仅仅是指到xref 关键字的所在位置， 这个是最后一个交叉引用表的位置。这个交叉引用表不是body 里面的object 对象的交叉引用表。 即内容的交叉引用表需要继续查看trailer 中的prev的内容。
+
+     从这个 startref 所指的位置继续逐行访问， 找到trailer后， 开始解析尾部。获取一下信息:
+
+          Size (交叉引用表包含的对象实体数+1)
+
+          Root  根对象编号 (对应交叉引用表中的对象编号)
+
+          
+     Trailer
+
+     <<
+
+     /Size 8
+
+     /Root 1 0 R
+
+     >>
+
+     startxref
+
+     553
+
+     %%EOF
+
+     trailer 说明文件尾 trailer 对象的开始
+
+     /Size 8 说明该pdf 文件的对象数据
+
+     /Root 1 0 R 说明根对象的对象号是1
+
+     startxref
+
+     553 说明交叉引用表的偏移地址, 从而可以找到pdf 文档中所有对象的相对位置, 进而访问对象.
+
+     %%EOF 为文件结束标志.
+
+     例子:  2013.08.06 的000012  南玻A 半年报摘要
+
+     0D 0A       回车换行
+
+     trailer     0D 0A
+  
+     <</Size 613/Root 1 0 R/Info 571 0 R/ID[<DCE9C1DEBC432E448FF479B4A3057EE3><19F55B9477D8684a9CA41C9EDE544AA2>]/Prev 240867/XRefStm 7824>>  0D 0A
+ 
+     startxref   0D 0A
+
+     253175      0D 0A
+
+     %%EOF
+
+     解析:
+
+     trailer 之前是回车换行, 便于逐行处理.   <<>> 是trailer 中的字典, 即参数.  startxref 是 第一个xref 的位置, 下一行253175 就是位置的10进制数(16进制为 0x3DCF7).  %%EOF 是文件结束标志.
+
+    7824 = 0x1E90  XRefstm 后面的7824 指向的正好是最后一个对象的位置(612)
+
+    ####
+
+   
+
+    ===================================
+
+    trailer 的字典列表
+
+    -------------------------------------
+    KEY       Type        Value
+    --------------------------------------
+    Size      integer     必须有.交叉引用表的entries 数量。 即对象数量. 比对象最大编号大1.    最大11个字节, 包括"/"
+
+    Prev      integer     只有在多个交叉引用表的时候采用. 文件头到该交叉引用表的头的位置. 10进制. 上例中是240867(=0x3ACE3)
+
+    Root      dictionary  必须有. 根对象的描述. 上例中是  1 0 R . 3.6.1        最大19个字节
+
+    Encrypt   dictionary  如果文件加密则有. 参见1.1. 文件加密字典   3.5        
+
+    Info      dictionary  可选.  记录文档信息, 例如作者等等之类的.  10.2.1
+
+    ID        array       可选, 但是强烈建议有. 2个字节字符串. 不能被加密. 为了保证文件的唯一性, 强烈建议有该内容.每个字符                            串是32个字节, 加<>[]以及ID, 是2*2 + 2 + 2 = 8字节, 32*2 + 8 = 72字节, 加后面的0D0A, 是74字节
+
+    可以发现 最大字节数为: 
+
+    需要注意的是， 有多个交叉引用表的时候, 必须递归处理Prev, 从而到达最后一个xref, 这个才是真正最新的有用的, 之前的对象位置可能已经过时了。特别是PDF1.4 的有些文档， 对象位置比较混乱， 处理内容效率比较低， 而且有很多垃圾信息在里面(特别是交叉引用表，而且对象的物理位置也非常混乱， 东一榔头，西一棒槌的感觉)。
+
+. PDF 支持8中基本类型的对象
+
+  1. Boolean values
+
+  2. Integer and real numbers
+
+  3. Strings
+
+  4. Names
+
+  5. Arrays
+
+  6. Dictionaries
+
+  7. Streams
+
+  8. The null object
+
+. Streams 对象
+
+  每个stream 字典(dictionary)  有一个Length 入口, 来说明该stream有多少字节. (如果 stream 有 filter, Length 是编码后数据的字节数).  另外, 大部分 filters 都定义来确保 数据是self-limiting。 也就是说, 用一个编码scheme (EOD) 来解除数据的限制. 
+
+  例如: 一个图像有10行， 20列. 用一个单独的color component, 每个component 是8bits, 需要确保200字节给image 数据.   如果steam 用了filter , 必须有足够的字节用来编码这200个字节的数据.  如果Length 过小就会报错.
+
+  Example 3.1
+
+   7 0 obj
+     
+      <</Length 8 0 R >>                  % 指向对象8
+
+      stream
+
+         BT
+
+            /F1 12 Tf
+            72 712 Td
+            (A stream with an indirect length)  Tj
+ 
+         ET
+
+      endstream
+
+      endobj
+
+   8 0 obj
+
+       77                          % 前置stream 的长度
+
+   endobj
+
+. Filters 3.2.7   3.3
+
+  是可选的部分. 用来指示stream 中的数据如何解码后才能用.
+
+  例如, 数据用LZW 和 ASCII base-85 编码的数据, stream dictionary 的解码入口如下
+
+  /Filter [/ASCII85Decode /LZWDecode]
+
+  
+
+. 关于文本对象 Text object
+
+  参见: PDF Reference, Sixth Edition, version 1.7
+
+      5.3   Text Objects
+
+  例子: 5.1
+
+      BT
+          /F13 12 Tf
+          288 720 Td
+          (ABC) Tj
+      ET
+
+ 说明:
+
+    1. 开始一个文本对象
+
+    2. 设置字体，字体大小, 作为参数传给文本状态.   Tf 操作符指定了字体名称.
+
+       F13 字体就是通常大家所说的 Helvetica.
+
+    3. 指定起始位置, 设置文本对象的参数            Td 操作符用来指定起始位置. 相对于当前用户的坐标系
+
+    4. 在指定位置画出字符串的形状(glyphs).         Tj 操作符来执行
+
+    5. 结束一个文本对象.
+
+. 例子5.2  演示了F13 字体的定义
+
+   /Resources
+
+       << /Font <</F13 23 0 R >>
+
+       >>
+
+       23 0 obj
+
+          << /Type /Font
+    
+             /Subtype /Type1
+ 
+             /BaseFont /Helvetica
+
+          >>
+
+       endobj
+
+. 实现特殊的图形效果  5.2
+
+  例子:  5.3
+      
+      BT
+           /F13 48 Tf
+           20 40 Td
+           0 Tr                                   Tr 设置缩放模式  Render mode   在html 中td 标准单元-包含数据
+           0.5 g                                  g  缩放比例      Render percent  在html 中, tr 是一行
+           (ABC) Tj
+      ET
+
+  例子: 5.4
+
+      BT 
+          /F13 48 Tf
+          20 38 Td
+          1 Tr           
+          2 w                                     w 操作符 设置线宽
+          (ABC) Tj
+      ET
+
+
+   表 5.1 文本状态参数
+ 
+      参数         描述
+  ------------------------------
+      Tc           Character spacing
+
+      Tw           Word spacing
+ 
+      Th           Horizontal scaling
+
+      Tl           Leading
+
+      Tf           Text font
+
+      Tfs          Text font size
+
+      Tmode        Text rendering mode
+
+      Trise        Text rise
+
+      Tk           Text knockout
+    -------------------------------------------
+
+
+     表 5.2  文本状态操作符
+    -------------------------------------------
+    操作数       操作符    描述
+    ------------------------------------------
+     charSpace   Tc        设置字符间距 Tc        
+
+     wordSpace   Tw        设置字空距 Tw 
+
+     scale       Tz        设置水平方向缩放  Th
+
+     leading     TL        设置行间距 Tl   T*
+
+     font size   Tf        设置字体和字体大小   Tfs
+
+     render      Tr        设置缩放模式 Tmode   ( 0 - 7 , 参见 P402 )
+
+     rise        Ts        设置文本凸起         ---------- 指 上升或下降点水平位置, 例如指数的位置, 或下标的位置
+
+   -----------------------------------------------
+
+     还有一个Text Knockout 操作符  Tk   ...
+
+. 一个PDF 文本对象包含操作符(显示字符串), 移动文本到指定位置, 和设置文本状态以及特定的其他参数.  另外, 有3个参数只在文本对象中定义, 但是不限制从一个本文对象到下一个文本对象:
+
+    Tm         文本矩阵
+
+    Tlm        文本线矩阵
+
+    Trm        文本缩放矩阵
+
+. 文本位置操作符
+
+  文本空间是一个坐标系, 用来显示文本.  由 文本矩阵(Tm), 文本状态参数 Tfs, Th 和 Trise (共同决定文本空间与用户空间的转换) 一同定义.  .. 如果文本空间被转换, 缩放或旋转, 那么用户空间中文本的位置, 大小, 或 原始glyph 都要对iyngde修正.
+
+.  表 5.5 文本位置操作符   P406
+
+  ========================================
+  OPERANDS       OPERATOR     描述
+  ========================================
+  tx, ty          Td          移动到下一行的起始, 与当前行的偏移位置由 (tx, ty) 确定.  矩阵如下:
+
+                                          +--     --+
+                                          | 1  0  0 |
+                               Tm = Tlm = | 0  1  0 |  X Tlm
+                                          | tx ty 1 |
+                                          +--     --+
+
+  tx  ty          TD          移到下一行起始, 偏移量是当前行起始到 (tx, ty).   效果等同于:
+
+                               -ty TL
+
+                                   tx ty Td
+
+  a b c d e f     Tm          设置文本矩阵, 如下
+
+                                            +--     --+
+                                            | a  b  0 |
+                                 Tm = Tlm = | c  d  0 |
+                                            | e  f  1 |
+                                            +--     --+
+
+                              Operands 全是数字. 
+
+  --              T*          移到 下一行起始. 效果等同于
+
+                                 0  Tj  Td        (j 是下标, 不是 Tj 操作符的j, 等同于T(j) 是个数字)
+
+                              Tj 是文本状态的leading 参数   (j 是下标, 不是 Tj 操作符的j)
+
+ ** 附 矩阵算法    顺时针 - 逆时针
+
+   |  a11   a12 |
+   |  a21   a22 |  = a11a22 - a12a21
+
+   |  a11   a12   a13 |
+   |  a21   a22   a23 | = a11a22a33 + a12a23a31+ a13a21a32 - a12a22a31 - a12a21a33 - a11a23a32
+   |  a31   a32   a33 |
+
+. 表5.6 文本显示操作符
+
+  =============================================
+  OPERANDS     操作符         描述
+  =============================================
+  string          Tj          显示一个文本字符串
+
+  string          '           移到下一行并显示字符串. 效果同下：
+
+                              T*
+                              string   Tj
+
+  aw  ac  string  "           移到下一行并显示字符串.  aw 是字间距, ac 是字符间距.  效果同下:
+
+                              aw  Tw
+                              ac  Tc
+                              string '
+  
+  array          TJ           显示一个或多个字符串. 数组的每个元素可以是字符串也可以是数字. 如果是字符串, 直接显示字符串, 
+                              如果是数字, 调整文本位置. 
+
+                              例如: 参见图 5.11
+
+                                 [(AWAY again)]  TJ                          
+                                 [(A) 120 (W) 120 (A) 95 (Y again)]  TJ
+  
+. 文本空间详述
+
+    ...
+
+. 表5.7 字体类型
+
+  ========================
+   TYPE    SUBTYPE VALUE     描述
+  ======================================
+  Type0       Type0         ...
+
+  Type1       Type1
+
+              MMType1
+
+  Type3       Type3
+
+  TrueType    TrueType
+
+  CIDFont     CIDFontType2
+
+. 表5.8  Type1 Dictionary 的入口
+  ======================================
+  KEY             Type         Value
+  ======================================
+  Type           name         (必须) 
+
+  Subtype        name         (必须)。。
+
+  Name           name         (PDF 1.0 必须, 其他版本可选)
+
+  BaseFont       name         (必须)
+
+  FirstChar      integer      (除了standard 14 字体， 其他都必须)
+
+  LastChar       integer      (除了standard 14 字体,  其他都必须)
+
+  Widths         array        (除了standard 14 字体,  其他都必须)
+
+  FontDescriptor dictionary   (除了standard 14 字体,  其他都必须)
+
+  Encoding name or dictionary (可选)
+
+  ToUnicode      stream       (可选, pdf 1.2)
+
+
+. Example 5.6
+
+14 0 obj
+<< /Type /Font
+/Subtype /Type1
+/BaseFont /AGaramond-Semibold
+/FirstChar 0
+/LastChar 255
+/Widths 21 0 R
+/FontDescriptor 7 0 R
+/Encoding 25 0 R
+>>
+endobj
+21 0 obj
+[ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+255 280 438 510 510 868 834 248 320 320 420 510 255 320 255 347
+510 510 510 510 510 510 510 510 510 510 255 255 510 510 510 330
+781 627 627 694 784 580 533 743 812 354 354 684 560 921 780 792
+588 792 656 504 682 744 650 968 648 590 638 320 329 320 510 500
+380 420 510 400 513 409 301 464 522 268 259 484 258 798 533 492
+516 503 349 346 321 520 434 684 439 448 390 320 255 320 510 255
+627 627 694 580 780 792 744 420 420 420 420 420 420 402 409 409
+409 409 268 268 268 268 533 492 492 492 492 492 520 520 520 520
+486 400 510 510 506 398 520 555 800 800 1044 360 380 549 846 792
+713 510 549 549 510 522 494 713 823 549 274 354 387 768 615 496
+330 280 510 549 510 549 612 421 421 1000 255 627 627 792 1016 730
+500 1000 438 438 248 248 510 494 448 590 100 510 256 256 539 539
+486 255 248 438 1174 627 580 627 580 580 354 354 354 354 792 792
+790 792 744 744 744 268 380 380 380 380 380 380 380 380 380 380
+]
+endobj
+
+  
+. Example 5.7
+
+7 0 obj
+<< /Type /Font
+/Subtype /MMType1
+/BaseFont /MinionMM_366_465_11_
+/FirstChar 32
+/LastChar 255
+/Widths 19 0 R
+/FontDescriptor 6 0 R
+/Encoding 5 0 R
+>>
+endobj
+19 0 obj
+[ 187 235 317 430 427 717 607 168 326 326 421 619 219 317 219 282 427
+… Omitted data …
+569 0 569 607 607 607 239 400 400 400 400 253 400 400 400 400 400
+]
+endobj
+
+
+. Example 5.14 shows the structure of an embedded standard Type 1 font.
+
+Example 5.14
+
+12 0 obj
+<< /Filter /ASCII85Decode
+/Length 41116
+/Length1 2526
+/Length2 32393
+/Length3 570
+>>
+stream
+,p>`rDKJj'E+LaU0eP.@+AH9dBOu$hFD55nC
+… Omitted data …
+JJQ&Nt')<=^p&mGf(%:%h1%9c//K(/*o=.C>UXkbVGTrr~>
+endstream
+endobj
+  
+
+. 5.9 提取  (Extraction)  文本内容
+
+. 6.2  RGB  与 CMYK 之间的转换
+
+. 8.3.1 页面标签  Page Labels
+
+  PDF 文档中的每一页都标识为一个整型页索引.  标识在文档中的相对位置. 
+
+  Example 8.5    演示有page labeled 的文档的对象
+
+1 0 obj
+<< /Type /Catalog
+/PageLabels << /Nums [ 0 << /S /r >>% A number tree containing
+4 << /S /D >>% three page label dictionaries
+7 << /S /D
+/P ( A- )
+/St 8
+>>
+]
+>>
+…
+>>
+endobj
+
+
+  表8.10  page label dictionary 中的入口
+
+  ================================================
+  Key     Type          Value
+  ======================================================
+  Type    name          (可选), PDF 对象的类型, 如果有, 必须是 PageLabel
+ 
+  S       name          (可选) style
+
+                        D   Decimal arabic numberals
+                        R   Uppercase roman numerals
+                        r   Lowercase roman numerals
+                        A   Uppercase letters
+                        a   Lowercase letters
+
+  P      text string    (可选) label prefix
+
+  St     integer        (可选) 选中范围的第一页
+                    
+. 8.3.2 Articles
+
+  Threads 入口是 document catalog 中的可选入口.
+
+   表 8.11  thread dictionary 的入口
+  ===================================
+  KEY        TYPE        Value
+  ====================================
+  Type       name        (可选), 如果有, 必须是 Thread
+
+  F          dictionary  (可选)
+
+  l          dictionary  (可选)
+
+     表 8.12  bead dictionary 的入口
+  ===================================
+  KEY        TYPE        Value
+  ====================================
+  Type       name        (可选) 如果有, 必须是 Bead
+
+  T          dictionary  (对于一个thread 的第一个bead 必须有, 其他的bead 则可选; 必须是直接引用)
+
+  N          dictionary  (必须; 必须是直接引用)
+
+  V          dictionary  (必须; 必须是直接引用)
+
+  P          dictionary  (必须, 必须是直接引用)
+
+  R          rectangle   (必须)
+
+  
+Example 8.6 shows a thread with three beads.
+Example 8.6
+22 0 obj
+<< /F 23 0 R
+/I << /Title ( Man Bites Dog ) >>
+>>
+endobj
+23 0 obj
+<< /T 22 0 R
+/N 24 0 R
+/V 25 0 R
+/P 8 0 R
+/R [ 158 247 318 905 ]
+>>
+endobj
+
+24 0 obj
+<< /T 22 0 R
+/N 25 0 R
+/V 23 0 R
+/P 8 0 R
+/R [ 322 246 486 904 ]
+>>
+endobj
+25 0 obj
+<< /T 22 0 R
+/N 23 0 R
+/V 24 0 R
+/P 10 0 R
+/R [ 157 254 319 903 ]
+>>
+endobj
+
+. 表8.13  transition dictionary 的入口
+
+。。。。
+
+.  表 8.15 annotation dictionaries 的入口
+
+。。。。
+
+. ...
+
+. 8.46 form field's additional-actions dictionary 入口
+
+  =====================================
+  KEY       TYPE          VALUE
+  =====================================
+  K         dictionary    (可选; Pdf 1.3)  当用户按键时, javascript 动作被执行。
+  
+  F         dictionary    (可选; pdf 1.3)
+
+  V         dictionary    (可选; pdf 1.3)
+
+  C         dictionary    (可选; pdf 1.3)
+
+. ***********************************
+  Optional Content in Content Streams     内容stream 中的可选内容      	P370
+. ***********************************
+
+  BDC 与 EMC  之间是 内容stream 中的可选内容.  是OC 的标记内容 (marked-content)
+
+  Example 4.35
+% Within a content stream
+...
+/OC /oc1 BDC% Optional content follows
+BT
+/F1 1 Tf
+12 0 0 12 100 600 Tm
+(Hello) Tj
+ET
+EMC% End of optional content
+...
+
+<<% In the resources dictionary
+/Properties << /oc1 5 0 R >>% This dictionary maps the name oc1 to an ...% optional content group (object 5)
+>>
+5 0 obj% The OCG controlling the visibility
+<< % of the text.
+/Type /OCG
+/Name (Show Greeting)
+>>
+endobj
+
+. 4.10.3 可选内容配置  Configuring Optional Content
+
+  1. 可选内容 属性词典   Optional Content Properties Dictionary      /P375 描述
+
+  2. 可选内容 配置词典   Optional Content Configuration Dictionary   /P375 描述
+
+  3. 用法和应用词典的用法 Usage and Usage Application Dictionaries   /P380 描述
+
+. 
+   KEY        Type     Value
+   ------------------------------------------
+   ToUnicode  stream   (Optional; PDF 1.2) A stream containing a CMap file that maps character codes to Unicode values
+                       (see Section 5.9, "Extraction of Text Content").
+
+                       一个包含CMap文件 的流, CMap 文件映射了字符与Unicode 值.
+
+. P370   下面
+
+  Beginning with PDF 1.2, a string may be shown in a composite font that uses multiple-byte codes to select some of its glyphs.  In that case, one or more consecutive bytes of the string are treated as a single character code. The code lengths and the mappings from codes to glyphs are defined in a data structure called a CMap, described in Section 5.6, "Composite Fonts".
+
+  多字节可能是一个字符编码, 编码长度与编码的映射关系在CMap 中定义, 详细描述参见 5.6 
+
+. 5.6  Composite font   混合字体
+
+  混合字体又叫做 Type 0 字体. 是包含了一个叫CIDFont 的字体对象.  Dictionary 中Subtype 的值是 Type0.  Type0 字体可看作root font. 和它关联的CIDFont 是它的派生.
+
+  注意:  ... 特别的是, PDF 要求 字符编码定义在 CMap 中.  PDF 只支持一种派生, 必须是CIDFont.
+
+  当前字体是混合字体是,与简单字体时 文本显示操作符 效果不一行。  对于简单字体, 字符串的每一个字节显示在一个glyph中; 但是对于符合字体, 从派生的CIDFont 中可能会解码出一个或多个字节的序列对应一个glyph。   这种机制支持大字符集, 例如 中文, 日文, 韩文. 
+
+. 5.6.1 CID-Keyed Fonts 概述(Overview)   
+
+  需要更完整的描述, 查阅 Adobe Technical Notes #5092, CID-Keyed Font Technology Overview, and #5014, Adobe CMap and CIDFont Files Specification.
+
+  CMap 映射 有一个font number 和 a character selector 。
+
+  作为Type 0 字体, 它包含 Encoding 入口, 它的值就是一个 CMap dictionary。   DescendantFonts入口 是 CIDFont dictionary with wich the CMap has been combined.
+
+. 5.6.2 CIDSystemInfo Dictionaries
+
+   =====================================
+   KEY          Type             VALUE
+   =====================================
+   Registry     ASCII字符串      (必须) 字符串标识, 例如 (Adobe)   
+
+   Odering      ASCII字符串      (必须) 唯一的字符串, 用来明明字符集. 例如 (Japan1)   (UCS)
+
+   Supplement   整数             (必须) 字符集的增补编号. 初始化是0. 每当有额外的CIDs 加入, 这个数字就会增加.
+
+. 5.6.3 CIDFonts
+  
+  ...
+
+. 5.6.4 CMaps
+
+  表 5.15 遇顶的CJK CMap 名称
+  ====================================
+  Name                      Description
+  =======================================
+  Chinese(Simplified)
+
+  GB-EUC-H                  微软编码页 936 () , GB 2312-80 字符集, EUC-CN编码
+
+  GB-EUC-V                  ..
+
+  ....
+
+  P451
+
+  begincmap 和 endcmap 
+
+  usecmap
+
+  begincodespacerange 和 endcodespacerange    指定了编码范围
+
+  usefont   指定了字符编号
+
+  beginbfchar 和 endbfchar  定义了单个输入的字符编码之间的映射关系
+
+       beginbfrange 和 endbfrange 类似， 不过是 输入编码段之间的映射关系.
+
+  begincidchar 和 endcidchar 单个输入字符编码与 关联CIDFont 的CIDs 的映射。    
+
+       begincirange 和 endcidrange  类似, 不过是范围编码
+
+  beginnotdefchar, endnotdefchar, beginnotdefrange 和 endnotdefrange 定义了notdef 映射字符编码与CIDs.  详见: "Handling Undefined Characters" P454.
+
+  ----------
+
+  ToUnicode    stream   (可选) 包含CMap 文件的流.  映射字符编码与Unicode 值. 参见 5.9 "Extraction of Text Content"
+ 
+  
+. 5.9 Extraction of Text Content   解压文本内容
+
+  5.9.2 ToUnicode CMaps
+
+        必须用beginbfchar, endbfchar, beginbfrange, 和 endbfrange 操作符来定义字符代码与Unicode 字符序列(UTF-16BE)编码之间的映射. 
+
+  =========
+
+  n beginbfchar
+ 
+  srcCode   dstString
+
+  endbfchar
+
+ ===========
+
+  dstString 可以是512字节之内的字符串.
+
+ =============
+
+  n beginbfrange
+
+  srcCode1 srcCode2  dstString
+
+  endbfrange
+
+  ============
+
+  对于范围型的编码转换, 必须确保 最后的dstString 字节长度小于等于255 (srcCode2 - srcCode1)
+
+  语法定义
+
+  ===========
+  n beginbfrange
+
+  srcCode1  srcCode2 [dstString1 dstString2 ... dstStringm]
+
+  endbrrange
+
+  =============
+
+  m = srcCode2 - srcCode1 + 1
+
+. 在stream 中/P 的含义, 例如:  /P <</Lang (en-US)/MCID 0 >>
+
+  /P 一般不再  BDC 和 EMC 内.
+
+. 10.5 Marked Content   标记内容
+
+  标记内容元素和操作符在两个词组内:
+
+   1. MP 和 DP  操作符在 内容stream 中 定义了单一标记内容点.    
+
+   2. BMC, BDC, EMC 操作符 在 内容stream 中 包括了对象的标记内容学列. 
+
+   DP 和 BDC 操作符指定了一个 属性列表, 包含关于标记内容的更多信息.   参见 10.5.1 "Property Lists"
+
+   表 10.7 Marked-content operators
+   ==============================
+   Operands        Operator         Description
+   =========================================
+   tag             MP               设计的一个标记内容点. tag 是对象名称, 用来指向一个角色或重要点
+
+   tag properties  DP               关联属性列表的标记内容点.
+
+   tag             BMC              开始一个标记内容序列, 对应有个EMC 操作符来结束.
+
+   tag properties  BDC              开始一个关联属性列表的 标记内容序列.  对应有个EMC 来结束. 
+
+   -               EMC              对应BMC 或BDC 操作符, 用来结束一个标记内容序列.
+
+. 10.5.2 标记内容和 剪贴板 (Marked content and Clipping)
+
+  当有些路径对象用 W n 或 W* n (参见 4.4.3 "Clipping Path Operators") 或 文本对象在 透视(rendering)模式7 时(参见: 5.2.5, "Text Rendering Mode")。
+
+. 10.6 逻辑结构  Logical Structure
+    
+    表 10.8 Entries in the mark infomation dictionary
+    ====================================================
+    KEY              Type             value
+    =====================================================
+    Marked           boolean          可选. 缺省是false. 用来指示文档是否符合Tagged PDF 传统.
+
+    UserProperties   boolean          可选. 缺省是 false.  标记结构元素是否包含用户属性(参见: "User Properties" P876)
+
+    Suspects         boolean          可选. 缺省 false. 
+
+. 10.6.1 结构分层 (Structure Hierarchy)
+
+    表10.9  Entries in the structure tree root
+   ===================================================
+    Key            type                      value
+   =====================================================
+    Type            name                  必须
+
+    K               dictionary or array   可选
+
+    IDTree          name tree             如果有结构元素包含表示元素就必须有
+
+    ParentTree      number tree           如果结构元素包含内容项 就必须有
+
+    ParentTreeNextKey  integer            可选
+
+    RoleMap         dictionary            可选
+
+    ClassMap        dictionary            可选
+
+
+    表 10.10 Entries in a structure dictionary
+    =============================================
+    Key       type          value
+    =============================================
+    Type      name          可选
+
+    S         name          必须
+
+    P         dictionary    必须. 而且必须是直接引用.
+
+    ID        byte string   可选
+
+    Pg        dictionary    可选. 必须是直接引用
+
+    K         (various)     可选. 结构元素的子元素. ..
+
+    A         (various)     可选
+
+    C         name or array 可选
+
+    R         integer       可选
+
+    T         text string   可选
+
+    Lang      text string   可选.
+
+    Alt       text string   可选
+
+    E         text string   可选
+
+    ActuralText text string 可选
+    ===============================
+
+. 10.6.2 Structure Types    结构类型
+
+   比如章节, 段落, 脚注等等。
+
+
+. 10.6.3 Structure Content  结构性内容   P861
+
+   内容项 有两种:
+
+   1. 内容stream 中的 标记内容序列 (Marked-content sequences with content streams) (see "Marked-Content Sequences as Content Items")  
+
+   2. Complete PDF object such as annotations and XObjects (see "PDF Objects as Content Items")
+
+   表10.11 Entries in a marked-content reference dictionary
+   ==========================================================
+   Key        Type         Value
+   ==========================================================
+   Type       name         必须
+
+   Pg         dictionary   可选
+
+   Stm        stream       可选. 必须是直接引用
+
+   StmOwn     (any)        可选, 必须是直接引用
+
+   MCID       integer      必须
+   ==========================================================
+
+   看到P864了
+
+. 10.7 Tagged PDF
+
+  
+
+. 4.10.2 Making Graphical Content Optional 
+
+. 关于换行
+
+  P853 Example10.3   Line 1 与Line 2 的例子.   /Pgf 好像也是换行
+
+  Tr = 3 , 7 对应的文本对象似乎是换行.  ??
+
+  W n 或 W* n或 n 似乎也是换行 
+
+  T* 也是换行
+
+  '  是换行    参见 表5.6
+
+  0  Tj  Td  移到下一行起始, 效果等同于 T*
+
+  ( )Tj 似乎也是换行
+
+  P68   Example 3.3
+
+. 表4.1  操作符汇总   P196  这个很重要. 对于查阅非常方便 -------------------------------
+
+  ============================================================================================================
+  CATEGORY                    OPERATORS		                                TABLE                 PAGE
+  ===============================================================================================================
+  General graphics state      w, J, j, M, d, ri, i, gs                          4.7                   219
+
+  Special graphics state      q, Q, cm                                          4.7                   219
+
+  Path construction           m, l, c, v, y, h, re                              4.9                   226
+
+  Path painting               S, s, f, F, f*, B, B*, b, b*, n                   4.10                  230
+
+  Clipping paths              W, W*                                             4.11                  235
+
+  Text objects                BT, ET                                            5.4                   405
+
+  Text state                  Tc, Tw, Tz, TL, Tf, Tr, Ts                        5.2                   398
+
+  Text positioning            Td, TD, Tm, T*                                    5.5                   406
+  
+  Text showing                Tj, TJ, ', "                                      5.6                   407
+
+  Type 3 fonts                d0, d1                                            5.10                  423
+
+  Color                       CS, cs, SC, SCN, sc, scn, G, g, RG, rg, K, k      4.24                  287
+
+  Shading patterns            sh                                                4.27                  303
+
+  Inline images               BI, ID, EI                                        4.42                  352
+
+  XObjects                    Do                                                4.37                  332
+
+  Marked content              MP, DP, BMC, BDC, EMC                             10.7                  851
+
+  Compatibility               BX, EX                                            3.29                  152
+
+
+. [(\(8)-6(6)-6(\))13(7)-6(5)7(5)]TJ   为什么前面有斜杠'\' ? 是为了表示 ( ) , 转义符
+
+. 4.2 坐标系统
+
+  P201
+
+  用户空间与设备空间的转换是通过CTM(当前转换矩阵Current transformation matrix)来定义的. 定义了一个pdf 图形状态的元素 . 图4.3  显示了这种转换.
+
+  缺省的用户空间, 提供了一个连续的, 可依赖的起始位置.  如果需要的话, 一个pdf 内容流, 会修改用户空间来适应, 需要提供坐标转换操作符(coordinate transformation operator), cm (4.3.3).   
+
+  坐标转换 用矩阵相乘来表达.
+
+  -----------------------------------
+  表4.2  设备独立的图形状态参数      P210
+  --------------------------------------------------------
+  参数            类型              值
+  ----------------------------------------------------------
+  CTM             array         当前转换矩阵.映射 用户坐标与设备坐标的转换。 用cm 操作符来修改. 初始值: 转换用户坐标到设备坐标的矩阵
+
+  clipping path   (内部)        当前粘贴路径. 4.4.3 。 初始值: ..
+
+  color space    名称或数组     当前颜色空间. 4.5.
+
+  color
+
+  text state    (变量)         9个图形状态参数集合。 参见 5.2 "Text state Parameters and Opeators"

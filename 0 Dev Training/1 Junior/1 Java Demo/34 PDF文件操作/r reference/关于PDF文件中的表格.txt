@@ -1,0 +1,63 @@
+. 
+
+. PDF 涉及的 所有 操作符 汇总    P196
+
+  --------------------------------------------------------------------------------------------------
+  CATEGORY                    OPERATORS                             TABLE                  PAGE
+  --------------------------------------------------------------------------------------------------
+  General graphics state      w,J,j,M,d,ri,i,gs                     4.7                    219
+
+  Special graphics state      q,Q,cm                                4,7                    219
+
+  Path contruction            m, l, c, v, y, h, re                  4.9                    226
+
+  Path painting               S,s,f,F,f*,B,B*,b,b*,n                4.10                   230
+
+  Clipping paths              W, W*                                 4.11                   235
+
+  Text objects                BT,ET                                 5.4                    405
+
+  Text state                  Tc,Tw,Tz,TL,Tf,Tr,Ts                  5.2                    398    
+
+  Text positioning            Td, TD,Tm, T*                         5.5                    406
+
+  Text showing                Tj,TJ, ', ''                          5.6                    407
+
+  Type 3 fonts                d0, d1                                5.10                   423
+
+  Color                       CS,cs,SC,SCN,sc,scn,G,g,RG,rg,K,k     4.24                   287
+
+  Shading patterns            sh                                    4.27                   303
+
+  Inline images               BI,ID,EI                              4.42                   352
+
+  XObjects                    Do                                    4.37                   332
+
+  Marked content              MP,DP,BMC,BDC,EMC                     10.7                   851
+
+  Compaitibility              BX,EX                                 3.29                   152
+  --------------------------------------------------------------------------------------------------
+
+  P197 页 还有一副图来演示这些操作符在不同的对象之间的应用方式。 
+
+.  文本位置
+
+   Td   tx, ty    移到下一行起始位置，然后偏移量是tx,ty
+
+   TD   tx, ty    移到下一行起始位置, 偏移量是反向tx,ty   
+
+   Tm   a, b, c, d, e, f    一般a,b,c,d 是 1 0 0 1， e, f 对应的就是 tx, ty
+
+   T*   ---       下一行起始位置
+
+. 文本显示
+
+  Tj              显示一个字符串
+
+  '               单引号, 移到下一行的起始位置, 然后显示一个文本串
+
+  "               双引号   aw, ac, string   移到下一行起始位置并显示一个文本串, aw是字分隔符, ac 是字符分隔符
+
+  TJ              数组， 显示多个文本串. () 里面的内容是文本串， 后面的数字是间距
+
+  

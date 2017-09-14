@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="ProtocolOptionsMapping"><!--顶层元素-->
+
+       <xs:complexType><!--以下将定义子节点和属性-->
+
+       <xs:sequence><!--这里是一个可以循环的LIST是子节点-->
+
+              <xs:element name="LogType" minOccurs="0" maxOccurs="unbounded"><!--子节点对象-->
+
+                 <xs:complexType>
+
+                     <xs:sequence><!--这里是一个可以循环的LogType的子节点,可能有多个-->
+
+                            <xs:element name="DestinationType" maxOccurs="unbounded">
+
+                                  <xs:complexType>
+
+                                          <xs:sequence>
+
+                                                 <xs:element  name="ProtocolOption" maxOccurs="unbounded">
+
+                                                 <xs:complexType>
+
+                                                        <xs:attribute name="name" type="xs:string"/>
+
+                                                        <xs:attribute name="value" type="xs:int"/>
+
+                                                 </xs:complexType>
+
+                                                 </xs:element>
+
+                                          </xs:sequence>
+
+                                          <xs:attribute name="name" type="xs:string"/>
+
+                                          <xs:attribute name="value" type="xs:int"/>
+
+                                   </xs:complexType>
+
+                               </xs:element>
+
+                     </xs:sequence>
+
+                     <xs:attribute name="name" type="xs:string"/><!--这里定义LogType节点的属性-->
+
+                     <xs:attribute name="value" type="xs:int"/>
+
+                 </xs:complexType>
+
+              </xs:element>
+
+       </xs:sequence>
+
+       </xs:complexType>
+
+</xs:element>
+
+</xs:schema>
+

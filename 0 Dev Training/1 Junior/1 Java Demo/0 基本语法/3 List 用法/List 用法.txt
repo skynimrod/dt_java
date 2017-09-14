@@ -1,0 +1,9 @@
+参见:
+
+    http://zhidao.baidu.com/link?url=vr-R2bBG8DOTSnJR6cu776FvQSpAgMVFNcBxkEYJfYcuerO3fLQv8bAF3UxXJmiPxei7pDshnuga8arc02j1ka
+
+. 实例化:
+
+  List[<数据类型>] list = new ArrayList[<数据类型>]();
+
+  获得集合内元素个数: list.size();

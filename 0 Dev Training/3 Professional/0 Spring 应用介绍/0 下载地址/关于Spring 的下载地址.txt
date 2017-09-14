@@ -1,0 +1,3 @@
+. AspectJ обть╣ьж╥
+
+  http://www.eclipse.org/aspectj/downloads.php

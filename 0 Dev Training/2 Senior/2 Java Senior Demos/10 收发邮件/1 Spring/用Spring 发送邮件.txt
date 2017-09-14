@@ -1,0 +1,87 @@
+参见：
+
+       http://hi.baidu.com/luyinlai/item/ae8072e59b320c256dabb884
+
+
+java spring 自动发送邮件
+首先在spring的配置文件applicationContext.xml 加入以下代码
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="mail.sina.com"/>//邮件服务器名称
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+        <property name="username" value="xxx@sina.com>//你的邮件
+        <property name="password" value="xxx"/>
+    </bean>
+<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <props>
+                <prop key="resource.loader">class</prop>
+                <prop key="class.resource.loader.class">
+                    org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+                </prop>
+            </props>
+        </property>
+    </bean>
+<bean id="coreMailSender" class="com.cooperelate.core.CoreMailSenderImpl">//class见下面的JAVA类
+        <property name="mailSender" ref="mailSender"/>
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+JAVA调用代码
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.mail.internet.MimeMessage;
+import org.apache.velocity.app.VelocityEngine;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.ui.velocity.VelocityEngineUtils;
+public class CoreMailSenderImpl implements ICoreMailSender {
+private JavaMailSender mailSender;//从上面的applicationContext.xml中取得
+private VelocityEngine velocityEngine;//从上面的applicationContext.xml中取得
+/** 账号信息 */
+private String accountMessage;
+public void sendMail(String mailText, final String email) {
+   this.accountMessage = mailText;
+   MimeMessagePreparator preparator = new MimeMessagePreparator() {
+    @SuppressWarnings("unchecked")
+    public void prepare(MimeMessage mimeMessage) throws Exception {
+     MimeMessageHelper message = new MimeMessageHelper(mimeMessage,true,"utf-8");
+     message.setFrom("你的邮件");//你的邮件地址
+     message.setTo(email);//收件人的邮件地址
+     message.setSubject("您的游戏密码，请查收");//邮件主题
+     message.setSentDate(new Date());
+     Map model = new HashMap();
+     model.put("accountMessage",new String(accountMessage.getBytes(),"gb2312"));
+     model.put("userName", email);
+     model.put("emailAddress", "你的邮件");
+     model.put("title", new String(new String("您的游戏密码，请查收").getBytes(),"gb2312"));
+     model.put("acountAndPass", new String(new String("您的账号和密码如下").getBytes(),"gb2312"));
+     model.put("mailSendAdd", new String(new String("邮件发送地址为").getBytes(),"gb2312"));
+     String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "此类的包名如com/cooperelate/core/mail.vm",model);
+     text = new String(text.getBytes(),"gb2312");
+     message.setText(text, true);
+    }
+   };
+   this.mailSender.send(preparator);
+}
+}
+
+在上面的JAVA类的同一级目录(我的目录是com.cooperelate.core)建一个文件名为mail.vm
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${title}</title>
+</head>
+<body>
+<h3>${userName}, ${acountAndPass}:</h3>
+<div>
+${accountMessage}
+<br>
+${mailSendAdd}:<a href=">.
+</div>
+</body>
+</html>

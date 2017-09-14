@@ -1,0 +1,95 @@
+. 右键点击 目标工程名（一般会先创建一个package, 这样就是右键点击package名字了）
+
+  --> new ->other->Servlet
+
+.  起好servlet名字后, finish 后自动创建了servlet 的代码框架。
+
+. 现在问题来了
+
+  会发现以下语句 前面有小红叉 (即 有错误)
+
+  import javax.servlet.ServletException;
+  import javax.servlet.http.HttpServletRequest;
+  import javax.servlet.http.HttpServletResponse;
+
+  以及涉及到javax.servlet....等的方法及语句, 都会有 小红叉(错误提示)
+
+  分析:
+
+       是缺少相关的jar 包.   缺少 servlet-api.jar.
+
+       按照如下顺序添加对应的jar包:
+
+       右键点击工程名->Build Path ->Configure Build Path ... ->Add JARs...-> 找到servlet-api.jar 所在的位置, 然后添加即可。
+
+   然后对应的错误提示就全部消失了.
+
+. Servlet 接口的说明
+
+  关于Servlet获取方法和参数 参见: http://hi.baidu.com/mr_yuxj/item/1b556a9bc5c31b9d83d295df
+
+  使用Servlet处理Http请求 参见: http://blog.sina.com.cn/s/blog_621a42970100gatc.html
+
+  1. doGet()
+
+     处理http 的get 请求.
+
+     
+
+  2. doPost()
+
+  3. service()
+
+  4. 关于 serialVersionUID
+
+     序列化时为了保持版本的兼容性，即在版本升级时反序列化仍保持对象的唯一性。
+
+     你可以随便写一个，在Eclipse中它替你生成一个，有两种生成方式：
+
+    	一个是默认的1L，比如：private static final long serialVersionUID = 1L;
+
+	一个是根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段，比如：private static final long serialVersionUID = -8940196742313994740L;之类的。
+
+     当你一个类实现了Serializable接口，如果没有定义serialVersionUID，Eclipse会提供这个提示功能告诉你去定义之。
+ 
+     在Eclipse中点击类中warning的图标一下，Eclipse就会自动给定两种生成的方式，如上面所述。如果不想定义它，在Eclipse的设置中也可以把它关掉的，设置如下： 
+
+         Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==> Potential programming problems 
+
+     将Serializable class without serialVersionUID的warning改成ignore即可。 
+
+     如果你没有考虑到兼容性问题时，就把它关掉，不过有这个功能是好的，只要任何类别实现了Serializable这个接口的话，如果没有加入serialVersionUID，Eclipse都会给你warning提示，这个serialVersionUID为了让该类别Serializable向后兼容。 
+
+     如果你的类Serialized存到硬盘上面后，可是后来你却更改了类别的field(增加或减少或改名)，当你Deserialize时，就会出现Exception的，这样就会造成不兼容性的问题。 
+
+     但当serialVersionUID相同时，它就会将不一样的field以type的预设值Deserialize，这个可以避开不兼容性的问题。 
+     
+
+. 通过url 访问servlet 的说明
+
+  1. 部署 servlet
+
+     export....
+
+     如果是通过Eclipse 新建的Web App, 那么直接访问 localhost/weixin , 则表示找不到路径, 因为 还没添加首页的内容(jsp等)
+
+     由于已经创建了Servlet, 自动在Web.xml 进行了定义, 则可以访问: http://localhost/weixin/GetURL_0
+
+
+     http://localhost/weixin/GetURL_0?hello=8&Adams=18
+     显示页面:
+
+     Method: GET
+     Adams: 18
+     hello: 8
+
+  2. 关于更新问题
+
+     先将目标WebApp unDeploy. Tomcat 会自动删除停止对应的应用， 并删除对应的app目录和war(tomcat 内的)。 
+
+     然后用Eclipse Export 新的war 到tomcat(或者指定目录都可)
+
+     然后 deploy 上面最新的war， 则 运行的就是最新的目标应用
+
+  3. 
+     

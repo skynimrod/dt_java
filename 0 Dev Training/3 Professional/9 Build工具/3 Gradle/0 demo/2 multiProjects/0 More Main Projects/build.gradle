@@ -1,0 +1,10 @@
+description = "Root Project"
+
+Closure cl = { task -> println "I'm $task.project.name"}
+
+task hello << cl
+
+// sub project 1
+project(':subProject1') {
+  task hello << cl
+}

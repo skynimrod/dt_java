@@ -1,0 +1,6 @@
+Dim soapclient, result
+Set soapclient = CreateObject("MSSOAP.SoapClient30")
+soapclient.mssoapinit "http://134.96.71.142/QnInterface/SendMsgService.asmx?WSDL"
+ 
+result = soapclient.QnSendMail_GS("zhanglelei@channelsoft.com", "", "", "")
+MsgBox 	"result=" & result

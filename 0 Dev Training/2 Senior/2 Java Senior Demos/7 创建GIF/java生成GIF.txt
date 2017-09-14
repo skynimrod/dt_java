@@ -1,0 +1,25 @@
+下面的网站提供了一个免费的非常好用的GIF动画处理的源码：http://www.fmsware.com/stuff/gif.html
+
+使用起来非常简单：
+
+* 分解GIF:
+ *    GifDecoder d = new GifDecoder();
+ *    d.read("sample.gif");
+ *    int n = d.getFrameCount();
+ *    for (int i = 0; i < n; i++) {
+ *       BufferedImage frame = d.getFrame(i);  // frame i
+ *       int t = d.getDelay(i);  // display duration of frame in milliseconds
+ *       // do something with frame
+ *    }
+
+ * 合成GIF:
+ *    AnimatedGifEncoder e = new AnimatedGifEncoder();
+ *    e.start(outputFileName);
+ *    e.setDelay(1000);   // 1 frame per sec
+ *    e.addFrame(image1);
+ *    e.addFrame(image2);
+ *    e.finish();
+
+
+
+本文来自CSDN博客，转载请标明出处：http://blog.csdn.net/zzyy00/archive/2005/09/07/473819.aspx

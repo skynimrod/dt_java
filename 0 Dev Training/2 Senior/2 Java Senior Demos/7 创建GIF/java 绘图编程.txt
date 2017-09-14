@@ -1,0 +1,9 @@
+. 参见：
+
+  http://www.doc88.com/p-38975996367.html
+
+  http://www.blogjava.net/yellowstonemay/articles/289803.html (很好， 很简单)
+
+  SAS->TestGif.java, VerifyCode.java
+
+. 

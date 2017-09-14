@@ -1,0 +1,76 @@
+参见:
+
+     http://www.wangchao.net.cn/bbsdetail_51034.html
+
+. PDF 的坐标系统是用户空间来描述的, 不会 应为PDF文件视图的变化而变化.
+
+. pdf_reference_1-7.pdf 规范中 P199
+
+  4.2 坐标系统
+
+   对应当前页有下面一些属性来决定坐标:
+
+      .  原始坐标的位置    The location of the origin
+
+      .  x, y 轴的原始位置   The orientation of the x and y axes
+
+      . 每一个像素单元的长度  The lengths of the units along each axis
+
+     如果PDF文件的坐标系统被指定了设备空间， 那么文件就是设备依赖性的, 不同设备上显示会不相同。
+
+     为了避免设备依赖性, PDF 定义了设备无关性坐标系统, 只依赖于当前页的相对关系.  叫做用户空间 user space
+
+     page 字典 的 CropBox 入口指定了用户空间的矩形， 对应可视空间.    正的 x 坐标值 是水平相右扩展, 正的y 坐标值 是垂直向上扩展.  (Page 字典的 Rotate 入口的。。。) ，page 字典定义了(Table 3.27)x,y 轴坐标对的长度定义在UserUnit(参见 PDF 1.6 ). 如果没有定义, 缺省是1/72 inch (英寸) . 这个坐标系统叫做缺省user space.
+
+     用户空间与设备空间之间的转换是通过 CTM (the current transformation matrix)和 PDF 图形状态的元素来定义的。
+
+. 其他的坐标空间
+
+  1. 文本的坐标系统 定义在 text space。  text space 到 user space 的转换是通过文本矩阵来实现的. 参见5.3.1 Text-Positioning Operators.
+
+  2....
+
+  [1 0 0 1 tx ty]      translation  移动， 也就是便宜
+
+  [Sx 0 0 Sy 0 0]       Scaling     缩放
+
+  [cosθ sinθ -sinθ cosθ 0 0]   Rotations   旋转
+
+  [1 tan α tan β 1 0 0]  Skew    按角度缩放
+
+  
+. 4.2.3  转换矩阵 Transformation Matrices
+
+   要理解PDF中的坐标系统转化机制, 核心是记住2点
+
+   1. Transformation alter coorinate system, not graphics objects. 
+
+      转换系统修改的是坐标系统， 不是图形对象. 
+
+   2. 转换矩阵指定了从新坐标系统到原始坐标系统之间的转换.    
+
+  P 296  有一个例子， 详细说明了每一行的作用
+
+. 1. Tm 是绝对坐标
+
+  2. re 是绝对坐标
+
+  3. Tm 之后的 Td, TD, 是相对坐标
+
+  3. re 之后的Td, TD 是绝对坐标
+
+     1 0 0 1 538.68 51.72 Tm				这个也是绝对坐标
+( )Tj
+EMC 															页脚结束
+/P <</Lang (x-none)/MCID 0 >>BDC 		正文     MCID = 0
+0.458 w 														设置线宽  lineWidth
+/C2_0 16.02 Tf
+0.06 Tc 2 Tr -301.24 678.66 Td			
+<315C04BC38B2>Tj			第二节
+/TT1 16.02 Tf
+0 Tc 0 Tr 48.26 0 Td                 
+( )Tj                               空格
+/C2_0 16.02 Tf
+2 Tr 7.98 0 Td                      
+[<079C>-3<0A28>-3<31B004FB>]TJ      公司简介
+/TT1 16.02 Tf

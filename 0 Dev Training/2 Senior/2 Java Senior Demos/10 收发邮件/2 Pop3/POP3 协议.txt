@@ -1,0 +1,5 @@
+参见：
+
+    http://baike.baidu.com/link?url=sMFdBWaa0vekkO6vRmnZsKWbE-6X2bhBfMAyGGdi9OPzu7Z_ocXcvtOOnDTXQA2F
+
+. 是因特网电子邮件的第一个离线协议标准, POP3 协议允许用户从服务器上把邮件存储到本地主机, 同时根据客户端的操作删除或保存在邮件服务器上的邮件, 而POP3 服务器则 遵循POP3 协议的接收邮件服务器, 用来接收电子邮件的. POP3 协议是TCP/IP 协议族中的一员, 由  RFC 1939 定义. 本协议主要用于支持使用客户端远程管理在服务器上的电子邮件.

@@ -1,0 +1,26 @@
+. 错误解释
+
+  1. cannot make a static reference to the non-static method test() from the type TestGif   // TestGif 是类名
+
+     原因是 : main() 是 public static void main(),  包含 static
+
+              而 test()  是 public void test()
+ 
+              在静态函数中调用非静态函数就会出现这个错误, 修改 test() 增加 static 定义:
+
+                  public static void test();
+
+              因为 在java 中main() 必须加static, 如果不加, 虽然编译不会出错, 但是试图执行是会出错， 提示main() 方法不存在. 在esclipse 中则显示 Open run dialog , 即需要另选一个来执行.
+
+ 
+. 关于Eclipse 的问题
+
+  1. "Run as"中找不到"Java Application"   
+
+     原因:  没有定义main() 或定义错误
+
+           需要注意的是, 下面的main() 定义也是不对的
+
+                    public static void main()
+
+           修正为 public static void main(String args[])  就可以了

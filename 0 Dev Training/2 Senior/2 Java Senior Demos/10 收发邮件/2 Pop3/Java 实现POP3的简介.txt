@@ -1,0 +1,72 @@
+. 参见:
+
+   http://blog.sina.com.cn/s/blog_4c4c0b2c0100085j.html
+
+. 用JavaMail 实现 POP3 协议
+
+  邮局协议(Post Office Protocol Version 3, POP3) 提供了一种对邮件消息进行排队的标准机制, 这样接收者以后才能检索邮件. POP3 服务器也运行在TCP/IP 之上, 并且对默认端口110 上监听(SNMP 协议运行在25端口上). 现在, 大部分邮件服务器都采用SNMP 发送邮件, 同时使用POP3 接收电子邮件信息.
+
+  1. 握手
+
+     客户端向服务器发送建立一个TCP 连接请求
+
+     例如, 在建立连接后, 某个服务器发挥的相应应该是这样的信息
+
+     +OK Hello there
+
+     这是服务器发挥的欢迎信息, +OK 代表正确的状态. 如果此时接收的响应行 开头为-ERR, 说明服务器此时为某些问题困扰.
+
+  2. 认证
+
+     客户端向服务器标明身份的主要命令是USER 命令和PASS命令
+
+     USER <username>
+     PASS <password>
+
+     服务器对USER 命令 可能的响应是:
+
+       +OK name is a valid mailbox
+
+       -ERR never heard of mailbox name
+
+       例如:
+
+           C: USER mrose
+
+           S: +OK mrose is a real hoopy frood
+
+              ....
+
+           C: USER frated
+
+           S: -ERR sorry, no mailbox for frated heare
+
+    服务器对PASS命令可能的响应是:
+
+        +OK maildrop locked and ready
+
+        -ERR invalid password
+
+        -ERR unable to lock maildrop
+
+    例如:
+
+        C: USER mrose
+
+        S: +OK mrose is a real hoopy frood
+
+        C: PASS secret
+
+        S: +OK mrose's maildrop has 2 messages (320 octets)
+
+        ...
+ 
+        C: USER mrose
+
+        S: +OK mrose is a real hoop frood
+
+        C: PASS secret
+
+        S: -ERR maildrop already locked
+
+        客户端首先使用USER 命令向服务器发送用户名, 服务器接收到命令后从中取出用户名, 在数据库中核对, 如果没有这个用户名存在, 就发送-ERR 给客户端. 认证失败后, 客户端不能继续进入事物状态, 只能以QUIT 命令

@@ -1,0 +1,15 @@
+参见:
+
+    http://baike.baidu.com/view/2174061.htm?fr=aladdin
+
+. ClassLoader
+
+  类加载器, 用来加载Java 类到Java 虚拟机中. 与普通程序不同的是. Java 程序(class文件) 并不是本地的可执行程序. 当运行Java 程序时, 首先运行JVM(Java 虚拟机), 然后再把 Java class 加载到JVM 里头运行, 负责加载Java class 的这部分就叫做 Class Loader.
+
+. 关于 Thread.currentThread().getContextClassLoader();
+
+  参见:
+
+      http://blog.chinaunix.net/uid-21227800-id-65878.html  (这个原创写的非常详细)
+
+  假设要装载的类，通过当前类的Classloader链装载不了，那就得设ContextClassLoader

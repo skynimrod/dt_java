@@ -1,0 +1,1 @@
+javac -cp ./JDL.jar;./servlet-api.jar JDownLoadTest.java

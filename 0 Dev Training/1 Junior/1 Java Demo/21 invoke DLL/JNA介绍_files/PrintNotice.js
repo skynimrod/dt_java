@@ -1,0 +1,1 @@
+﻿document.write('<div class="default_contents"><h3><span><a href="http://forum.csdn.net/SList/blogSupport">[意见反馈]</a><a href="http://blog.csdn.net/blogdevteam">[官方博客]</a></span>系统公告：<a href="http://g.csdn.net/5081013">2009年2月23日，博客升级公告！</a></h3></div>')

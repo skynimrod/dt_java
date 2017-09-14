@@ -1,0 +1,69 @@
+. P884
+
+  类似所有的pdf文件， 标签过的pdf文件包含一系列自包含页面， 每一个都由1至多页页面内容流
+
+  主要是处理 发行方， 作者， 页眉， 页脚， 水印 等
+
+
+  Artifacts 如果是图形对象.  在分页(pagination) 分层(layout) 或其他的类似严格机制中使用.  Artifacts 也会被用于描述文本区域. 
+
+  Artifacts 规范  ( Specification of Artifacts )
+
+    标签有2中
+
+    /Artifact                                               /Artifact  propertyList
+
+        BMC                                                      BDC
+
+        ...                                or                    ...    
+
+        EMC                                                      EMC
+
+   第一种用于标识普通的工件(artifact),  第二种用来标识 关联属性(参见表 10.17)
+
+                      表10.17  工件的属性列表入口
+   ---------------------------------------------------------------
+   KEY         TYPE          VALUE
+   ---------------------------------------------------------------
+   Type        name          可选。 如果有的话， 必须是 Pagination, Layout, Page 或(PDF 1.7) Background  之一
+
+   BBox        rectangle     可选， 必须是 background 工件.   数字数组， 左， 底， 右， 顶. ...
+
+   Attached    array         可选， 只能是 pagination 和 full-page background 工件。  一般有1-4个名字  Top, Bottom, Left
+
+                             Right,  一般 是左上  或 右下。
+
+   Subtype     name          (可选, PDF1.7) 工件的subtype.   只有Pagination 的Type 入口有值的时候采用这个入口.  合法的值
+             
+                             Header,  Footer, Watermark, 等等。
+
+   --------------------------------------------------------------------------
+
+. 页面内容顺序   Page Content Order
+
+  从顶到底  process from top to bottom, from column to column
+
+  例如： 10.16
+
+  /TagSuspect <</TagSuspect /Ordering>>
+     BDC
+
+     ...                   % Problem page contents
+
+     EMC
+
+  反转字符串的例子
+
+  /ReversedChars
+     BMC
+        ( olleH) Tj
+        -200 0 Td
+        (.dlrow) Tj
+     EMC
+
+  显示的文本为:
+
+    Hello world.
+
+  
+    

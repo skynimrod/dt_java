@@ -1,0 +1,440 @@
+参见:
+
+     国家图书馆   ZWTS\2011\TP312JA\cth
+
+. P21
+
+  Struts 2
+
+  相对于Struts 1 而言, Struts 2 的变化是很大的, 但这种变化是积极的, 在很大程度上客服了原来Struts 1 的一些弊端, 主要体现在以下几个方面:
+
+  1. Action 类
+
+     在Struts 1 中, 每个Action 类都必须继承自一个抽象的Action 基类. 这样就使得对Action的开发是基于抽象类的了, 而不是采用面向接口的编程了.
+
+     在Struts 2 中则没有了对Action 类的限制, 用户可以使用任意的Java对象来作为 Action类。 当然, 为了开发的方便, Struts 2 也提供了多个具有不同功能的Action基类, 这些基类依据目的不同而实现了不同的接口, 并包含了一些Action开发中经常用到的方法。
+
+  2. 线程模式
+
+     在Struts 1 中, 对于Action 的设计采用的是单例模式. 也就是在运行中只有一个Action实例, 所有的用户请求都是共享这个Action 实例的. 这就要求在开发中要格外小心, 必须要保证所开发的Action 是线程安全的.
+
+     而Struts 2 则采用了每个请求一个实例的设计方法, 这样就不再要求每一个Action 类都是 线程安全的。
+
+   # 对于单实例模式 通常是基于效率方面的考虑, 避免多次创建和销毁对象而耗费大量的虚拟机资源. 而在Struts 2 中采用的是为每个请求生成抛弃对象(throwaway/object)的方式来避免性能的降低和运行垃圾回收器。
+
+  3. 对Servlet 的依赖性
+
+     Struts 1 的Action 是要依赖于Servlet API 的, 这是因为Struts 1 会将 HttpServletRequest 对象和 HttpServletResponse 对象传递到 Action 的Execute()方法中. 这样就造成了Action 与Servlet容器的紧耦合。  而 Struts 2 中的Action则没有了这种对Servlet 容器的依赖性。
+
+     在Struts 2 中, 与Servlet 上下文相关的数据都被封装到了Map 中, 这样就使得 Action 可以做成完全独立于Servlet 容器的。
+
+   # 在Struts 2 中, 如果需要还可以访问原始的HttpServletRequest、HttpServletResponse以及关于容器的其他对象的。
+
+  4. 易测试性
+
+     由于Struts 1 的Action 是与 Servlet 容器相关的, 这也就造成了测试上的困难. 所以在测试的时候必须要依赖于专门的Struts TestCase 等组件来构造Action 的测试环境。
+
+     Struts 2 的测试则容易多了, 可以方便的初始化对象, 并调用其中的各种处理方法.
+
+  5. 获取用户输入的方式
+
+     在Struts 1 中， 用户输入数据的获取是通过ActionForm 对象来实现的。像Action 一样, 所有的ActionForm对象都必须要继承自Struts 所提供的ActionForm 基类. 而不同的JavaBean 是无法作为ActionForm 对象来捕获用户输入的数据的。
+
+     在Struts 2 中, 是使用Action 的属性来存储用户输入的数据的, 功能更强大的是, Struts 的属性不仅可以是简单数据类型的对象, 而且可以是任意类型的Java 对象. 这就使得可以直接使用普通的POJO、Domain Object 或者Bussiness Object 来保持用户输入的数据, 从而极大的方便后面的业务处理操作。
+
+  6. 表达式语言
+
+     Struts 1 中可以使用JSTL 以及 EL
+
+     在Struts 2 中, 除了支持JSTL 以及EL之外, 还可以使用功能更强大、更灵活的OGNL(Object Graph Notation Language)
+
+  7. 向视图传递数据的方式不同
+
+     Struts 1 使用的是标准的JSP 机制来讲数据对象绑定到页面的上下文而传递给页面的.
+
+     在Struts 2 中, 由于实现了与Servlet 容器的完全分离, 这种方式自然也就不受欢迎了. Struts 2 提供了一种更强大的ValueStack技术来执行这种数据传递的功能. 通过使用ValueStack 技术, Struts 2 的标签在访问数据库的时候不必再关心数据的类型, 它会自动进行相应的转换和处理
+
+  8. 类型转换
+
+     在Struts 1 中, ActionForm 的属性通常都是String 类型的, 如果不是, 那么会使用Commons-Beanutils 组件进行相应的类型转换, 而这个转换是针对每一个目标类来进行设置的.
+
+     Struts 2 则使用了OGNL 来进行相应的类型转换, 该框架提供了所有基础公共类型以及原始数据类型的转换器。
+
+  9. 输入合法性的验证
+
+     在Struts 1 中, 用户输入合法性的验证是通过调用ActionForm 的validate() 方法来进行的, 并可以通过Common Validator 来进行扩展. 但是Struts 1 的Common Validator 没有提供对应ActionForm 属性对象的子对象的验证功能。
+
+     在Struts 2 中, 也可以通过调用Action 的validate() 方法来进行用户输入合法性的验证. 同时 也提供了对 XWork Validation 框架的使用. 该框架的使用方法与Common Validator 类似, 但是提供了对对象的子对象进行验证的功能。
+
+  10. Action 执行的控制
+
+     在Struts 1 中是通过 Request Processor 来控制Action 执行流程的. 所以, 对于通过一个模块的Action 来说, 使用的都是同一个Request Processor， 执行的流程也就都是完全一样的。
+  
+     Struts 2 通过拦截器堆栈( Interceptor Stack ) 实现了每个Action 生命周期的自定义. 这样就可以方便的根据不同情况为每一个
+Action 定义相应的执行流程。
+
+. P24 顶
+
+  Struts 2 发行包中包含如下:
+
+  1. 应用样例包 (apps 目录)
+
+     其中包括了多个可以直接部署的Web 应用包. 通过将这些样例包 部署到Tomcat, 可以快速 了解Struts 2 的一些基本特征以及一些常用功能的实现方法。
+
+  2. 文档(docs 目录)
+
+     包括了Struts 2 网站上所有关于Struts 2 的静态文档. 其中包括了FAQ、开发手册以及API 说明文档等内容。
+
+  3. 库文件(lib 目录)
+
+     包括了Struts 2 发行的所有JAR 文件以及运行Struts 2 时所依赖的JAR 文件. Struts 2 发行的JAR 文件是分多个包的, 开发人员可以依据自己项目中所使用的功能来讲所需要的JAR 包加入到自己的工程中。
+
+  4. 源文件(src 目录)     
+
+     包含了所有Struts 2 发行JAR 文件的源文件 以及 一些测试 Struts 2 的测试程序的源文件。
+
+. P25
+
+  Struts 2 除了对运行环境的要求外, 其本身还依赖与一些其他开源组件所提供的功能, 编译和运行时可能用到的组件如下所示:
+
+  .。。。
+
+. P25 
+
+  Struts 2 所提供的样例程序中, 最有用的当属 Showcase 包了， 其中包含了Struts 2 主要功能的演示以及实现这些功能的源代码展示。 
+
+  # 直接将Showcase 包放置在Tomcat 的webapps 目录中即可
+
+  另一个非常有用的样例包是blank 包, 它是一个完全初始化好的Struts 2 的基本应用包, 开发人员可以方便的在这个软件包的基础上构建自己的开发程序。
+
+. P32
+
+  在一个Web 应用中, 增加对Struts 2 的支持需要完成以下三方面的工作。
+
+  1. 复制相应的软件包到项目中
+
+     Struts 2 及其所依赖的软件包可以从Struts 2 发行包的Lib 目录中获得。 按照Web 应用的规范, 可以将这些库文件复制到WebContent/WEB-INF/lib 目录中, 因为这个目录中的库文件在Web 应用运行时会被自动增加到classpath 中。
+
+     # Struts 2 发行包的lib 目录中的库文件可以根据自己的需要来选择, 不需要把所有的文件都复制过来.
+
+  2. 修改Web 应用的描述文件 web.xml
+
+.P487
+
+  在多数情况下, 一个Bean 对另一个Bean 的依赖最简单的做法就是将一个Bean 设置为另外一个Bean 的属性. 在XML 配置文件中最常见的就是使用<ref>元素.
+
+  另外一种情况是, 如果一个Bean 能感知IoC 容器, 只要给出他所依赖的id， 那么就可以通过编程的方式从容器中取得它所依赖的对象.
+
+  # 无论 采用哪一种方法, 被依赖的Bean 将在依赖Bean 之前被适当地初始化.
+
+  但是在少数情况下, Bean 之间的依赖关系并不是那么直接. 这时, depends-on 属性可以用于当前Bean 初始化之前显式的强制一个或多个Bean 被初始化.
+
+  若需要表达对多个Bean 的依赖， 可以在<depends-on>中将指定的多个Bean 名字用分隔符进行分割, 分隔符可以是逗号、空格或分号。
+
+.P488
+
+ 延迟初始化 Bean
+
+ ApplicationContext 实现的默认行为就是在启动时将所有singleton Bean 提前进行实例化. 提前实例化意味着作为初始化过程的一部分, ApplicationContext 实例会 创建并配置所有的singleton Bean.
+
+  有时候 这种默认处理可能并不是你想要的, 如果不想让一个singleton Bean 在ApplicationContext 初始化时实例化, 那么可以将Bean 设置为延迟实例化. 一个延迟初始化Bean 将告诉IoC 容器是在启动时还是在第一次被用到时实例化.
+
+  <bean id ="..." class="..." lazy-init="true">
+	<!-- various properties here ...-->
+  </bean>
+
+  如果一个延迟初始化的Bean 被一个非延迟初始化的Bean 所依赖, 那么该延迟初始化Bean 也是会在初始阶段就被初始化的.
+
+. 自动装配
+
+  Spring IoC 容器可以自动装配(autowire) 相互协作Bean 之间的关联关系. 也就是说, Spring 可以自动的通过检查BeanFactory 中的内容, 来替代我们设置的Bean 之间的关联关系.
+
+  # 使用自动装配的好处在于可以减少或消除属性或构造器参数的设置, 可以使配置文件变小。
+
+  自动装配的配置是在Bean 的配置文件中进行指定的, Spring 总共提供了5种类型的自动装备, 这些自动装配的作用如下所示.
+
+  no 
+
+      不使用自动装备, 这时配置的默认值. 那么就需要通过ref 来进行关联关系的指定。
+
+  byName
+
+      根据属性名自动装配。此选项将检查容器并根据名字查找与属性完全一致的Bean， 并将其与属性自动装配. 例如, 在Bean 定义中自动装配设置为byName， 而该Bean 包含master 属性(同时提供setMaster()方法), Spring 就会查找名为master 的Bean 定义, 并用它来装配给master 属性。
+
+  byType
+
+      如果容器中存在一个与指定属性类型相同的Bean, 那么将与该属性自动装配. 如果存在多个该类型的Bean, 那么将会抛出异常, 并指出不能使用byType 方式进行自动装配. 若没有找到相匹配的Bean， 则什么事都不发生, 属性也不会被设置. 如果你不希望这样, 那么可以通过设置dependency-check="objects"让Spring 抛出异常。
+
+  constructor
+
+      与byType 的方式类似, 不同之处在于它应用于构造器参数. 如果在容器中没有找到与构造器参数类型一致的Bean， 那么将会抛出异常。
+
+  autodetect
+             
+      通过Bean 类的自省机制(introspection) 来决定是 使用constructor 还是 byType 方式进行自动装配. 如果发现默认的构造器, 那么将使用byType 方式.
+
+     # 如果直接使用<property> 和<constructor-arg> 注入依赖的话, 那么将总是覆盖自动装配.
+
+. P489  资源
+
+  在Web 应用中如果自己的程序里面需要用到外部资源文件(配置文件), 一般会把配置文件放在classes 目录中或WEB-INF目录中。加载这些文件通胀有两种办法, 一是写绝对路径, 这时最不推荐的方法, 二是引入ServletContext, 从小对路径中获得绝对路径。
+
+  Spring 框架对于资源的访问提供了很好的抽象处理和实现。 在这里所提及的资源，属于广泛意义上的资源. 并不仅仅对资源文件的访问, 还包括了对各种网络协议的网络文件、类路径中的文件的使用。
+
+  Spring 的资源访问功能是由 org.springframework.core.io.Resource 接口来定义的, 并提供了多种访问资源的方式。
+
+. 数据绑定功能
+
+  就是把用户所提供的数据与应用系统的域模型绑定起来, 也可以简单的理解为把用户数据复制给对应Java对象的属性. 例如, 在Struts 框架中, 将用户提交的数据赋值给ActionForm 对象的属性就是数据绑定功能.
+
+  数据绑定工作室有DataBinder 来实现的, 而具体的数据赋值功能则是在BeanWrapper 的基础上实现的.
+  
+  P496
+
+  BeanWrapper 的功能是非常强大的, 除了可以为各种类型的属性赋值外, 还可以自动进行数据类型的转换.
+
+  但在Spring 框架中, 几乎不会用到自己调用BeanWrapper来实现数据绑定的功能, 因为这方面的工作室有相关框架来进行调用的。
+
+. P496  Spring 提供的PropertyEditor
+
+  ByteArrayPropertyEditor        将字符串转化为byte
+
+  ClassEditor                    将以字符串形式出现的类名 解析成为真实的Class 对象
+
+  CustomBooleanEditor            将字符串转化为Boolean 对象
+
+  CustomNumberEditor             将字符串转化为Number 接口的子类
+
+  FileEditor                     将字符串转化为 java.io.File 对象
+
+  InputStreamEditor              根据资源字符串得到InputStream(会使用Resource)
+
+  LocaleEditor                   将String 对象转化为Locale 对象
+
+  PropertiesEditor               将String 转化为 Properties 对象
+
+  StringArrayPropertyEditor      将以逗号分隔的字符串转化为一个数组
+
+  StringTrimmerEditor            将String 进行去空格处理
+
+  URLEditor                      根据String 对象生成URL对象
+
+
+  也可以注册自己的属性编辑器去覆盖那些默认的编辑器.
+
+  对于自定义的PropertyEditor 的注册主要有以下几种方法:
+
+  1. 使用ConfigurableBeanFactory 的 registerCustomEditor() 方法进行自定义 PropertyEditor 的注册, 但这种方法不够灵活, 不推荐使用;
+
+  2. 使用CustomEditorConfigurer 来对BeanFactory 进行后期处理, 在处理的过程中实现自定义PropertyEditor的注册。
+
+     自定义PropertyEditor 的信息是在Bean 的配置文件中进行配置的, 因而具有很好的灵活性.
+
+
+. P503 Sping AOP
+
+  Spring AOP 对同志类型提供了广泛的支持. 它所支持的通知类型包括以下几类:
+
+  1. 前置通知( Before advice)
+   
+     指在某个连接点 方法之前的通知. 如果这个通知不抛出异常, 那么该连接点就一定会被执行;
+
+  2. 返回后通知( After returning advice)
+
+     指 在某个连接点方法正常完成(没有异常抛出)后执行的通知。
+
+  3. 抛出异常后通知( After throwing advice )
+
+     指 在连接点方法抛出异常退出时 执行的通知。
+
+  4. 后置通知( After(finally) advice )
+
+     指无论在任何情况下连接点方法退出时执行的通知, 也就是说无论连接点方法正常退出还是异常退出都会执行此通知。
+
+  5. 环绕通知( Around advice )
+
+     指 包围 连接点方法的通知。 这种通知的功能非常强大, 可以替代前面任何一种通知的功能.
+
+  在使用通知时, 应该尽量选用简单的通知类型来实现所需要的功能。 例如, 只需要在方法前执行某些处理就应该使用前置通知而不是环绕通知。
+
+  Spring AOP 通常是和 Spring IoC 容器一起使用的, 因而 Spring AOP 在实现上更侧重于实现和Spring IoC 容器的整合, 这也是 Spring AOP 和其他AOP 实现的一个显著区别。
+
+  因此, 有些事情使用Spring AOP 是无法轻松或者高效完成的, 例如通知一个细粒度的对象. 在这种情况下, 使用AspectJ 是最好的选择。
+
+  Spring 默认使用J2SE 动态代理( Dynamic proxies ) 来作为AOP 的代理. 这样任何借口都可以被代理. 另外, Spring 也支持使用CGLIB 代理。
+
+ # 基于配置的AOP
+
+  这种方式的AOP 只能以方法作为连接点。
+
+. P511  基于@AspectJ 的 AOP
+
+  如果使用Java 5， 那么推荐使用Spring 提供的 @AspectJ 的AOP, 通过使用Java 5 的注解来声明切入点和切面. Spring 3.0 通过AspectJ 提供的库来做切入点(pointcut)解析和匹配。
+
+  启动@AspectJ 支持
+
+  <aop:aspectj-autoproxy/>
+
+  增加了这个配置后, Spring 会自动的判断一个Bean 是否使用了一个或多个切面通知, 并据此自动生成相应的代理以拦截其方法调用， 并且确认通知是否如期进行。
+  在使用@AspectJ 时， 需要在应用程序的classpath 中引入两个AspectJ库:  
+
+       aspectjearver.jar       aspectjrt.jar
+
+  声明切面:
+
+  切面是通过@Aspect 注解来进行声明的。下面是 NotVeryUsefulAspect类的定义, 其中使用了org.aspectj.lang.annotation.Aspect注解
+
+  package cn.hxex.springcore;
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect
+public class NotVeryUsefulAspect {
+
+}     
+
+在启用了@AspectJ支持的情况下, Spring会自动的识别带有@Aspect的Bean, 然后将其配置在Spring AOP框架中。
+
+  定义了@Aspect的bean 的配置与普通的Bean 没有任何区别, 可以向普通Bean 一样注入各种属性的值. 配置方法如下所示:
+
+ <bean id="myAspect" class="cn.hxex.springcore.NotVeryUsefulAspect">
+	<!--configure properties of aspect here as nomal -->
+ </bean>
+
+
+  声明切入点
+
+  通过@Pointcut 进行声明, 一个切入点的声明包含两个部分: 一个是包含名字和任意参数的签名, 另一个是切入点表达式, 该表达式决定了我们关注那个方法。
+
+  在@AspectJ 中, 切入点签名实际就是一个普通的方法定义, 这个方法的返回类型必须是void。 切入点(pointcut)表达式使用@Pointcut 注解来表示. 如下的例子 定义了一个切入点 transfer， 这个切入点匹配了任意名为transfer 的方法:
+
+  @Pointcut("execution(* transfer(..))")
+  private void transfer() { }
+
+  在使用@AspectJ AOP 时, 同样可以使用逻辑运算来合并切入点表达式. 合并的方法如下所示:
+
+  @Pointcut("execution(public * * (..))") 
+  private void anyPublicOperation() {}
+
+  @Pointcut("within(cn.hxex.springcore.trading..*)")
+  private void inTrading() {}
+
+  @Pointcut("anyPublicOperation() && inTrading()")
+  private void tradingOperation() { }
+
+  上面的例子展示了三种切入点表达式: anyPublicOperation（任意public 方法的连接点）、inTrading（代表了在cn.hxex.springcore.trading包中的任意连接点）和 tradingOpertion（同时满足前面两个切入点表达式的连接点）
+
+. 声明通知
+
+  不同的通知类型是通过不同的注解来进行声明的, 各种通知所对应的注解如下所示:
+
+  前置通知（before advice）：		@Before
+
+  返回后通知(after returning advice) 	@AfterReturning
+
+  抛出异常后通知(after throwing advice) @AfterThrowing
+
+  后置通知(after(finally) advice)	@After
+
+  环绕通知(around advice)		@Around
+
+  每一个通知都是和一个切入点表达式关联起来的, 并且在切入点匹配的方法执行之前, 或者之后, 或者之前和之后运行。
+
+. 直接使用切入点表达式的例子:
+
+  import org.aspectj.lang.annotation.Aspect;
+  import org.aspectj.lang.annotation.Before;
+
+  @Aspect
+  public class BeforeExample {
+	@Before("execution(* cn.hxex.springcore.dao.*.*(..))")
+	public void doAccessCheck() {
+		//......
+	}
+  }     
+
+. 切入点引用的例子
+
+  import org.aspectj.lang.annotation.Aspect;
+  import org.aspectj.lang.annotation.Before;
+
+  @Aspect
+  public class BeforeExample {
+	@Before("c.hxex.springcore.SystemArchitecture.dataAccessOperation()")
+	public void doAccessCheck() {
+		//......
+	}
+  }
+
+. 返回后通知传递返回值的方法
+
+  import org.aspectj.lang.annotation.Aspect;
+  import org.aspectj.lang.annotation.AfterReturning;
+
+  @Aspect
+  public class AfterReturningExample {
+
+	@AfterReturning(pointcut="cn.hxex.springcore.SystemArchitecutre.dataAccessOperation()",returning="retVal")
+	public void doAccessCheck( Object retVal ) {
+		//......
+	}
+  }
+    
+. 抛出后 通知传递异常的方法
+
+  import org.aspect.lang.annotation.Aspect;
+  import org.aspectj.lang.annotation.AfterThrowing;
+
+  @Aspect
+  public class AfterThrowingExcample {
+  
+	@AfterThrowing(pointcut="cn.hxex.springcore.SystemArchitecture.dataAccessOperation()",throwing="ex")
+	public void doRecoveryActions( DataAccessException ex ) {
+		// ......
+	}
+  }
+
+. 通知的执行顺序
+
+  Spring AOP 执行通知的顺序跟 AspectJ的一样, 在"进入"连接点的情况下, 最高优先级的通知会先执行. 在"退出"连接点的情况下, 最高优先级的通知会最后执行. 对于定义在同一切面的通知, 根据声明的顺序来确定执行顺序, 如下所示:
+
+  @Aspect
+  public class AspectWithMultipleAdviceDeclarations {
+	@Pointcut("execution(* foo(..))")
+  	public void fooExecution() { }
+	
+	@Before("fooExecution()")
+	public void doBeforeOne() {
+		//......
+	}
+
+	@Before("fooExecution()")
+	public void doBeforeTow() {
+		//......
+	}
+
+	@AfterReturning("fooExecution()")
+	public void doAfterOne() {
+		//......
+	}
+
+	@AfterReturning("fooExecution()")
+	public void doAfterTwo() {
+		//......
+	}
+  }
+
+  对于同一个切面中的方法会按照定义的先后顺序执行. 执行的结果如下所示:
+
+    doBeforeOne
+
+    doBeforeTwo
+
+    foo
+
+    doAfterOne
+ 
+    doAfterTwo
+
+  当定义在不同的切面里的两个通知都需要在一个相同的连接点中运行时, 如果没有指定, 那么执行的顺序是位置的. 在Spring 中可以在切面类中实现org.springframework.core.Ordered接口来指定切面的优先级. 在两个切面中, Ordered.getValue() 方法返回值较低的那个切面有更高的优先级.
+
+.

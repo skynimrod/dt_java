@@ -1,0 +1,204 @@
+参见:
+
+     http://dreamforce.me/archives/594
+
+     http://www.shangxueba.com/jingyan/87210.html     ----- 这个说明更加好
+
+     最好的文档是 下载完整版(all)解压后, docs目录下的userguide.pdf (或者 html).
+
+. 设置环境变量 GRADLE_HOME = gradle 的解压目录, 然后将%GRADLE_HOME%\bin 加入到 PATH 中即可. 
+
+只需要在PATH 中将 gradle 的bin 目录加入即可.
+
+. 在命令行运行
+
+     gradle -v
+
+  如果返回相关版本信息, 则表示gradle 已经安装成功(实际上也没啥安装, 就是在PATH 中增加gradle 路径)
+
+. 例子1:  build.gradle   (shortcut task definition)
+
+  task hello { doLast { println 'Hello world!'} }
+
+  ==============
+
+  然后在上面 的build.gradle 所在目录运行  gradle -q hello
+
+  运行结果:
+
+  Hello world!
+
+. 例子2 :  test.gradle
+
+// shortcut task definition
+task hello << { pringln 'hello world!'}
+
+// using Groovy in Gradle's tasks
+task upper << {
+	String someString = 'mY-nAmE'
+	println "Original : " + someString
+	println "Upper case : " + someString.toUpperCase() }
+
+// Use Groovy Iterator
+task count << {
+	4.times {
+		print "$it " } }
+
+  运行结果
+
+> gradle -b test.gradle hello
+0 1 2 3
+
+. 例子3 : depend.gradle
+
+task hello << {
+	pringln 'Hello workd!' }
+
+task intro(dependsOn: hello) << {
+	pringln "I'm Gradle" }
+
+. 例子4: viaAPI.gradle
+
+task hello << {
+     println 'Hello Earth' }
+hello.doFirst {
+     println 'Hello Venus' }
+hello.doLast {
+     println 'Hello Mars' }
+hello << {
+     println 'Hello Jupiter' }
+
+  运行结果
+
+D:\0 Java\0 Dev Training\0 Dev Env\1 Gradle\0 demo>gradle -b viaAPI.gradle hello
+
+:hello
+Hello Venus
+Hello Earth
+Hello Mars
+Hello Jupiter
+
+BUILD SUCCESSFUL
+
+Total time: 10.515 secs
+
+
+. 如何 build 一个 Java 工程
+
+  使用 Java 插件.  
+
+  apply plugin:'java'
+
+  这就是你要定义一个java 工程的所有. 会产生一个对应Java工程的java 插件, 该插件增加一个任务号到你的工程.
+
+  1. Adding Maven repository
+
+     repositories {
+	mavenCentral()
+     }
+
+     意味着使用maven central repository. 当然你也可以增加别的外部 maven repository。
+
+  2. Adding dependencies
+
+     dependencies {
+	compile group : 'commons-collections', name: 'commons-collections', version: '3.2'
+ 	testCompile group: 'junit', name: 'junit', version: '4.+'
+     }
+
+  3. Customization of MANIFEST.MF
+
+     sourceCompatibility = 1.5
+     version = '1.0'
+
+     jar {
+	manifest {
+		attribute 'Implementation-Title': 'Gradle Quickstart',
+			'Implementation-Version': version
+		}
+	}
+
+  4. Publishing the JAR file
+
+     uploadArchives {
+	repositories {
+		flatDir {
+			dirs 'repos' } } }
+
+  5. Creating an Eclipse project
+
+     apply plugin : 'eclipse'
+
+     现在执行gradle eclipse 命令来生成Eclipse 工程文件
+
+  6. Java 例子   完整的 的 build 文件
+
+     apply plugin: 'java'
+     apply plugin: 'eclipse'
+     sourceCompatibility = 1.5
+     version = '1.0'
+     jar {
+	manifest {
+		attribute 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version } }
+ 	
+	repositories {
+		mavenCentral() }
+	
+	dependencies {
+		compile group: 'commons-collections', name: 'commons-collections', version: '3.2' testCompile group: 'junit', name: 'junit', version: '4.0+' }
+
+	test {
+		systemProperties 'property': 'value' }
+
+	uploadArchives {
+		repositories { flatDir { dirs 'repos' } } }
+
+   现在, 可以用gradle build  来编译这个工程.
+ 
+   输入结果:
+
+> gradle build
+:compileJava
+:processResources
+:classes
+:jar
+:assemble
+:compileTestJava
+:processTestResources
+:testClasses
+:test
+:check
+:build
+
+BUILD SUCCESSFUL
+
+Total time: 1 secs
+
+
+   ======== 上面的没有运行成功 - - =========
+
+. 其他一些有用的任务有:
+
+  1. 多工程Java build
+
+. gradle clean    	将产生的build 目录删除掉
+
+  gradle assemble 	编译java 文件但是不运行检查代码质量等命令
+
+  gradle check          编译java 文件并运行那些类似Checkstyle, PMD 等外部插件命令来检查我们自己的源代码.
+
+  ### gradle 是增量式编译的, 只编译那些有变动的java 类或资源文件的, 如 UP-TO-DATE表示石油更新的.  现在javadoc 越来越受到人们的重视, 尤其对于那些复杂的需要接口调用的项目， javadoc 的地位就更加突出了, 如果使用Ant 需要在build 文件中增加。。。。
+
+  gradle javadoc  	生成javadoc 文档.
+
+  apply plugin:'eclipse'    然后 gradle eclipse可以进行目录管理调整
+
+  
+
+. 6.1 Projects 和 tasks
+
+   在Gradle 里面只有两个基本概念: projects 和 tasks.  所有的东西都是在这2个范畴内.
+
+   每一个Gradle build 组成一个或多个projects. 
+
+   每一个project 由一个或多个tasks 组成. 

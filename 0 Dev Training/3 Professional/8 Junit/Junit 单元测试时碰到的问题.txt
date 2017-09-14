@@ -1,0 +1,57 @@
+. 2014-5-9 10:17:07 org.apache.commons.digester3.Digester startElement
+严重: Begin event threw error
+java.lang.NoClassDefFoundError: org/apache/commons/beanutils/BeanUtils
+	at org.apache.commons.digester3.SetPropertiesRule.begin(SetPropertiesRule.java:232)
+	at org.apache.commons.digester3.Digester.startElement(Digester.java:1350)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$ContentDriver.scanRootElementHook(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.commons.digester3.Digester.parse(Digester.java:1642)
+	at org.apache.commons.digester3.Digester.parse(Digester.java:1701)
+	at cn.hxex.blog.dao.DaoFactory.<clinit>(DaoFactory.java:41)
+	at cn.hxex.blog.test.TestDaoFactory.testDaoFacgtory(TestDaoFactory.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:232)
+	at junit.framework.TestSuite.run(TestSuite.java:227)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:81)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:38)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+
+使用的是JUnit 4.4.jar, Commons Digester3-3.2.jar
+
+分析:
+
+    上面的错误是由于Commons Digester3-3.2 中引用 org/apache/commons/beanutils/BeanUtils 时出错了. 需要添加该Jar包。
+
+     commons.beanutils 包
+
+    从 http://commons.apache.org/proper/commons-beanutils/download_beanutils.cgi 官网下载 commons-beanutils-1.9.1.jar 包
+
+    上面的错误没有了, 换成了下面的错误
+
+     java.lang.NoClassDefFoundError: IllegalName: cn.hxex.blog.config/DaoConfig
+
+     原因是 定义commons digester 规则的时候, 写错了类 "cn.hxex.blog.config/DaoConfig", 应该是"cn.hxex.blog.config.DaoConfig"

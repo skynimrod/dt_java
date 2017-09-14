@@ -1,0 +1,8 @@
+. 参见:
+
+       http://www.cnblogs.com/yyyyy5101/articles/1898737.html
+
+. 窗口->首选项->JAVA->
+
+  一定要设置的话，
+Eclipse->Windows->Preferences->Java->Installed JREs 其中有一项能引入jdk 路径（你安装JDK的那个bin文件夹）。

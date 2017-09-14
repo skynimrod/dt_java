@@ -1,0 +1,10 @@
+task hello << { pringln 'hello world!'}
+
+task upper << {
+	String someString = 'mY-nAmE'
+	println "Original : " + someString
+	println "Upper case : " + someString.toUpperCase() }
+
+task count << {
+	4.times {
+		print "$it " } }

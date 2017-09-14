@@ -1,0 +1,27 @@
+. 有些文件操作效率极低
+
+  如下:
+            println "开始tree.txt 处理"
+            long timeStar = System.currentTimeMillis();// 得到当前的时间
+            // 把所有对象的信息打印出来
+            tmp = ""
+            
+            def fs = new RandomAccessFile("e:/t_tmp/tree.txt","rwd")
+            for ( i =1; i <= ObjSum-1; i ++ ) {   // 实际上只有ObjSum-1个元素
+                seek( xref[i.toString() ] )
+                tmp = readLine() + "\n\r"
+                tmp += readLine() + "\n\r" + "\n\r\n\r"
+                fs.writeChars( tmp )
+                //println tmp
+            }
+            fs.close()
+            
+            println "tree.txt 处理结束"
+            long timeEnd = System.currentTimeMillis();// 得到当前的时间  
+            println( "Read time :" + (timeEnd - timeStar) + "ms");  
+
+运行结果:
+
+    Read time :96906ms
+
+  上面这段代码， 竟然使用了96秒多。

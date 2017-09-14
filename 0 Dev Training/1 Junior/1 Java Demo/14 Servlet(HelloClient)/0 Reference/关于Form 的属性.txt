@@ -1,0 +1,21 @@
+<form action="XXX" method="YYY">
+其中method属性的附值YYY好像有post ,get 等等.
+有以下问题要提问:
+1,method属性是什么?
+2,除了post ,get 它还可以附哪些值,分别代表什么?
+3,method属性默认的值是哪个?
+
+===========================================
+ 1，method是指定数据如何发送到服务器的一个属性
+
+2，只可能是post和get
+post:官方解释是把数据通过post会话传送到服务器。实际就是提交数据。
+get:将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&”连接；一般用来从服务器得到数据。
+
+3,默认是get，所以一般我们都要指定为post
+
+具体参考下面网址
+
+----
+有一个DHTML文档，很好用，有HTML,CSS,颜色值等等可以查阅，要的话留下Mail地址我发给你（有4M）
+参考资料：http://blog.phoenixtv.com/user1/iumymy/archives/2006/25708.html 

@@ -1,0 +1,43 @@
+. 确定用户操作的流程, 确定实现功能所涉及的JSP 页面以及相应的Action， 并找出页面与Action 之间的关系.
+
+  1. 配置到用户注册页面的跳转
+
+     目的就是跳转到用户注册功能的用户信息录入界面
+
+  2. 用户注册信息录入界面
+
+     提供用户信息录入的界面, 供用户录入自己的基本信息
+
+  3. 注册信息保存Action
+
+  4. 配置用户输入合法性的校验规则
+
+     同struts 1.x 一样, 用户输入的合法性校验只要直接在配置文件中进行配置就可以实现数据格式的校验.
+
+. 1. 配置到用户注册页面的跳转
+
+     像Struts 1.x 一样, 直接在struts.ml 文件中进行直接配置就可以了, 配置的方法如下:
+
+     <action name = "registInput">
+		<result>/regist.jsp</result>
+     </action>
+
+     # 在struts 2 中也是不提倡让用户直接访问JSP页面的, 而是任何对JSP页面的访问最好都经过Action 的跳转, 这样更加有利于系统安全性的实现. 
+
+  2. 用户注册信息录入页面的实现.
+
+     blog\WebContent\regist.jsp
+
+    ## 在这个博客系统中, 用户输入合法性的校验是通过Struts 2.x 所提供的validator 功能来完成的, 并且采用的方式为后台验证.
+
+    ## 页面中增加了"<s:property value="exception.message"/>"语句, 目的是输出 Action 执行中所抛出的异常对象的提示信息的内容.  具体异常拦截的配置方法参考下面的Action配置部分.
+
+  3. 注册信息保存Action
+
+    主要是得到用户提交的基本信息, 然后将其保存到数据库中, 最后返回到网络日志列表页面.
+
+    blog\src\cn\hxex\blog\action\RegistAction.java
+
+    
+
+  

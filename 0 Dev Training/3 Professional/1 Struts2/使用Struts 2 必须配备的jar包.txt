@@ -1,0 +1,30 @@
+参见:
+
+    http://developer.51cto.com/art/200906/126965.htm
+
+. 
+
+. 基于 Struts 2 的Web 应用程序所需要的最少类库
+
+  1. struts2-core-2.0.11.jar
+
+     Struts 2 框架的核心类库
+
+  2. xwork-2.0.4.jar
+
+     XWork 类库, Struts 2 在其上构建
+
+  3. ognl-2.6.11.jar
+
+     对象导航语言(Object Graph Navigation Language), Struts 2 框架使用的一种表达式语言
+
+  4. freemarker-2.3.8.jar
+
+     Struts 2 的UI 标签的模板使用FreeMarker 编写
+
+  5. commons-logging-1.0.4.jar
+
+     ASF 出品的日志包, Struts 2 框架使用这个日志包来支持 Log4J 和 JDK 1.4+的日志记录.
+
+     最好是最新版本, 与Struts 2.x 对应的. 
+

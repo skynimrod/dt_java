@@ -1,0 +1,247 @@
+. 参见:
+
+  http://www.baidu.com/link?url=5UzY0Zmmreify-pR3GVKablritjzFdpKpccdeHkg0FPZqa6ZkosF2b3OrbIU9-rPz2Ugv8-TtYYWG7QB324ZRZ7OwpMHiIP4sEvGl3KN2o3&wd=JAVA%20SMTP&ie=utf-8&tn=baiduhome_pg&bs=JAVA%20SNMP&f=8&rsv_bp=1&rsv_spt=3&rsv_sug3=6&rsv_sug2=0&inputT=6
+
+. 需要用到两个包: mail.jar 和 activetion.jar, 系在地址为:
+
+  http://java.sun.com/products/javamail/downloads/index.html
+  http://java.sun.com/javase/technologies/desktop/javabeans/jaf/downloads/index.html
+
+. 下载后解压, 将 mail.jar 和 activation.jar 放到project 里的lib 文件夹中, 为其配置环境变量, 或在myEclipse 里的"Java Build Path" 中将其添加到"Libraries"
+
+. project 里有三个类: 入口类(TestJavaMail)、邮件信息类(MailBean) 和发送邮件类(SendMail)
+
+以下是代码:
+
+=====MailBean.java===============================
+
+package test3;
+
+import java.util.Vector;
+
+public class MailBean {
+
+    private String	to;			// 收件人
+    private String	from;			// 发件人
+    private String	host;			// SMTP 主机
+    private String	username;		// 发件人的用户名
+    private String	password;		// 发件人的密码
+    private String	subject;		// 邮件主题
+    private String	content;		// 邮件正文;
+    Vector<String>	file;			// 多个附件
+    private String	filename;		// 附件的文件名
+
+    public String getTo() {
+   	return to;
+    }
+
+    public void setTo( String to ) {
+	this.to = to;
+    }
+
+    public String getFrom() {
+	return from;
+    }
+
+
+    public void setFrom( String from) {
+	this.from = from;
+    }
+
+    public String getHost() {
+	return host;
+    }
+
+    public void setHost( String host ) {
+	this.host = host;
+    }
+
+    public String getUsername() {
+	return username;
+    }
+
+    public void setUsername(String username ) {
+	this.username = username;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword( String password ) {
+	this.password = password;
+    }
+
+    public String getSubject() {
+	return subject;
+    }
+
+    public void setSubject( String subject ) {
+	this.subject = subject;
+    }
+
+    public String getContent() {
+	return content;
+    }
+
+    public void setContent( String content ) {
+	this.content = content;
+    }
+
+    public String getFilename() {
+ 	return filename;
+    }
+
+    public void setFilename( String filename ) {
+	this.filename = filename;
+    }
+
+    public Vector<String> getFile() {
+	return file;
+    }
+
+    public void attachFile( String fileName ) {
+	if ( file == null ) 
+		file = new Vector<String)();
+	file.addElement(fileName);
+    }
+}
+
+
+============SendMail.java=================
+
+package test3;
+
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Vector;
+
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
+
+public class SendMail {
+	public String toChinese( String text ) {
+		try {
+			text = MimeUtility.encodeText( new String(text.getBytes(), "GB2312" ), "GB2312", "B" );
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return text;
+	}
+
+	public boolean sendMail( MailBean mb ) {
+		String host 		= mb.getHost();
+		final String username	= mb.getUsername();
+		final String password	= mb.getPassword();
+		String from		= mb.getFrom();
+		String to 		= mb.getTo();
+		String subject		= mb.getSubject();
+		String content		= mb.getContent();
+		String fileName		= mb.getFilename();
+		Vector<String> file	= mb.getFile();
+
+		Properties props = System.getProperties();
+		props.put( "mail.smtp.host", host );			// 设置SMTP 的主机
+		props.put( "mail.smtp.auth", "true" );			// 需要经过验证
+	
+		Session session = Session.getInstance( props, new Authentication() {
+				public PasswordAuthentication getPasswrodAuthentication() {
+					return new PasswordAuthentication( username, password );
+				}
+			}
+		); 
+		
+		try {
+			MimeMessage msg = new MimeMessage(session );
+			msg.setFrom( new InternetAddress(from) );
+			InternetAddress[] address = { new InternetAddress(to) };
+			msg.setRecipients( Message.RecipientType.TO, address );
+			msg.setSubject( toChinese(subject) );
+
+			Multipart mp = new MimeMultipart();
+			MimeBodyPart mbpContent = new MimeBodyPart();
+			mbpContent.setText(content);
+			mp.addBodPart(mbpContent);
+
+			// 往邮件中添加附件
+			Enumeration<String> efile = file.elements();
+
+			while ( efile.hasMoreElements() ) {
+				MimeBodyPart mbpFile = new MimeBodyPart();
+				fileName = efile.nextElement().toString();
+				FileDataSource fds = new FileDataSource( fileName );
+				mbpFile.setDataHandler( new DataHandler(fds) );
+				mbpFile.setFileName( toChinese( fds.getName() ) );
+				mp.addBodyPart( mbpFile );
+			}
+
+			msg.setContent( mp );
+			msg.setSendDate( new Date() );
+			Transport.send( msg );
+		} catch ( MessagingException me ) {
+			me.printStackTrace();
+		}
+
+		return true;
+
+	}
+}
+
+================= TestJavaMail.java ===========
+
+package test3;
+
+public class TestJavaMail {
+	public static void main( String[] args ) {
+		MailBean 	mb = new MailBean();
+		mb.setHost("smtp.163.com");			// 设置SMTP 主机(163), 若用126, 则设置为:smtp.126.com
+		mb.setUsername("linyiteng1220");		// 设置发件人邮箱的用户名
+		mb.setPassword("******");			// 设置发件人邮箱的密码, 需要将*号改成正确的密码
+		mb.setFrom("linyiteng1220@163.com");		// 设置发件人的邮箱
+		mb.setTo("linyiteng1220@126.com");		// 设置收件人的邮箱
+		mb.setSubject("测试_javaMail");			// 设置邮件的主题
+		mb.setContent("本邮件包含三个附件, 请检查");	// 设置邮件的正文
+
+		mb.attachFile("e:/工作报告(林义腾).doc");	// 往邮件中添加附件
+		mb.attachFile("E:/test.txt");
+		mb.attachFile("E:/test.xls");
+
+		SendMail sm = new SendMail();
+		System.out.println("正在发送邮件...");
+
+		if ( sm.sendMail(mb) )				// 发送邮件
+			System.out.println("发送成功");
+		else
+			System.out.println("发送失败！")
+	}
+}
+
+如果用MyEclipse 进行开发的话, 运行时可能会出现以下的错误:
+
+Exception in thread "main" java.lang.NoClassDefFoundError: com/sun/mail/util/LineInputStream
+
+解决办法: 移除 myEclipse 自带的EEb包   Java EE 5 Libraries
+
+但你可能还需要用到EE 包里的servlet 相关类, 那可以从 Tomcat 的lib 文件夹中复制servlet-api.jar 到 project 中, 用它来代替 EE包, 一切OK!
+
+另外, 个人测试时发现无法通过新注册的网易邮箱发邮件, 以前旧的就没有问题, 不知道是什么原因.
+
+如果要通过gmail 发邮件的话, 请在代码 Properties props = System.getProperties(); 后再添加以下两行代码:
+
+	props.put("mail.transport.protocol", "smtp");
+	props.put("mail.smtp.starttls.enable", "true");
+
+搞定.

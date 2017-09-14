@@ -1,0 +1,9 @@
+在Eclipse 中分析Java 类和接口的继承关系的具体做法:
+
+   在代码区中选择需要的类和接口定义， 然后使用右键选取 Open Type Hierarchy 或 按 快捷键 F4， 可以在 Hierarchy View 中看到集成关系.
+
+  
+
+. 在 Eclipse 中分析 Java 方法的调用关系的具体做法如下:
+
+  在代码区中选择相应的方法定义, 然后用右键 选取 Open Call Hierarchy 或者按下快捷键 Ctrl + Alt + H， 可以在 Call Hierarchy 视图中看到方法的调用关系, 提供了逐层的方法调用追朔的功能, 对查找方法的相互调用关系非常有用,.

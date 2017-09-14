@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProtocolOptionsMapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="F:\a.xsd">
+	<LogType name="SYStem" value="18">
+		<DestinationType  name="s1" value="17">
+				<ProtocolOption name="s1-1" value="16"/>
+				<ProtocolOption name="s1-2" value="11"/>
+		</DestinationType>
+	</LogType>
+</ProtocolOptionsMapping>
+

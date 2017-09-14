@@ -1,0 +1,9 @@
+. 参见:
+
+  http://javapub.iteye.com/blog/781482
+
+. GradientPaint是Java2D中专门用来控制渐变的类，它提供了使用线性颜色渐变模式填充 Shape 的方法。其构造函数GradientPaint(float x1, float y1, Color color1, float x2, float y2, Color color2)，充分说明了它的作用，即从点(x1,y1)到点(x2,y2)进行渐变。如果在用户空间指定了 Point P1 的 Color 为 C1，Point P2 的 Color 为 C2，则 P1、P2 连接线上的 Color 是逐渐地从 C1 变化到 C2 的。任何不在 P1、P2 延长线上的点 P 都具有点 P' 的颜色，P' 是 P1、P2 延长线上点 P 的垂直投影。P1、P2 段以外的延长线上的点可以按以下两种方式之一进行着色。 
+
+. * 如果渐变是周期性的，那么 P1、P2 延长线上的点在颜色 C1 和 C2 之间来回循环。 
+
+  * 如果渐变是非周期性的，那么 P1 一边的点有固定的 Color C1，而 P2 一边的点有固定的 Color C2。 

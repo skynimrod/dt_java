@@ -1,0 +1,139 @@
+. 参见:
+
+      http://ningandjiao.iteye.com/blog/1846441
+
+. Maven 作为目前Java 界最好的Dependency 管理系统, 把 Jar 包托管到Maven 中央库, 然后通过Maven Dependency 使用 是业界各种第三方库的普遍做法, 如果, 你想把自己开发的一些库分享给别人使用, 也可以遵循这样的套路. Gradle 可以看作是升级版的Maven, 其使用了Maven最优秀的Dependency管理系统, 但是, 又规避了Maven 的Build pipeline 的刻板和XML格式配置文件等缺点, 可以说是目前Java界最好的构建工具.  下面就来说说, 如何使用Gradle 吧自己开发的Jar 包 部署到Maven 中央库中.
+
+  1. 为自己的项目注册Maven 中央库帐号
+
+     在http://oss.sonatype.orgz 注册帐号( Sonatype 是Maven 中央库的管理系统), 注册以后 获得用户名, 密码.  后面的build 脚本会用得上.
+
+     在 Sonatype 的JIPA 系统中, 撞见一个issue (选择Project Community Support - Open Project Repository Hosting; Issue Type : New Project), 高祖Sonytype 管理员, 你想托管一个项目到Sonatype 上. 注意 该Issue 创建完之后, 只有管理员有更改权限，因此, 小心不要写错信息.
+
+     创建完成之后, 需要等待Sonatype 管理员审核, 一般不超过2个工作日, 一旦审核通过, 会在该Issue 上标明Resolved， 这就是说中央库已经准备好, 可以随时上传自己的文件了. 
+
+  2. Maven 中央库 托管规范
+
+     为了构建更加良好的Maven 生态环境, Maven 对于托管到其上的库有非常明确的质量要求: * 项目的Pom 文件必须包含如下元素: * 如果部署的是Jar 包 且 jar 包里面有 java classes, 那么除了jar 包外, 还必须上传jar包的源代码包, javadoc包, 即必须部署三个包: jar/-sources.jar/**-javadoc.jar.   * 所有要部署的包都必须使用GPG签名, 签名证书的Public Key 必须上传到 hkp://pool.sks-keyservers.net/服务器上.   
+
+     More info Maven Centrol Requirement   
+
+     https://docs.sonatype.org/display/Repository/Central+Sync+Requirements
+
+  3. GPG 签名
+
+     前面提到, 所有要上传到Maven 中央库的文件都需要做签名, 首先, 需要下载GPG工具 (https://gpgtools.org).  Mac 用户可以直接下载带UI的工具 GPGTools Installer 
+
+        https://s3.amazonaws.com/gpgtools/GPGTools-20130330.dmg
+
+     安装完成之后, 直接生成新的证书, 然后 Send Public Key Server 就行了. 非常简单, 如果你是命令行控, 请参考  
+
+     Gennerate GPG signature With Maven
+
+     https://docs.sonatype.org/display/Repository/How+To+Generate+GPG+Signatures+With+Maven
+
+  4. Gradle 脚本
+
+     apply plugin: 'idea'
+     apply plugin: 'java'
+     apply plugin: 'maven'
+     apply plugin: 'signing'		'' 使用 signing plugin 做数字签名
+
+     // 定义GroupID 和 Version, ArtefactID会自动使用Project 名
+     group = 'com.thoughtworks.toggle'
+     version = '0.1.0-SNAPSHOT'
+     sourceCompatibility = 1.6
+     targetCompatibility = 1.6
+
+     repositories {
+         mavenCentral();
+     }
+
+     dependencies {
+        compile {
+                'junit:junit:4.11',
+        }
+     }
+
+     uploadArchives {
+         repositories {
+             mavenDeployer {
+                 // 为Pom 文件做数字签名
+                 beforeDeployment {
+                     MavenDeployment deployment->signing.sigPom(deployment)
+                 }
+
+                 //指定项目部署到的中央库地址, UserName 和Password 就是part 1 中注册的帐号
+                 repository(url:"https://oss.sonatype.org/content/repositories/snapshots/") {
+		     authentication(userName:sonatypeUsername, password:sonatypePassword)
+                 }
+
+                 // 构造项目的Pom 文件, 参见part 2 中Pom文件的规范, 不要遗漏必填项
+                 pom.project {
+                     name project.name
+                     packaging 'jar'
+                     description 'Toggle is a little java tool to make your life easier when you try to use Feature Toggle in Java
+                     url 'https://github.com/xianlinbox/Toggle'
+
+                     scm {
+                         url 'scm:git@github.com:xianlinbox/Toggle.git'
+                         connection 'scm:git@github.com:xianlinbox/Toggle.git'
+                         developerConnection 'git@github.com:xianlinbox/Toggle.git'
+                     }
+
+                     licenses {
+			 name 'The apache Software License, Version 2.0'
+                         url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                         distribution 'repo'
+                     }
+                 }
+
+                 developers {
+	 	      developer {
+			  id 'xianlinbox'
+                          name 'Liu Xiannings'
+                      }
+                 }     
+             }
+         }
+     }
+  }
+
+  //参见: part 2， 为项目生成**.jar/**-javadoc.jar/**-sources.jar
+  tark javadocJar(type: jar, dependsOn: javadoc) {
+      classifier = 'javadoc'
+      from 'build/docs/javadoc'
+  }
+
+  task sourcesJar( type: Jar) {
+      classifier = 'sources'
+      from sourceSets.main.allSource
+  }
+
+  artifacts {
+      archives jar
+      archives javadocJar
+      archives sourcesJar
+  }
+
+  // 为所有的jar 包做数字签名
+  signing {
+      sign configurations.archives
+  }
+
+  5. 遇到过的问题
+
+   a. java.security.InvlidAlgorithmParameterException: the trustAnchors parameter must be non-empty
+
+      这个问题只有在使用的是OpenJDK的时候才会遇到, 原因是OpenJDK 的包里面没有带有效的证书,在MacOS上, 只要包系统库里带的cacerts 给它关联过去就可以了
+
+      cd $(/usr/libexec/java_home -v 1.7)/jre/lib/security
+      ln -fsh /System/Library/Java/Support/CoreDeploy.bundle/Contents/Home/lib/security/cacerts
+
+   b. Return Code is 400
+
+     这个问题有一段辛酸的过程, 有兴趣的可以看一下 issue: issue fixed process 在部署过程中收到这个Error Message 的情况有2种:
+
+      (1) 重复部署同一个jar 包到Maven 库, 但是, Maven 库却设置为不允许重复部署, 在Gradle 1.0 版本的MavenDeployer 就有这个问题, 会重复提交jar 包, 不过已经在1.1版本修复
+
+      (2) 试图部署一个release 版本的jar 包到snapshot 库. 我的情况是后者, 不过RootCause 比较汗颜, 因为我爸version number 写成了0.1.0-snapshot", 不符合Maven 对Snapshot 包的规范, 因此, 被当作release 版本了, 修改为"0.1.0-SNAPSHOT"就成功了.

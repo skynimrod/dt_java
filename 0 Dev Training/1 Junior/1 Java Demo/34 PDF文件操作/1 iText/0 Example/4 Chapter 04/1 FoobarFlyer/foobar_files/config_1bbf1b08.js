@@ -1,0 +1,1 @@
+F._setMod("skin");F._fileMap({"/js/start_c016dac3.js":["start/start","bg/conf","bg/bottom","bg/rewrite","base/tween","guide/skin_guide","bg/logo","bg/logo_bg","log/skin_log","bg/ajust","bg/opacities","bg/util"],"/css/superskin_821f9b35.css":["bottom.css","skin_guide.css","logo.css"]});F._defService("skin",{start:"start/start"});

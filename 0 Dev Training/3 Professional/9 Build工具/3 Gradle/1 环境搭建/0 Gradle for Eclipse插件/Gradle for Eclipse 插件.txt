@@ -1,0 +1,51 @@
+. 下载地址:
+ 
+   http://marketplace.eclipse.org/content/gradle-integration-eclipse#.U3wNRaiSw_Q   这个似乎不能用
+
+   Gradle 官网插件的位置:
+
+       http://www.gradle.org/plugins
+
+       http://dist.springsource.com/release/TOOLS/gradle      这个是 Gradle for Eclipse 插件, 但是国内访问不了
+
+. Eclipse 安装插件的方法
+
+  参见:
+
+      http://www.blogjava.net/javajoyo/archive/2008/10/20/235495.html
+
+. 首先需要确保以下 插件存在:
+
+  Groovy
+
+. 编写一个添加 Gradle 到Eclipse 的 Build文件
+
+  build.gradle
+
+  ======
+
+    apply plugin:'eclipse'
+
+  ======
+
+  运行: >gradle
+
+  结果:
+
+   :help
+
+Welcome to Gradle 1.11.
+
+To run a build, run gradle <task> ...
+
+To see a list of available tasks, run gradle tasks
+
+To see a list of command-line options, run gradle --help
+
+BUILD SUCCESSFUL
+
+Total time: 18.954 secs
+
+  ==============================
+
+       
